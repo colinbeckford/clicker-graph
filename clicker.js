@@ -2,9 +2,17 @@ var deciseconds = 0;
 var clickList = [];
 var pos = 0;
 var neg = 0;
+var judge_name = "";
+var yt_link = "";
+
+function saveData()
+{
+  judge_name = $('#judge-name').val();
+  yt_link = $('#yt-link').val();
+}
 
 $(function() {
-    $("#chart").hide();
+    $("body").hide();
   });
 
 $("body").on("keydown", function(event)
@@ -92,8 +100,8 @@ function makeApiCall() {
   var valueRangeBody = {
     "range": 'B1:J500',
     "majorDimension": "COLUMNS",
-    "values": [$('#judge-name'),
-    $('#yt-link'), clickList],
+    "values": [judge_name,
+    yt_link, clickList],
   };
   var request = gapi.client.sheets.spreadsheets.values.append(params, valueRangeBody);
   request.then(function(response) {
