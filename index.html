@@ -5,8 +5,20 @@
     <script src="clicker.js"> </script>
     <script src="https://www.gstatic.com/charts/loader.js"> </script>
     <h1> jb2 </h1>
+    <br>
+    <br>
+    <button id="signin-button" onclick="handleSignInClick()">Sign in</button>
+    <br>
+    <br>
   </head>
   <body>
+    <text> Input Judge Name </text>
+    <br>
+    <br>
+    <!-- put your name here -->
+    <input id="judge-name"> </input>
+    <br>
+    <br>
     <text> Input Youtube Link </text>
     <br>
     <br>
@@ -18,14 +30,15 @@
     <button id="submit"> Submit </button>
     <br>
     <br>
-    <iframe> <!-- idk how to do this completely but this is where the youtube link should be played --> </iframe>
-    <br>
-    <br>
     <!-- text that gets updated with clicks -->
     <h1 id="click-display"> +0 -0 </h1>
     <br>
     <br>
     <div id="chart"> </div>
+    <script async defer src="https://apis.google.com/js/api.js"
+      onload="this.onload=function(){};handleClientLoad()"
+      onreadystatechange="if (this.readyState === 'complete') this.onload()">
+    </script>
   </body>
 </center>
 
