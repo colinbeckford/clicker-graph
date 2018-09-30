@@ -78,10 +78,10 @@ function timer()
 function showChart()
 {
   google.charts.load('current', {packages: ['corechart', 'line']});
-  google.charts.setOnLoadCallback(drawBasic);
+  google.charts.setOnLoadCallback(drawVisualization);
 }
 
-function drawBasic()
+function drawVisualization()
 {
     var data = new google.visualization.DataTable();
     data.addColumn('number', 'X');

@@ -106,7 +106,8 @@
          }, function(reason) {
            console.error('error: ' + reason.result.error.message);
          });
-         drawBasic();
+         google.load("visualization", "1", {packages:["corechart"]});
+         google.setOnLoadCallback(drawVisualization);
        }
 
     function initClient() {
