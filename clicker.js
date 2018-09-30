@@ -77,7 +77,12 @@ function timer()
 
 function showChart()
 {
+  console.log(clickList[0]);
+  console.log(clickList[1]);
+  console.log(graph2[0]);
+  console.log(graph2[1]);
   var trace1 =
+
   {
     x: clickList[0],
     y: clickList[1],
