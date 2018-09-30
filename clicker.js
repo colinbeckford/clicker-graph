@@ -4,6 +4,7 @@ var judge_name = "";
 var yt_link = "";
 var pos = 0;
 var neg = 0;
+var t;
 
 function saveData()
 {
