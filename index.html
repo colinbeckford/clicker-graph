@@ -43,13 +43,20 @@
     function getLinks() {
       var params = {
         spreadsheetId: '1KrN4qEuSED2x3R_Y4dOSXoHYix6ccP3SBlMMsDxgLO0',
-        range: "Sheet1!B2:DZ2",
+        range: "Sheet1!B2:DZ250",
         valueRenderOption: 'FORMATTED_VALUE',
         dateTimeRenderOption: 'FORMATTED_STRING',
       };
       var request = gapi.client.sheets.spreadsheets.values.get(params);
       request.then(function(response) {
         console.log(response.result.values);
+        // for (var i=0;i<response.result.values.length;i++)
+        // {
+        //   if (response.result.values[i] == yt_link)
+        //   {
+        //
+        //   }
+        // }
       }, function(reason) {
         console.error('error: ' + reason.result.error.message);
       });
@@ -57,12 +64,12 @@
     function makeApiCall(list) {
          var params = {
            spreadsheetId:'1KrN4qEuSED2x3R_Y4dOSXoHYix6ccP3SBlMMsDxgLO0',
-           range: 'Sheet1!C1:Z250',
+           range: 'Sheet1!B1:Z250',
            valueInputOption: 'RAW',
            insertDataOption: 'OVERWRITE',
          };
          var valueRangeBody = {
-               "range": 'Sheet1!C1:Z250',
+               "range": 'Sheet1!B1:Z250',
           "majorDimension": 'COLUMNS',
           "values": [
             list

@@ -5,6 +5,7 @@ var yt_link = "";
 var positive = 0;
 var negative = 0;
 var t;
+var sameLinks = [];
 
 function saveData()
 {
