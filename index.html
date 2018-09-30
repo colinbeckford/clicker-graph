@@ -75,9 +75,16 @@
           for (var j=0;j<i;j++)
           {
             var data = list[j].split(',');
+            if (data[0] == "")
+            {
+              break;
+            }
+            else
+            {
             data[0] = parseInt(data[0]);
             data[1] = parseInt(data[1]);
             graph2.push(data);
+            }
           }
           break;
         }
