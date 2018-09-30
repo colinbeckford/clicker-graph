@@ -10,7 +10,7 @@
     <h1> jb2 </h1>
     <br>
     <br>
-    <button onclick="handleSignInClick()"> Press to sign in to verify access to Google Spreadsheets. </button>
+    <button> Press to sign in to verify access to Google Spreadsheets. </button>
     <br>
     <br>
   </head>
@@ -39,46 +39,6 @@
     <br>
     <div id="chart"> </div>
     <script async defer src="https://apis.google.com/js/api.js">
-    </script>
-    <script>
-    function initClient() {
-  var API_KEY = "AIzaSyBL78U6X04LeYMJ2h-35dPoPnXduUx_opo";  // TODO: Update placeholder with desired API key.
-  var CLIENT_ID = "174011806378-ruu4bj26124mrbejev4btf1v4v8kslrb.apps.googleusercontent.com";  // TODO: Update placeholder with desired client ID.
-  var SCOPE = "https://www.googleapis.com/auth/spreadsheets";
-
-  gapi.client.init({
-    "apiKey": API_KEY,
-    "clientId": CLIENT_ID,
-    "scope": SCOPE,
-    "discoveryDocs": ["https://sheets.googleapis.com/$discovery/rest?version=v4"],
-  }).then(function() {
-    gapi.auth2.getAuthInstance().isSignedIn.listen(updateSignInStatus);
-    updateSignInStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
-  });
-
-}
-
-  function handleClientLoad() {
-  gapi.load("client:auth2", initClient);
-  }
-
-  function updateSignInStatus(isSignedIn) {
-    if (isSignedIn) {
-      $("#login").show();
-    }
-  }
-
-  function handleSignInClick(event) {
-    gapi.auth2.getAuthInstance().signIn();
-  }
-
-  function handleSignOutClick(event) {
-    gapi.auth2.getAuthInstance().signOut();
-  }
-    </script>
-    <script async defer src="https://apis.google.com/js/api.js"
-    onload="this.onload=function(){};handleClientLoad()"
-    onreadystatechange="if (this.readyState === "complete") this.onload()">
     </script>
   </body>
 </center>
