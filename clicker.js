@@ -41,7 +41,6 @@ $("body").on("keydown", function(event)
   // press 0 key to end the timer
   else if (event.which == 48)
   {
-    makeApiCall();
     clearTimeout(t);
     deciseconds = 0;
     console.log(clickList);
