@@ -38,6 +38,7 @@ $("body").on("keydown", function(event)
     raw = pos-neg;
     seconds = (deciseconds/10);
     clickList.push([seconds, raw]);
+    console.log(pos);
     $("#click-display").text(" +" + String(pos) + " " + "-" + String(neg));
   }
   // press 0 key to end the timer
@@ -46,7 +47,7 @@ $("body").on("keydown", function(event)
     makeApiCall();
     clearTimeout(t);
     deciseconds = 0;
-    console.log(clickList);
+    console.log(clickList); 
     showChart();
   }
 });
