@@ -12,7 +12,6 @@ function saveData()
   yt_link = $('#yt-link').val();
 }
 
-
 $("body").on("keydown", function(event)
 {
   // enter key to start the timer - press this once the song starts
@@ -45,6 +44,7 @@ $("body").on("keydown", function(event)
     deciseconds = 0;
     console.log(clickList);
     showChart();
+    makeApiCall();
   }
 });
 
@@ -133,7 +133,7 @@ gapi.load('client:auth2', initClient);
 
 function updateSignInStatus(isSignedIn) {
 if (isSignedIn) {
-  makeApiCall();
+  alert("You are signed in.");
 }
 }
 
