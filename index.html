@@ -43,7 +43,7 @@
     function getLinks() {
       var params = {
         spreadsheetId: '1KrN4qEuSED2x3R_Y4dOSXoHYix6ccP3SBlMMsDxgLO0',
-        range: "Sheet1!B2:DZ250",
+        range: "Sheet1!B1:DZ250",
         valueRenderOption: 'FORMATTED_VALUE',
         dateTimeRenderOption: 'FORMATTED_STRING',
       };
@@ -51,6 +51,7 @@
       request.then(function(response) {
         console.log("Seeing if values are loaded in before loop");
         console.log(response.result.values);
+        console.log(yt_link);
         for (var i=0;i<response.result.values[0].length;i++)
         {
           if (response.result.values[1][i] == yt_link)
