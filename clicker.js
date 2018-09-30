@@ -22,19 +22,19 @@ $("body").on("keydown", function(event)
   {
     timer();
   }
-  // press a key to click a positive
-  else if (event.which == 65)
+  // press a key to click a negative
+  else if (event.which == 76)
   {
-    pos+=1;
+    neg+=1;
     raw = pos-neg;
     seconds = (deciseconds/10);
     clickList.push([seconds, raw]);
     $("#click-display").text(" +" + pos + " " + "-" + neg);
   }
-  // press a key to click a negative
-  else if (event.which == 76)
+  // press a key to click a positive
+  else if (event.which == 65)
   {
-    neg+=1;
+    pos+=1;
     raw = pos-neg;
     seconds = (deciseconds/10);
     clickList.push([seconds, raw]);
