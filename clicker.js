@@ -23,6 +23,7 @@ $("body").on("keydown", function(event)
   else if (event.which == 76)
   {
     neg+=1;
+    console.log(neg);
     raw = pos-neg;
     seconds = (deciseconds/10);
     clickList.push([seconds, raw]);
