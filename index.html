@@ -59,13 +59,10 @@
             for (var j=2;j<response.result.values.length;j++)
             {
               otherGraph.push(response.result.values[j][i]);
-              console.log("Seeing if values are loaded in during loop");
-              console.log(response.result.values[j][i]);
             }
+            otherGraph.push("Break");
           }
         }
-        console.log("Seeing if values are loaded in after loop");
-        console.log(otherGraph);
       }, function(reason) {
         console.error('error: ' + reason.result.error.message);
       });
