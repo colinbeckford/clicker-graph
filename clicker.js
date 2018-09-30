@@ -89,7 +89,7 @@ function showChart()
   for (var b=0;b<graph2.length;b++)
   {
     otherX.push(graph2[b][0]);
-    otherrY.push(graph2[b][1]);
+    otherY.push(graph2[b][1]);
   }
   var trace1 =
   {
