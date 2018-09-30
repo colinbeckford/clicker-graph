@@ -1,7 +1,5 @@
 var deciseconds = 0;
 var clickList = [];
-var pos = 0;
-var neg = 0;
 var judge_name = "";
 var yt_link = "";
 
@@ -17,14 +15,15 @@ $(function() {
 
 $("body").on("keydown", function(event)
 {
-
+  var pos = 0;
+  var neg = 0;
   // enter key to start the timer - press this once the song starts
   if (event.which == 13)
   {
     timer();
   }
   // press a key to click a positive
-  if (event.which == 65)
+  else if (event.which == 65)
   {
     pos+=1;
     raw = pos-neg;
