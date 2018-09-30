@@ -5,12 +5,16 @@
   src="https://code.jquery.com/jquery-3.3.1.min.js"
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
   crossorigin="anonymous"></script>
+  <script async defer src="https://apis.google.com/js/api.js"
+  onload="this.onload=function(){};handleClientLoad()"
+  onreadystatechange="if (this.readyState === 'complete') this.onload()">
+  </script>
     <script src="clicker.js"> </script>
     <script src="https://www.gstatic.com/charts/loader.js"> </script>
     <h1> jb2 </h1>
     <br>
     <br>
-    <button> Press to sign in to verify access to Google Spreadsheets. </button>
+    <button id="signin-button" onclick="handleSignInClick()">Sign in to Google</button>
     <br>
     <br>
   </head>

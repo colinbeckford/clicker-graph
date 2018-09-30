@@ -84,3 +84,65 @@ function drawBasic()
     chart.draw(data, options);
     $('#chart').show();
 }
+
+var valueRangeBody = {
+  // TODO: Add desired properties to the request body.
+};
+
+var request = gapi.client.sheets.spreadsheets.values.append(params, valueRangeBody);
+request.then(function(response) {
+  // TODO: Change code below to process the `response` object:
+  console.log(response.result);
+}, function(reason) {
+  console.error('error: ' + reason.result.error.message);
+});
+}
+
+function makeApiCall() {
+     var params = {
+       spreadsheetId: 'my-spreadsheet-id',
+       range: 'my-range',
+       valueInputOption: '',
+       insertDataOption: '',
+     };
+
+
+function initClient() {
+var API_KEY = "AIzaSyBL78U6X04LeYMJ2h-35dPoPnXduUx_opo";
+var CLIENT_ID = "174011806378-ruu4bj26124mrbejev4btf1v4v8kslrb.apps.googleusercontent.com";
+var SCOPE = 'https://www.googleapis.com/auth/spreadsheets';
+
+gapi.client.init({
+  'apiKey': API_KEY,
+  'clientId': CLIENT_ID,
+  'scope': SCOPE,
+  'discoveryDocs': ['https://sheets.googleapis.com/$discovery/rest?version=v4'],
+}).then(function() {
+  gapi.auth2.getAuthInstance().isSignedIn.listen(updateSignInStatus);
+  updateSignInStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
+});
+}
+
+function handleClientLoad() {
+gapi.load('client:auth2', initClient);
+}
+
+function updateSignInStatus(isSignedIn) {
+if (isSignedIn) {
+  makeApiCall();
+}
+}
+
+function handleSignInClick(event) {
+gapi.auth2.getAuthInstance().signIn();
+}
+
+function handleSignOutClick(event) {
+gapi.auth2.getAuthInstance().signOut();
+}
+</script>
+<script async defer src="https://apis.google.com/js/api.js"
+onload="this.onload=function(){};handleClientLoad()"
+onreadystatechange="if (this.readyState === 'complete') this.onload()">
+</script>
+<button id="signin-button" onclick="handleSignInClick()">Sign in</button>
