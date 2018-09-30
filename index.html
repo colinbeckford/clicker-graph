@@ -99,13 +99,10 @@
          };
          var request = gapi.client.sheets.spreadsheets.values.append(params, valueRangeBody);
          request.then(function(response) {
-           console.log("Scores appended");
+           showChart();
          }, function(reason) {
            console.error('error: ' + reason.result.error.message);
          });
-         google.load("visualization", "1", {packages:["corechart"]});
-         google.setOnLoadCallback(function() {drawVisualization()});
-
        }
 
     function initClient() {
