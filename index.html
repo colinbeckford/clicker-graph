@@ -80,6 +80,7 @@
           }
         }
       }
+      console.log(graph2);
       makeApiCall(judgeEntry);
     }
 
@@ -103,7 +104,7 @@
          }, function(reason) {
            console.error('error: ' + reason.result.error.message);
          });
-
+         drawBasic();
        }
 
     function initClient() {
