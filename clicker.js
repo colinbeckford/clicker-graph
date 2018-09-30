@@ -46,7 +46,7 @@ $("body").on("keydown", function(event)
     deciseconds = 0;
     console.log(clickList);
     showChart();
-    formatList();
+    getLinks();
   }
 });
 
