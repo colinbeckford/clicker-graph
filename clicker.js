@@ -2,6 +2,8 @@ var deciseconds = 0;
 var clickList = [];
 var judge_name = "";
 var yt_link = "";
+var pos = 0;
+var neg = 0;
 
 function saveData()
 {
@@ -15,8 +17,6 @@ $(function() {
 
 $("body").on("keydown", function(event)
 {
-  var pos = 0;
-  var neg = 0;
   // enter key to start the timer - press this once the song starts
   if (event.which == 13)
   {
