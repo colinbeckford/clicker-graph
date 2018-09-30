@@ -11,9 +11,6 @@ function saveData()
   yt_link = $('#yt-link').val();
 }
 
-$(function() {
-    $("body").hide();
-  });
 
 $("body").on("keydown", function(event)
 {
