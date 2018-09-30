@@ -60,10 +60,10 @@
             otherGraphs.push("Break");
           }
         }
+        filterList(otherGraphs);
       }, function(reason) {
         console.error('error: ' + reason.result.error.message);
       });
-      filterList(otherGraphs);
     }
 
     function filterList(list)
