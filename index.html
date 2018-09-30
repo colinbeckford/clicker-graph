@@ -60,7 +60,6 @@
             otherGraphs.push("Break");
           }
         }
-        console.log(otherGraphs);
       }, function(reason) {
         console.error('error: ' + reason.result.error.message);
       });
@@ -76,6 +75,7 @@
           for (var j=0;j<i;j++)
           {
             var data = list[j].split(',');
+            console.log(data);
             graph2.push(data);
           }
         }
