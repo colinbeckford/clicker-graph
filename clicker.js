@@ -2,8 +2,8 @@ var deciseconds = 0;
 var clickList = [];
 var judge_name = "";
 var yt_link = "";
-var pos = 0;
-var neg = 0;
+var positive = 0;
+var negative = 0;
 var t;
 
 function saveData()
@@ -23,21 +23,21 @@ $("body").on("keydown", function(event)
   else if (event.which == 76)
   {
     neg+=1;
-    console.log(neg);
-    raw = pos-neg;
+    console.log(negative);
+    raw = positive-negative;
     seconds = (deciseconds/10);
     clickList.push([seconds, raw]);
-    $("#click-display").text("+" + String(pos) + " " + "-" + String(neg));
+    $("#click-display").text("+" + String(positive) + " " + "-" + String(negative));
   }
-  // press a key to click a positive
+  // press a key to click a positiveitive
   else if (event.which == 65)
   {
-    pos+=1;
-    console.log(pos);
-    raw = pos-neg;
+    positive+=1;
+    console.log(positive);
+    raw = positive-negative;
     seconds = (deciseconds/10);
     clickList.push([seconds, raw]);
-    $("#click-display").text("+" + pos + " " + "-" + neg);
+    $("#click-display").text("+" + String(positive) + " " + "-" + String(negative));
   }
   // press 0 key to end the timer
   else if (event.which == 48)
