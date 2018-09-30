@@ -87,9 +87,10 @@ function drawVisualization()
     data.addColumn('number', 'X');
     data.addColumn('number', judge_name);
     data.addColumn('number', "Other");
+    console.log(clickList);
+    console.log(graph2);
     data.addRows(clickList);
     data.addRows(graph2);
-
     var options = {
       hAxis: {
         title: 'Time'
