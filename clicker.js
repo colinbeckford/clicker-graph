@@ -58,7 +58,7 @@ function formatList()
   for (var i=0;i<clickList.length;i++)
   {
     var csv = "";
-    csv = clickList[i][0] + "," clickList[i][1];
+    csv = clickList[i][0] + "," + clickList[i][1];
     judgeEntry.push(csv);
   }
   console.log(judgeEntry);
