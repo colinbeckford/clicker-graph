@@ -5,9 +5,7 @@
   src="https://code.jquery.com/jquery-3.3.1.min.js"
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
   crossorigin="anonymous"></script>
-  <script async defer src="https://apis.google.com/js/api.js"
-  onload="this.onload=function(){};handleClientLoad()"
-  onreadystatechange="if (this.readyState === 'complete') this.onload()">
+  <script async defer src="https://apis.google.com/js/api.js">
   </script>
     <script src="clicker.js"> </script>
     <script src="https://www.gstatic.com/charts/loader.js"> </script>
@@ -43,6 +41,7 @@
     <br>
     <div id="chart"> </div>
     <script type="text/javascript">
+    handleClientLoad();
     function makeApiCall() {
          var params = {
            spreadsheetId:'1KrN4qEuSED2x3R_Y4dOSXoHYix6ccP3SBlMMsDxgLO0',
