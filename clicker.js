@@ -70,7 +70,7 @@ function drawBasic()
 {
     var data = new google.visualization.DataTable();
     data.addColumn('number', 'X');
-    data.addColumn('number', $('#judge-name'));
+    data.addColumn('number', $('#judge-name').val());
     data.addRows(clickList);
     var options = {
       hAxis: {
