@@ -74,7 +74,9 @@
         {
           for (var j=0;j<i;j++)
           {
-            var data = parseInt(list[j].split(','));
+            var data = list[j].split(',');
+            data[0] = parseInt(data[0]);
+            data[1] = parseInt(data[1]);
             graph2.push(data);
           }
           break;
