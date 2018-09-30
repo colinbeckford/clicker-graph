@@ -10,6 +10,7 @@ function saveData()
 {
   judge_name = $('#judge-name').val();
   yt_link = $('#yt-link').val();
+  handleClientLoad();
 }
 
 
