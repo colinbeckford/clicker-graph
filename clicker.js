@@ -84,15 +84,15 @@ function showChart()
   var trace1 =
 
   {
-    x: clickList[0],
-    y: clickList[1],
+    x: clickList[][0],
+    y: clickList[][1],
     mode: 'lines',
     name: judge_name
   };
   var trace2 =
   {
-    x: graph2[0],
-    y: graph2[1],
+    x: graph2[][0],
+    y: graph2[][1],
     mode: 'lines',
     name: "Other Judge"
   };
