@@ -70,8 +70,10 @@
     {
       for (var i=0;i<list.length;i++)
       {
+        console.log("In filter list loop");
         if (list[i] == "Break")
         {
+          console.log("Hitting break point");
           for (var j=0;j<i;j++)
           {
             var data = list[j].split(',');
