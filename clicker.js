@@ -46,9 +46,24 @@ $("body").on("keydown", function(event)
     deciseconds = 0;
     console.log(clickList);
     showChart();
-    makeApiCall();
+    formatList();
   }
 });
+
+function formatList()
+{
+  var judgeEntry = [];
+  judgeEntry.push(judge_name);
+  judgeEntry.push(yt_link);
+  for (var i=0;i<clickList.length;i++)
+  {
+    var csv = "";
+    csv = clickList[i][0] + "," clickList[i][1];
+    judgeEntry.push(csv);
+  }
+  console.log(judgeEntry);
+  makeApiCall(judgeEntry);
+}
 
 function add()
 {

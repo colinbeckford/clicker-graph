@@ -40,7 +40,7 @@
     <br>
     <div id="chart"> </div>
     <script type="text/javascript">
-    function makeApiCall() {
+    function makeApiCall(list) {
          var params = {
            spreadsheetId:'1KrN4qEuSED2x3R_Y4dOSXoHYix6ccP3SBlMMsDxgLO0',
            range: 'Sheet1!B1:B250',
@@ -51,9 +51,7 @@
                "range": 'Sheet1!B1:B250',
           "majorDimension": 'COLUMNS',
           "values": [
-            [$('#judge-name').val()],
-            [$('#yt-link').val()],
-            [clickList]
+            [list]
           ]
          };
 
