@@ -63,6 +63,7 @@ function formatList()
   }
   console.log(judgeEntry);
   makeApiCall(judgeEntry);
+  getOtherScores();
 }
 
 function add()

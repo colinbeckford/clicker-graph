@@ -40,21 +40,29 @@
     <br>
     <div id="chart"> </div>
     <script type="text/javascript">
+    function getOtherScores() {
+      gapi.client.sheets.spreadsheets.values.batchGet({
+         spreadsheetId: '1KrN4qEuSED2x3R_Y4dOSXoHYix6ccP3SBlMMsDxgLO0',
+         ranges: "Sheet1!B2:DZ2"
+      }).then((response) => {
+        var linkList = response.result.values;
+        console.log(linkList);
+      });
+    }
     function makeApiCall(list) {
          var params = {
            spreadsheetId:'1KrN4qEuSED2x3R_Y4dOSXoHYix6ccP3SBlMMsDxgLO0',
-           range: 'Sheet1!B1:B250',
+           range: 'Sheet1!B1:Z250',
            valueInputOption: 'RAW',
            insertDataOption: 'OVERWRITE',
          };
          var valueRangeBody = {
-               "range": 'Sheet1!B1:B250',
+               "range": 'Sheet1!B1:Z250',
           "majorDimension": 'COLUMNS',
           "values": [
             list
           ]
          };
-
          var request = gapi.client.sheets.spreadsheets.values.append(params, valueRangeBody);
          request.then(function(response) {
            console.log(response.result);
