@@ -32,7 +32,7 @@ $("body").on("keydown", function(event)
     clickList.push([seconds, raw]);
     $("#click-display").text("+" + String(positive) + " " + "-" + String(negative));
   }
-  // press a key to click a positiveitive
+  // press a key to click a positive
   else if (event.which == 65)
   {
     positive+=1;

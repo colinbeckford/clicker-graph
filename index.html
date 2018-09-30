@@ -49,7 +49,6 @@
       };
       var request = gapi.client.sheets.spreadsheets.values.get(params);
       request.then(function(response) {
-        console.log("Seeing if values are loaded in before loop");
         for (var i=0;i<response.result.values[0].length;i++)
         {
           if (response.result.values[1][i] == yt_link)
@@ -61,6 +60,7 @@
             otherGraph.push("Break");
           }
         }
+        console.log(otherGraph);
       }, function(reason) {
         console.error('error: ' + reason.result.error.message);
       });
