@@ -25,7 +25,6 @@ $("body").on("keydown", function(event)
   else if (event.which == 76)
   {
     negative+=1;
-    console.log(negative);
     raw = positive-negative;
     seconds = (deciseconds/10);
     clickList.push([seconds, raw]);
@@ -35,7 +34,6 @@ $("body").on("keydown", function(event)
   else if (event.which == 65)
   {
     positive+=1;
-    console.log(positive);
     raw = positive-negative;
     seconds = (deciseconds/10);
     clickList.push([seconds, raw]);
@@ -46,7 +44,6 @@ $("body").on("keydown", function(event)
   {
     clearTimeout(t);
     deciseconds = 0;
-    console.log(clickList);
     formatList();
     showChart();
   }
@@ -63,9 +60,8 @@ function formatList()
     csv = clickList[i][0] + "," + clickList[i][1];
     judgeEntry.push(csv);
   }
-  console.log(judgeEntry);
-  makeApiCall(judgeEntry);
   getLinks();
+  makeApiCall(judgeEntry);
 }
 
 function add()
