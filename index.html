@@ -45,8 +45,7 @@
          spreadsheetId: '1KrN4qEuSED2x3R_Y4dOSXoHYix6ccP3SBlMMsDxgLO0',
          ranges: "Sheet1!B2:DZ2"
       }).then((response) => {
-        var linkList = response.result.values;
-        console.log(linkList);
+        console.log(response.result.values);
       });
     }
     function makeApiCall(list) {
