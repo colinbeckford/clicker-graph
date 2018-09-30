@@ -47,7 +47,7 @@ $("body").on("keydown", function(event)
     makeApiCall();
     clearTimeout(t);
     deciseconds = 0;
-    console.log(clickList); 
+    console.log(clickList);
     showChart();
   }
 });
