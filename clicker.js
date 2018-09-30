@@ -77,30 +77,54 @@ function timer()
 
 function showChart()
 {
-  google.charts.load('current', {packages: ['corechart', 'line']});
-  google.charts.setOnLoadCallback(drawVisualization);
+  var trace1 =
+  {
+    x: clickList[0],
+    y: clickList[1],
+    mode: 'lines',
+    name: judge_name
+  };
+  var trace2 =
+  {
+    x: graph2[0],
+    y: graph2[1],
+    mode: 'lines',
+    name: "Other Judge"
+  };
+  var data = [trace1, trace2];
+
+  var layout = {
+    title:'Your Scores vs Other Scores'
+  };
+  Plotly.newPlot($('#chart'), data, layout);
 }
 
-function drawVisualization()
-{
-    var data = new google.visualization.DataTable();
-    data.addColumn('number', 'X');
-    data.addColumn('number', judge_name);
-    data.addColumn('number', "Other");
-    console.log(clickList);
-    console.log(graph2);
-    data.addRows(clickList);
-    data.addRows(graph2);
-    var options = {
-      hAxis: {
-        title: 'Time'
-      },
-      vAxis: {
-        title: 'Score'
-      },
-      curveType: 'function',
-    };
-    var chart = new google.visualization.LineChart(document.getElementById('chart'));
-    chart.draw(data, options);
-    $('#chart').show();
-}
+// function showChart()
+// {
+//   google.charts.load('current', {packages: ['corechart', 'line']});
+//   google.charts.setOnLoadCallback(drawVisualization);
+// }
+//
+// function drawVisualization()
+// {
+//     var data = new google.visualization.DataTable();
+//     data.addColumn('number', 'X');
+//     data.addColumn('number', judge_name);
+//     data.addColumn('number', "Other");
+//     console.log(clickList);
+//     console.log(graph2);
+//     data.addRows(clickList);
+//     data.addRows(graph2);
+//     var options = {
+//       hAxis: {
+//         title: 'Time'
+//       },
+//       vAxis: {
+//         title: 'Score'
+//       },
+//       curveType: 'function',
+//     };
+//     var chart = new google.visualization.LineChart(document.getElementById('chart'));
+//     chart.draw(data, options);
+//     $('#chart').show();
+// }
