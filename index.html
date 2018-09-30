@@ -70,10 +70,8 @@
     {
       for (var i=0;i<list.length;i++)
       {
-        console.log("In filter list loop");
         if (list[i] == "Break")
         {
-          console.log("Hitting break point");
           for (var j=0;j<i;j++)
           {
             var data = list[j].split(',');
@@ -82,7 +80,6 @@
           break;
         }
       }
-      console.log(graph2);
       makeApiCall(judgeEntry);
     }
 
@@ -107,7 +104,8 @@
            console.error('error: ' + reason.result.error.message);
          });
          google.load("visualization", "1", {packages:["corechart"]});
-         google.setOnLoadCallback(drawVisualization);
+         google.setOnLoadCallback(function() {drawVisualization()});
+
        }
 
     function initClient() {
