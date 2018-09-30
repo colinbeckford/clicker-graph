@@ -26,7 +26,7 @@ $("body").on("keydown", function(event)
     raw = pos-neg;
     seconds = (deciseconds/10);
     clickList.push([seconds, raw]);
-    $("#click-display").text(" +" + String(pos) + " " + "-" + String(neg));
+    $("#click-display").text("+" + String(pos) + " " + "-" + String(neg));
   }
   // press a key to click a positive
   else if (event.which == 65)
@@ -35,7 +35,7 @@ $("body").on("keydown", function(event)
     raw = pos-neg;
     seconds = (deciseconds/10);
     clickList.push([seconds, raw]);
-    $("#click-display").text(" +" + pos + " " + "-" + neg);
+    $("#click-display").text("+" + pos + " " + "-" + neg);
   }
   // press 0 key to end the timer
   else if (event.which == 48)
