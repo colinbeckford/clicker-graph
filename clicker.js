@@ -96,7 +96,7 @@ function showChart()
   var layout = {
     title:'Your Scores vs Other Scores'
   };
-  Plotly.newPlot($('#chart'), data, layout);
+  Plotly.newPlot('chart', data, layout);
 }
 
 // function showChart()
