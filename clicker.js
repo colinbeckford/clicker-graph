@@ -6,6 +6,7 @@ var positive = 0;
 var negative = 0;
 var t;
 var sameLinks = [];
+var otherGraph = [];
 
 function saveData()
 {
@@ -46,8 +47,8 @@ $("body").on("keydown", function(event)
     clearTimeout(t);
     deciseconds = 0;
     console.log(clickList);
+    formatList();
     showChart();
-    getLinks();
   }
 });
 
@@ -64,7 +65,7 @@ function formatList()
   }
   console.log(judgeEntry);
   makeApiCall(judgeEntry);
-  getOtherScores();
+  getLinks();
 }
 
 function add()
