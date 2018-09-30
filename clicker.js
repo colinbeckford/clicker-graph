@@ -5,8 +5,10 @@ var yt_link = "";
 var positive = 0;
 var negative = 0;
 var t;
+var judgeEntry = [];
 var sameLinks = [];
 var otherGraph = [];
+
 
 function saveData()
 {
@@ -51,7 +53,6 @@ $("body").on("keydown", function(event)
 
 function formatList()
 {
-  var judgeEntry = [];
   judgeEntry.push(judge_name);
   judgeEntry.push(yt_link);
   for (var i=0;i<clickList.length;i++)
@@ -61,7 +62,6 @@ function formatList()
     judgeEntry.push(csv);
   }
   getLinks();
-  makeApiCall(judgeEntry);
 }
 
 function add()
