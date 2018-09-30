@@ -85,26 +85,30 @@ function drawBasic()
     $('#chart').show();
 }
 
-var valueRangeBody = {
-  // TODO: Add desired properties to the request body.
-};
-
-var request = gapi.client.sheets.spreadsheets.values.append(params, valueRangeBody);
-request.then(function(response) {
-  // TODO: Change code below to process the `response` object:
-  console.log(response.result);
-}, function(reason) {
-  console.error('error: ' + reason.result.error.message);
-});
-}
-
 function makeApiCall() {
      var params = {
-       spreadsheetId: 'my-spreadsheet-id',
-       range: 'my-range',
-       valueInputOption: '',
-       insertDataOption: '',
+       spreadsheetId:'1KrN4qEuSED2x3R_Y4dOSXoHYix6ccP3SBlMMsDxgLO0',
+       range: 'Sheet1!B1:B250',
+       valueInputOption: 'RAW',
+       insertDataOption: 'OVERWRITE',
      };
+     var valueRangeBody = {
+           "range": 'Sheet1!B1:B250',
+      "majorDimension": 'COLUMNS',
+      "values": [
+        $('#judge-name').val(),
+        $('#yt-link').val(),
+        clickList
+      ]
+     };
+
+     var request = gapi.client.sheets.spreadsheets.values.append(params, valueRangeBody);
+     request.then(function(response) {
+       console.log(response.result);
+     }, function(reason) {
+       console.error('error: ' + reason.result.error.message);
+     });
+   }
 
 
 function initClient() {
@@ -140,9 +144,3 @@ gapi.auth2.getAuthInstance().signIn();
 function handleSignOutClick(event) {
 gapi.auth2.getAuthInstance().signOut();
 }
-</script>
-<script async defer src="https://apis.google.com/js/api.js"
-onload="this.onload=function(){};handleClientLoad()"
-onreadystatechange="if (this.readyState === 'complete') this.onload()">
-</script>
-<button id="signin-button" onclick="handleSignInClick()">Sign in</button>
