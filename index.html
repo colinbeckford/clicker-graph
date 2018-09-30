@@ -50,7 +50,7 @@
       var request = gapi.client.sheets.spreadsheets.values.get(params);
       request.then(function(response) {
         console.log("Seeing if values are loaded in before loop");
-        console.log(response.request.values);
+        console.log(response.result.values);
         for (var i=0;i<response.result.values[0].length;i++)
         {
           if (response.result.values[1][i] == yt_link)
