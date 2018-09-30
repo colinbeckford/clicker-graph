@@ -55,17 +55,34 @@
           {
             for (var j=2;j<response.result.values.length;j++)
             {
-              otherGraph.push(response.result.values[j][i]);
+              otherGraphs.push(response.result.values[j][i]);
             }
-            otherGraph.push("Break");
+            otherGraphs.push("Break");
           }
         }
-        console.log(otherGraph);
+        console.log(otherGraphs);
       }, function(reason) {
         console.error('error: ' + reason.result.error.message);
       });
+      filterList(otherGraphs);
+    }
+
+    function filterList(list)
+    {
+      for (var i=0;i<list.length;i++)
+      {
+        if (list[i] == "Break")
+        {
+          for (var j=0;j>i;j++)
+          {
+            var data = list[i].split(',');
+            graph2.push(data);
+          }
+        }
+      }
       makeApiCall(judgeEntry);
     }
+
     function makeApiCall(list) {
          var params = {
            spreadsheetId:'1KrN4qEuSED2x3R_Y4dOSXoHYix6ccP3SBlMMsDxgLO0',
@@ -86,7 +103,9 @@
          }, function(reason) {
            console.error('error: ' + reason.result.error.message);
          });
+
        }
+
     function initClient() {
     var API_KEY = "AIzaSyBL78U6X04LeYMJ2h-35dPoPnXduUx_opo";
     var CLIENT_ID = "174011806378-ruu4bj26124mrbejev4btf1v4v8kslrb.apps.googleusercontent.com";

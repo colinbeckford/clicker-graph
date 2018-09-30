@@ -7,8 +7,8 @@ var negative = 0;
 var t;
 var judgeEntry = [];
 var sameLinks = [];
-var otherGraph = [];
-
+var otherGraphs = [];
+var graph2 = [];
 
 function saveData()
 {
@@ -47,7 +47,7 @@ $("body").on("keydown", function(event)
     clearTimeout(t);
     deciseconds = 0;
     formatList();
-    showChart();
+
   }
 });
 
@@ -86,7 +86,10 @@ function drawBasic()
     var data = new google.visualization.DataTable();
     data.addColumn('number', 'X');
     data.addColumn('number', judge_name);
+    data.addColumn('number', "Other");
     data.addRows(clickList);
+    data.addRows(graph2);
+
     var options = {
       hAxis: {
         title: 'Time'
