@@ -1,6 +1,7 @@
 var deciseconds = 0;
 var clickList = [];
 var judge_name = "";
+var other_judge = "";
 var yt_link = "";
 var positive = 0;
 var negative = 0;
@@ -103,7 +104,7 @@ function showChart()
     x: otherX,
     y: otherY,
     mode: 'lines',
-    name: "Other Judge"
+    name: other_judge
   };
   var data = [trace1, trace2];
 
@@ -121,33 +122,3 @@ function showChart()
   };
   Plotly.newPlot('chart', data, layout);
 }
-
-// function showChart()
-// {
-//   google.charts.load('current', {packages: ['corechart', 'line']});
-//   google.charts.setOnLoadCallback(drawVisualization);
-// }
-//
-// function drawVisualization()
-// {
-//     var data = new google.visualization.DataTable();
-//     data.addColumn('number', 'X');
-//     data.addColumn('number', judge_name);
-//     data.addColumn('number', "Other");
-//     console.log(clickList);
-//     console.log(graph2);
-//     data.addRows(clickList);
-//     data.addRows(graph2);
-//     var options = {
-//       hAxis: {
-//         title: 'Time'
-//       },
-//       vAxis: {
-//         title: 'Score'
-//       },
-//       curveType: 'function',
-//     };
-//     var chart = new google.visualization.LineChart(document.getElementById('chart'));
-//     chart.draw(data, options);
-//     $('#chart').show();
-// }
