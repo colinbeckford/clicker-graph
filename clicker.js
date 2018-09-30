@@ -107,8 +107,18 @@ function showChart()
   };
   var data = [trace1, trace2];
 
-  var layout = {
+  var layout =
+  {
     title:'Your Scores vs Other Scores'
+    xaxis: {
+    title: 'Time',
+    showgrid: false,
+    zeroline: false
+    },
+    yaxis: {
+      title: 'Score',
+      showline: false
+  }
   };
   Plotly.newPlot('chart', data, layout);
 }
