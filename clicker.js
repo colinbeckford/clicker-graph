@@ -77,22 +77,31 @@ function timer()
 
 function showChart()
 {
-  console.log(clickList[0]);
-  console.log(clickList[1]);
-  console.log(graph2[0]);
-  console.log(graph2[1]);
-  var trace1 =
-
+  var yourX = [];
+  var yourY = [];
+  var otherX = [];
+  var otherY = [];
+  for (var a=0;a<clickList.length;a++)
   {
-    x: clickList[][0],
-    y: clickList[][1],
+    yourX.push(clickList[a][0]);
+    yourY.push(clickList[a][1]);
+  }
+  for (var b=0;b<graph2.length;b++)
+  {
+    otherX.push(graph2[b][0]);
+    otherrY.push(graph2[b][1]);
+  }
+  var trace1 =
+  {
+    x: yourX,
+    y: yourY,
     mode: 'lines',
     name: judge_name
   };
   var trace2 =
   {
-    x: graph2[][0],
-    y: graph2[][1],
+    x: otherX,
+    y: otherY,
     mode: 'lines',
     name: "Other Judge"
   };
