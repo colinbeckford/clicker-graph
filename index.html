@@ -49,6 +49,8 @@
       };
       var request = gapi.client.sheets.spreadsheets.values.get(params);
       request.then(function(response) {
+        console.log("Seeing if values are loaded in before loop");
+        console.log(response.request.values);
         for (var i=0;i<response.result.values[0].length;i++)
         {
           if (response.result.values[1][i] == yt_link)
@@ -56,14 +58,17 @@
             for (var j=2;j<response.result.values.length;j++)
             {
               otherGraph.push(response.result.values[j][i]);
+              console.log("Seeing if values are loaded in during loop");
               console.log(response.result.values[j][i]);
             }
           }
         }
+        console.log("Seeing if values are loaded in after loop");
         console.log(otherGraph);
       }, function(reason) {
         console.error('error: ' + reason.result.error.message);
       });
+      makeApiCall(judgeEntry);
     }
     function makeApiCall(list) {
          var params = {
