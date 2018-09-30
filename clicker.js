@@ -22,7 +22,7 @@ $("body").on("keydown", function(event)
   // press a key to click a negative
   else if (event.which == 76)
   {
-    neg+=1;
+    negative+=1;
     console.log(negative);
     raw = positive-negative;
     seconds = (deciseconds/10);
