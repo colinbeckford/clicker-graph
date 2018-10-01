@@ -7,9 +7,7 @@
       crossorigin="anonymous">
     </script>
      <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-
     <script src="clicker.js"> </script>
-    <script src="https://www.gstatic.com/charts/loader.js"> </script>
     <h1> jb2 </h1>
     <br>
     <br>
@@ -45,7 +43,7 @@
     function getLinks() {
       var params = {
         spreadsheetId: '1KrN4qEuSED2x3R_Y4dOSXoHYix6ccP3SBlMMsDxgLO0',
-        range: "Sheet1!B1:DZ250",
+        range: "Sheet1!B1:Z200",
         valueRenderOption: 'FORMATTED_VALUE',
         dateTimeRenderOption: 'FORMATTED_STRING',
       };
@@ -105,9 +103,7 @@
          var valueRangeBody = {
                "range": 'Sheet1!B1:Z250',
           "majorDimension": 'COLUMNS',
-          "values": [
-            list
-          ]
+          "values": [list]
          };
          var request = gapi.client.sheets.spreadsheets.values.append(params, valueRangeBody);
          request.then(function(response) {
