@@ -80,18 +80,18 @@ function showChart()
 {
   var yourX = [];
   var yourY = [];
-  var otherX = [];
-  var otherY = [];
+  // var otherX = [];
+  // var otherY = [];
   for (var a=0;a<clickList.length;a++)
   {
     yourX.push(clickList[a][0]);
     yourY.push(clickList[a][1]);
   }
-  for (var b=0;b<graph2.length;b++)
-  {
-    otherX.push(graph2[b][0]);
-    otherY.push(graph2[b][1]);
-  }
+  // for (var b=0;b<graph2.length;b++)
+  // {
+  //   otherX.push(graph2[b][0]);
+  //   otherY.push(graph2[b][1]);
+  // }
   var trace1 =
   {
     x: yourX,
@@ -99,17 +99,17 @@ function showChart()
     mode: 'lines',
     name: judge_name
   };
-  var trace2 =
-  {
-    x: otherX,
-    y: otherY,
-    mode: 'lines',
-    name: other_judge
-  };
-  var data = [trace1, trace2];
+  // var trace2 =
+  // {
+  //   x: otherX,
+  //   y: otherY,
+  //   mode: 'lines',
+  //   name: other_judge
+  // };
+  var data = trace1;
 
   var layout = {
-    title: 'Your Scores vs Other Scores',
+    title: 'Your Scores',
     xaxis: {
       title: 'Time',
       showgrid: false,
