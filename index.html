@@ -62,7 +62,7 @@
         {
           alert("You are the only person who has scored this freestyle.");
         }
-        showChart();
+        showChart(clickList,otherGraph);
         makeApiCall(judgeEntry);
       }, function(reason) {
         console.error('error: ' + reason.result.error.message);
@@ -87,7 +87,6 @@
           data[1] = parseFloat(data[1]);
           otherGraph.push(data);
         }
-        otherGraph.push("Break");
       }, function(reason) {
         console.error('error: ' + reason.result.error.message);
       });

@@ -74,24 +74,24 @@ function timer()
   t = setTimeout(add, 100);
 }
 
-function showChart()
+function showChart(listA, listB)
 {
   var yourX = [];
   var yourY = [];
   var otherX = [];
   var otherY = [];
-  console.log(otherGraph);
-  console.log(clickList);
-  for (var a=0;a<clickList.length;a++)
+  console.log(listA);
+  console.log(listB);
+  for (var a=0;a<listA.length;a++)
   {
-    yourX.push(clickList[a][0]);
-    yourY.push(clickList[a][1]);
+    yourX.push(listA[a][0]);
+    yourY.push(listA[a][1]);
   }
-  for (var b=0;b<otherGraph.length;b++)
+  for (var b=0;b<listB.length;b++)
   {
     console.log("this loop is happening");
-    otherX.push(otherGraph[b][0]);
-    otherY.push(otherGraph[b][1]);
+    otherX.push(listB[b][0]);
+    otherY.push(listB[b][1]);
   }
   console.log(otherX);
   console.log(otherY);
