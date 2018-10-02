@@ -70,13 +70,18 @@
         dateTimeRenderOption: 'FORMATTED_STRING',
       };
       var otherScores = gapi.client.sheets.spreadsheets.values.get(params);
-      otherJudge = otherScores[0];
-      for (var i=2;i<otherScores.length;i++)
-      {
-        var data = otherScores[i].split(',');
-        otherGraph.push(data);
-      }
-      console.log(otherGraph);
+      otherScores.then(function(response) {
+        console.log(otherScores);
+        otherJudge = otherScores[0];
+        for (var i=2;i<otherScores.length;i++)
+        {
+          var data = otherScores[i].split(',');
+          otherGraph.push(data);
+        }
+        console.log(otherGraph);
+      }, function(reason) {
+        console.error('error: ' + reason.result.error.message);
+      });
     }
 
     function filterList(list)
