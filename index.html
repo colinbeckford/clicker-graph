@@ -85,7 +85,7 @@
           var data = otherJudge[i].split(',');
           data[0] = parseFloat(data[0]);
           data[1] = parseFloat(data[1]);
-          otherGraph.push(data);
+          otherGraph.push([data[0], data[1]]);
         }
       }, function(reason) {
         console.error('error: ' + reason.result.error.message);
