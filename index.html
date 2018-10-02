@@ -83,8 +83,8 @@
         for (var i=2;i<otherJudge.length;i++)
         {
           var data = otherJudge[i].split(',');
-          data[0] = parseInt(data[0]);
-          data[1] = parseInt(data[1]);
+          data[0] = parseFloat(data[0]);
+          data[1] = parseFloat(data[1]);
           otherGraph.push(data);
         }
         otherGraph.push("Break");

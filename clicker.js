@@ -95,8 +95,8 @@ function showChart()
     }
     else
     {
-    otherX.push(otherGraph[b][0]);
-    otherY.push(otherGraph[b][1]);
+      otherX.push(otherGraph[b][0]);
+      otherY.push(otherGraph[b][1]);
     }
   }
   console.log(otherX);
