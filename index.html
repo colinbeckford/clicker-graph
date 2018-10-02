@@ -72,12 +72,9 @@
       var otherScores = gapi.client.sheets.spreadsheets.values.get(params);
       otherScores.then(function(response) {
         otherJudge = response.result.values[0];
-        console.log(otherJudge);
-        for (var i=2;i<response.result.values.length;i++)
+        for (var i=2;i<otherJudge.length;i++)
         {
-          console.log("In loop");
           var data = response.result.values[i].split(',');
-          console.log(data);
           otherGraph.push(data);
         }
         console.log(otherGraph);
