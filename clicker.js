@@ -89,7 +89,7 @@ function showChart()
   }
   for (var b=0;b<otherGraph.length;b++)
   {
-    if (otherGraph[i] == "Break")
+    if (otherGraph[b] == "Break")
     {
       break;
     }
