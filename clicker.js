@@ -149,6 +149,7 @@ function getOtherScores(index)
   var otherScores = gapi.client.sheets.spreadsheets.values.get(params);
   otherScores.then(function(response) {
     otherJudge = response.result.values[0];
+    console.log(otherJudge);
     loadOtherList(otherJudge);
   }, function(reason) {
     console.error('error: ' + reason.result.error.message);
@@ -200,7 +201,6 @@ function createAxes(listA, listB)
   }
   for (var b=0;b<listB.length;b++)
   {
-    console.log("Loop running");
     otherX.push(listB[b][0]);
     otherY.push(listB[b][1]);
   }
