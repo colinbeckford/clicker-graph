@@ -3,7 +3,8 @@ var judgeEntry = [];
 var clickList = [];
 var otherGraph = [];
 var judgeName = "";
-var otherJudge = "";
+var otherJudgeName = "";
+var otherJudgeData = "";
 var yt_link = "";
 var t;
 var positive = 0;
@@ -124,8 +125,8 @@ function getLinks()
     {
       if (response.result.values[i] == yt_link)
       {
-        hasBeenScored = true;
         getOtherScores(i);
+        hasBeenScored = true;
       }
     }
     if (hasBeenScored == false)
@@ -148,9 +149,9 @@ function getOtherScores(index)
   };
   var otherScores = gapi.client.sheets.spreadsheets.values.get(params);
   otherScores.then(function(response) {
-    otherJudge = response.result.values[0];
-    console.log(otherJudge);
-    loadOtherList(otherJudge);
+    otherJudgeData = response.result.values[0];
+    otherJudgeName = otherJudgeData[0];
+    loadOtherList(otherJudgeData);
   }, function(reason) {
     console.error('error: ' + reason.result.error.message);
   });
@@ -224,7 +225,7 @@ function showChart(x1, y1, x2, y2)
     x: x2,
     y: y2,
     mode: 'lines',
-    name: otherJudge
+    name: otherJudgeName
   };
   var data = [trace1, trace2];
 
