@@ -71,11 +71,10 @@
       };
       var otherScores = gapi.client.sheets.spreadsheets.values.get(params);
       otherScores.then(function(response) {
-        console.log(otherScores);
-        otherJudge = otherScores[0];
-        for (var i=2;i<otherScores.length;i++)
+        otherJudge = response.result.values[0];
+        for (var i=2;i<response.result.values.length;i++)
         {
-          var data = otherScores[i].split(',');
+          var data = response.result.values[i].split(',');
           otherGraph.push(data);
         }
         console.log(otherGraph);
