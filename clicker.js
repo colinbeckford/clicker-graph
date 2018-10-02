@@ -87,10 +87,17 @@ function showChart()
     yourX.push(clickList[a][0]);
     yourY.push(clickList[a][1]);
   }
-  for (var b=0;b<graph2.length;b++)
+  for (var b=0;b<otherGraph.length;b++)
   {
+    if (otherGraph[i] == "Break")
+    {
+      break;
+    }
+    else
+    {
     otherX.push(graph2[b][0]);
     otherY.push(graph2[b][1]);
+    }
   }
   console.log(otherX);
   console.log(otherY);
