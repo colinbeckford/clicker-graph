@@ -8,10 +8,7 @@ var negative = 0;
 var judgeEntry = [];
 var t;
 var otherGraph = [];
-var yourX = [];
-var yourY = [];
-var otherX = [];
-var otherY = [];
+
 
 function getLinks() {
   var params = {
@@ -35,7 +32,7 @@ function getLinks() {
     {
       alert("You are the only person who has scored this freestyle.");
     }
-    showChart(clickList,otherGraph);
+    createAxes(clickList,otherGraph);
     makeApiCall(judgeEntry);
   }, function(reason) {
     console.error('error: ' + reason.result.error.message);
@@ -181,8 +178,12 @@ function timer()
   t = setTimeout(add, 100);
 }
 
-function showChart(listA, listB)
+function createAxes(listA, listB)
 {
+  var yourX = [];
+  var yourY = [];
+  var otherX = [];
+  var otherY = [];
   console.log(listA);
   console.log(listB);
   for (var a=0;a<listA.length;a++)
@@ -200,17 +201,22 @@ function showChart(listA, listB)
   console.log(otherY);
   console.log(yourX);
   console.log(yourY);
+  showChart(yourX, yourY, otherX, otherY);
+}
+function showChart(x1, y1, x2, y2)
+{
+
   var trace1 =
   {
-    x: yourX,
-    y: yourY,
+    x: x1,
+    y: y1,
     mode: 'lines',
     name: judgeName
   };
   var trace2 =
   {
-    x: otherX,
-    y: otherY,
+    x: x2,
+    y: y2,
     mode: 'lines',
     name: otherJudge
   };
