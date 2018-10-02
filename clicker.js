@@ -8,6 +8,9 @@ var negative = 0;
 var judgeEntry = [];
 var t;
 var otherGraph = [];
+var yourNumClicks = 0;
+var otherNumClicks = 0;
+var data = [];
 
 function getLinks() {
   var params = {
@@ -51,9 +54,10 @@ function getOtherScores(index)
     otherJudge = response.result.values[0];
     for (var i=2;i<otherJudge.length;i++)
     {
-      var data = otherJudge[i].split(',');
+      otherNumClicks+=1;
+      data = otherJudge[i].split(',');
       data[0] = parseFloat(data[0]);
-      data[1] = parseFloat(data[1]);
+      data[1] = parseInt(data[1]);
       otherGraph.push([data[0], data[1]]);
     }
   }, function(reason) {
@@ -120,7 +124,6 @@ function saveData()
 
 $("body").on("keydown", function(event)
 {
-
   // enter key to start the timer - press this once the song starts
   if (event.which == 13)
   {
@@ -129,6 +132,7 @@ $("body").on("keydown", function(event)
   // press a key to click a negative
   else if (event.which == 189)
   {
+    yourNumClicks+=1;
     negative+=1;
     raw = positive-negative;
     seconds = (deciseconds/10);
@@ -138,6 +142,7 @@ $("body").on("keydown", function(event)
   // press a key to click a positive
   else if (event.which == 49)
   {
+    yourNumClicks+=1;
     positive+=1;
     raw = positive-negative;
     seconds = (deciseconds/10);
@@ -185,13 +190,12 @@ function createAxes(listA, listB)
   var yourY = [];
   var otherX = [];
   var otherY = [];
-  console.log(Object.keys(listB).length);
-  for (var a=0;a<Object.keys(listA).length;a++)
+  for (var a=0;a<listA.length;a++)
   {
     yourX.push(listA[a][0]);
     yourY.push(listA[a][1]);
   }
-  for (var b=0;b<Object.keys(listB).length;b++)
+  for (var b=0;b<listB.length;b++)
   {
     console.log("Loop running");
     otherX.push(listB[b][0]);
