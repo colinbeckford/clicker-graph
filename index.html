@@ -53,7 +53,8 @@
         {
           if (response.result.values[i] == yt_link)
           {
-              getOtherScores(i);
+            console.log("Found identical link");
+            getOtherScores(i);
           }
         }
       }, function(reason) {
@@ -71,6 +72,7 @@
       };
       var otherScores = gapi.client.sheets.spreadsheets.values.get(params);
       otherScores.then(function(response) {
+        console.log(response.request.values);
         otherJudge = response.result.values[0];
         for (var i=2;i<response.result.values.length;i++)
         {
