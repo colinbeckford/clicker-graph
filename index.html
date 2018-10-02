@@ -50,6 +50,8 @@
       var links = gapi.client.sheets.spreadsheets.values.get(params);
       links.then(function(response) {
         var hasBeenScored = false;
+        if (response.result.values.length > 0)
+        {
         for (var i=0;i<response.result.values.length;i++)
         {
           if (response.result.values[i] == yt_link)
@@ -60,10 +62,14 @@
             getOtherScores(i);
           }
         }
+        }
+        else
+        {
         if (hasBeenScored == false)
         {
           alert("You are the only person who has scored this freestyle.");
           console.log("You are the only person who has scored this freestyle.");
+        }
         }
         makeApiCall(judgeEntry);
       }, function(reason) {
