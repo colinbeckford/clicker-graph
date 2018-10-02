@@ -150,6 +150,7 @@ $("body").on("keydown", function(event)
     clearTimeout(t);
     deciseconds = 0;
     formatList();
+    getLinks();
 
   }
 });
@@ -164,7 +165,7 @@ function formatList()
     csv = clickList[i][0] + "," + clickList[i][1];
     judgeEntry.push(csv);
   }
-  getLinks();
+
 }
 
 function add()
@@ -193,7 +194,6 @@ function createAxes(listA, listB)
   }
   for (var b=0;b<listB.length;b++)
   {
-    console.log("this loop is happening");
     otherX.push(listB[b][0]);
     otherY.push(listB[b][1]);
   }
