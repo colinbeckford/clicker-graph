@@ -74,7 +74,7 @@
         otherJudge = response.result.values[0];
         for (var i=2;i<otherJudge.length;i++)
         {
-          var data = response.result.values[i].split(',');
+          var data = otherJudge[i].split(',');
           otherGraph.push(data);
         }
         console.log(otherGraph);
