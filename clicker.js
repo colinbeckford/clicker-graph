@@ -7,11 +7,7 @@ var positive = 0;
 var negative = 0;
 var judgeEntry = [];
 var t;
-
 var otherGraph = [];
-
-var sameLinks = [];
-
 var graph2 = [];
 
 function saveData()
