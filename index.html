@@ -40,58 +40,58 @@
     <br>
     <div id="chart"> </div>
     <script type="text/javascript">
-    function getLinks() {
-      var params = {
-        spreadsheetId: '1KrN4qEuSED2x3R_Y4dOSXoHYix6ccP3SBlMMsDxgLO0',
-        range: "Sheet1!A1:FZ200",
-        valueRenderOption: 'FORMATTED_VALUE',
-        dateTimeRenderOption: 'FORMATTED_STRING',
-      };
-      var request = gapi.client.sheets.spreadsheets.values.get(params);
-      request.then(function(response) {
-        for (var i=0;i<response.result.values[0].length;i++)
-        {
-          if (response.result.values[1][i] == yt_link)
-          {
-            for (var j=2;j<response.result.values.length;j++)
-            {
-              otherGraphs.push(response.result.values[j][i]);
-            }
-            otherGraphs.push("Break");
-            other_judge = response.result.values[0][i];
-          }
-        }
-        filterList(otherGraphs);
-      }, function(reason) {
-        console.error('error: ' + reason.result.error.message);
-      });
-    }
+    // function getLinks() {
+    //   var params = {
+    //     spreadsheetId: '1KrN4qEuSED2x3R_Y4dOSXoHYix6ccP3SBlMMsDxgLO0',
+    //     range: "Sheet1!A1:FZ200",
+    //     valueRenderOption: 'FORMATTED_VALUE',
+    //     dateTimeRenderOption: 'FORMATTED_STRING',
+    //   };
+    //   var request = gapi.client.sheets.spreadsheets.values.get(params);
+    //   request.then(function(response) {
+    //     for (var i=0;i<response.result.values[0].length;i++)
+    //     {
+    //       if (response.result.values[1][i] == yt_link)
+    //       {
+    //         for (var j=2;j<response.result.values.length;j++)
+    //         {
+    //           otherGraphs.push(response.result.values[j][i]);
+    //         }
+    //         otherGraphs.push("Break");
+    //         other_judge = response.result.values[0][i];
+    //       }
+    //     }
+    //     filterList(otherGraphs);
+    //   }, function(reason) {
+    //     console.error('error: ' + reason.result.error.message);
+    //   });
+    // }
 
-    function filterList(list)
-    {
-      for (var i=0;i<list.length;i++)
-      {
-        if (list[i] == "Break")
-        {
-          for (var j=0;j<i;j++)
-          {
-            var data = list[j].split(',');
-            if (data[0] == "")
-            {
-              break;
-            }
-            else
-            {
-            data[0] = parseInt(data[0]);
-            data[1] = parseInt(data[1]);
-            graph2.push(data);
-            }
-          }
-          break;
-        }
-      }
-      makeApiCall(judgeEntry);
-    }
+    // function filterList(list)
+    // {
+    //   for (var i=0;i<list.length;i++)
+    //   {
+    //     if (list[i] == "Break")
+    //     {
+    //       for (var j=0;j<i;j++)
+    //       {
+    //         var data = list[j].split(',');
+    //         if (data[0] == "")
+    //         {
+    //           break;
+    //         }
+    //         else
+    //         {
+    //         data[0] = parseInt(data[0]);
+    //         data[1] = parseInt(data[1]);
+    //         graph2.push(data);
+    //         }
+    //       }
+    //       break;
+    //     }
+    //   }
+    //   makeApiCall(judgeEntry);
+    // }
 
     function makeApiCall(list) {
          var params = {
@@ -107,7 +107,7 @@
          };
          var request = gapi.client.sheets.spreadsheets.values.append(params, valueRangeBody);
          request.then(function(response) {
-           showChart();
+           //showChart();
          }, function(reason) {
            console.error('error: ' + reason.result.error.message);
          });
