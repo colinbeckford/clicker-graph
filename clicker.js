@@ -6,7 +6,7 @@ var judgeName = "";
 var otherJudge = "";
 var yt_link = "";
 var t;
-var data = [];
+
 
 function initClient() {
 var API_KEY = "AIzaSyBL78U6X04LeYMJ2h-35dPoPnXduUx_opo";
@@ -149,6 +149,7 @@ function getOtherScores(index)
     otherJudge = response.result.values[0];
     for (var i=2;i<otherJudge.length;i++)
     {
+      var data = [];
       data = otherJudge[i].split(',');
       data[0] = parseFloat(data[0]);
       data[1] = parseFloat(data[1]);
