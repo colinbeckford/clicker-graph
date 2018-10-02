@@ -62,7 +62,7 @@
         {
           alert("You are the only person who has scored this freestyle.");
         }
-        filterList(otherGraph);
+        showChart();
         makeApiCall(judgeEntry);
       }, function(reason) {
         console.error('error: ' + reason.result.error.message);
@@ -83,38 +83,14 @@
         for (var i=2;i<otherJudge.length;i++)
         {
           var data = otherJudge[i].split(',');
+          data[0] = parseInt(data[0]);
+          data[1] = parseInt(data[1]);
           otherGraph.push(data);
         }
         otherGraph.push("Break");
       }, function(reason) {
         console.error('error: ' + reason.result.error.message);
       });
-    }
-
-    function filterList(list)
-    {
-      for (var i=0;i<list.length;i++)
-      {
-        if (list[i] == "Break")
-        {
-          for (var j=0;j<i;j++)
-          {
-            var data = list[j].split(',');
-            if (data[0] == "")
-            {
-              break;
-            }
-            else
-            {
-            data[0] = parseInt(data[0]);
-            data[1] = parseInt(data[1]);
-            graph2.push(data);
-            }
-          }
-          break;
-        }
-      }
-      showChart();
     }
 
     function makeApiCall(list) {
