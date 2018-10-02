@@ -41,7 +41,8 @@ $("body").on("keydown", function(event)
     clearTimeout(t);
     deciseconds = 0;
     formatList();
-
+    createAxes(clickList,otherGraph);
+    makeApiCall(judgeEntry);
   }
 });
 
@@ -131,8 +132,7 @@ function getLinks()
     {
       alert("You are the only person who has scored this freestyle.");
     }
-    createAxes(clickList,otherGraph);
-    makeApiCall(judgeEntry);
+
   }, function(reason) {
     console.error('error: ' + reason.result.error.message);
   });
