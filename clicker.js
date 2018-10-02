@@ -82,6 +82,7 @@ function showChart()
   var otherX = [];
   var otherY = [];
   console.log(otherGraph);
+  console.log(clickList);
   for (var a=0;a<clickList.length;a++)
   {
     yourX.push(clickList[a][0]);
@@ -89,14 +90,11 @@ function showChart()
   }
   for (var b=0;b<otherGraph.length;b++)
   {
-    if (otherGraph[b] == "Break")
+    otherX.push(otherGraph[b][0]);
+    otherY.push(otherGraph[b][1]);
+    if (otherGraph[b+1] == "Break")
     {
       break;
-    }
-    else
-    {
-      otherX.push(otherGraph[b][0]);
-      otherY.push(otherGraph[b][1]);
     }
   }
   console.log(otherX);
