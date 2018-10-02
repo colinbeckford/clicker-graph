@@ -8,7 +8,6 @@ var negative = 0;
 var judgeEntry = [];
 var t;
 var otherGraph = [];
-var clickready = false;
 
 function getLinks() {
   var params = {
@@ -117,11 +116,8 @@ function saveData()
 {
   judgeName = $('#judge-name').val();
   yt_link = $('#yt-link').val();
-  clickready = true;
 }
 
-if (clickready == true)
-{
 $("body").on("keydown", function(event)
 {
 
@@ -131,7 +127,7 @@ $("body").on("keydown", function(event)
     timer();
   }
   // press a key to click a negative
-  else if (event.which == 76)
+  else if (event.which == 49)
   {
     negative+=1;
     raw = positive-negative;
@@ -140,7 +136,7 @@ $("body").on("keydown", function(event)
     $("#click-display").text("+" + String(positive) + " " + "-" + String(negative));
   }
   // press a key to click a positive
-  else if (event.which == 65)
+  else if (event.which == 189)
   {
     positive+=1;
     raw = positive-negative;
@@ -158,7 +154,6 @@ $("body").on("keydown", function(event)
 
   }
 });
-}
 
 function formatList()
 {
