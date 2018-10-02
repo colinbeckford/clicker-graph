@@ -6,13 +6,51 @@ var judgeName = "";
 var otherJudge = "";
 var yt_link = "";
 var t;
+var positive = 0;
+var negative = 0;
+
+$("body").on("keydown", function(event)
+{
+
+  // enter key to start the timer - press this once the song starts
+  if (event.which == 13)
+  {
+    timer();
+  }
+  // press a key to click a negative
+  else if (event.which == 189)
+  {
+    negative+=1;
+    raw = positive-negative;
+    seconds = (deciseconds/10);
+    clickList.push([seconds, raw]);
+    $("#click-display").text("+" + String(positive) + " " + "-" + String(negative));
+  }
+  // press a key to click a positive
+  else if (event.which == 49)
+  {
+    positive+=1;
+    raw = positive-negative;
+    seconds = (deciseconds/10);
+    clickList.push([seconds, raw]);
+    $("#click-display").text("+" + String(positive) + " " + "-" + String(negative));
+  }
+  // press 0 key to end the timer
+  else if (event.which == 48)
+  {
+    clearTimeout(t);
+    deciseconds = 0;
+    formatList();
+    getLinks();
+
+  }
+});
 
 
 function initClient() {
 var API_KEY = "AIzaSyBL78U6X04LeYMJ2h-35dPoPnXduUx_opo";
 var CLIENT_ID = "174011806378-ruu4bj26124mrbejev4btf1v4v8kslrb.apps.googleusercontent.com";
 var SCOPE = 'https://www.googleapis.com/auth/spreadsheets';
-
 gapi.client.init({
   'apiKey': API_KEY,
   'clientId': CLIENT_ID,
@@ -57,43 +95,6 @@ function saveData()
   yt_link = $('#yt-link').val();
 }
 
-$("body").on("keydown", function(event)
-{
-  var positive = 0;
-  var negative = 0;
-  // enter key to start the timer - press this once the song starts
-  if (event.which == 13)
-  {
-    timer();
-  }
-  // press a key to click a negative
-  else if (event.which == 189)
-  {
-    negative+=1;
-    raw = positive-negative;
-    seconds = (deciseconds/10);
-    clickList.push([seconds, raw]);
-    $("#click-display").text("+" + String(positive) + " " + "-" + String(negative));
-  }
-  // press a key to click a positive
-  else if (event.which == 49)
-  {
-    positive+=1;
-    raw = positive-negative;
-    seconds = (deciseconds/10);
-    clickList.push([seconds, raw]);
-    $("#click-display").text("+" + String(positive) + " " + "-" + String(negative));
-  }
-  // press 0 key to end the timer
-  else if (event.which == 48)
-  {
-    clearTimeout(t);
-    deciseconds = 0;
-    formatList();
-    getLinks();
-
-  }
-});
 
 function formatList()
 {
@@ -105,9 +106,10 @@ function formatList()
     csv = clickList[i][0] + "," + clickList[i][1];
     judgeEntry.push(csv);
   }
-
 }
-function getLinks() {
+
+function getLinks()
+{
   var params = {
     spreadsheetId: '1KrN4qEuSED2x3R_Y4dOSXoHYix6ccP3SBlMMsDxgLO0',
     range: "Sheet1!B1:B500",
@@ -160,7 +162,8 @@ function getOtherScores(index)
   });
 }
 
-function makeApiCall(list) {
+function makeApiCall(list)
+{
      var params = {
        spreadsheetId:'1KrN4qEuSED2x3R_Y4dOSXoHYix6ccP3SBlMMsDxgLO0',
        range: 'Sheet1!A1:FZ250',
