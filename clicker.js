@@ -179,17 +179,17 @@ function timer()
 
 function showChart(listA, listB)
 {
-  var yourX = [];
-  var yourY = [];
-  var otherX = [];
-  var otherY = [];
   console.log(listA);
   console.log(listB);
+  var yourX = [];
+  var yourY = [];
   for (var a=0;a<listA.length;a++)
   {
     yourX.push(listA[a][0]);
     yourY.push(listA[a][1]);
   }
+  var otherX = [];
+  var otherY = [];
   for (var b=0;b<listB.length;b++)
   {
     console.log("this loop is happening");
