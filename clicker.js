@@ -1,84 +1,12 @@
 var deciseconds = 0;
+var judgeEntry = [];
 var clickList = [];
+var otherGraph = [];
 var judgeName = "";
 var otherJudge = "";
 var yt_link = "";
-var positive = 0;
-var negative = 0;
-var judgeEntry = [];
 var t;
-var otherGraph = [];
 
-function getLinks() {
-  var params = {
-    spreadsheetId: '1KrN4qEuSED2x3R_Y4dOSXoHYix6ccP3SBlMMsDxgLO0',
-    range: "Sheet1!B1:B500",
-    valueRenderOption: 'FORMATTED_VALUE',
-    dateTimeRenderOption: 'FORMATTED_STRING',
-  };
-  var links = gapi.client.sheets.spreadsheets.values.get(params);
-  links.then(function(response) {
-    var hasBeenScored = false;
-    for (var i=0;i<response.result.values.length;i++)
-    {
-      if (response.result.values[i] == yt_link)
-      {
-        hasBeenScored = true;
-        getOtherScores(i);
-      }
-    }
-    if (hasBeenScored == false)
-    {
-      alert("You are the only person who has scored this freestyle.");
-    }
-    createAxes(clickList,otherGraph);
-    makeApiCall(judgeEntry);
-  }, function(reason) {
-    console.error('error: ' + reason.result.error.message);
-  });
-}
-
-function getOtherScores(index)
-{
-  var params = {
-    spreadsheetId: '1KrN4qEuSED2x3R_Y4dOSXoHYix6ccP3SBlMMsDxgLO0',
-    range: "Sheet1!A" + (index+1) + ":FZ" + (index+1),
-    valueRenderOption: 'FORMATTED_VALUE',
-    dateTimeRenderOption: 'FORMATTED_STRING',
-  };
-  var otherScores = gapi.client.sheets.spreadsheets.values.get(params);
-  otherScores.then(function(response) {
-    otherJudge = response.result.values[0];
-    for (var i=2;i<otherJudge.length;i++)
-    {
-      var data = otherJudge[i].split(',');
-      data[0] = parseFloat(data[0]);
-      data[1] = parseFloat(data[1]);
-      otherGraph.push([data[0], data[1]]);
-    }
-  }, function(reason) {
-    console.error('error: ' + reason.result.error.message);
-  });
-}
-
-function makeApiCall(list) {
-     var params = {
-       spreadsheetId:'1KrN4qEuSED2x3R_Y4dOSXoHYix6ccP3SBlMMsDxgLO0',
-       range: 'Sheet1!A1:FZ250',
-       valueInputOption: 'RAW',
-       insertDataOption: 'OVERWRITE',
-     };
-     var valueRangeBody = {
-           "range": 'Sheet1!A1:FZ250',
-      "majorDimension": 'ROWS',
-      "values": [list]
-     };
-     var request = gapi.client.sheets.spreadsheets.values.append(params, valueRangeBody);
-     request.then(function(response) {
-     }, function(reason) {
-       console.error('error: ' + reason.result.error.message);
-     });
-   }
 
 function initClient() {
 var API_KEY = "AIzaSyBL78U6X04LeYMJ2h-35dPoPnXduUx_opo";
@@ -112,6 +40,17 @@ function handleSignOutClick(event) {
 gapi.auth2.getAuthInstance().signOut();
 }
 
+function add()
+{
+  deciseconds++;
+  timer();
+}
+
+function timer()
+{
+  t = setTimeout(add, 100);
+}
+
 function saveData()
 {
   judgeName = $('#judge-name').val();
@@ -120,7 +59,8 @@ function saveData()
 
 $("body").on("keydown", function(event)
 {
-
+  var positive = 0;
+  var negative = 0;
   // enter key to start the timer - press this once the song starts
   if (event.which == 13)
   {
@@ -167,17 +107,77 @@ function formatList()
   }
 
 }
-
-function add()
-{
-  deciseconds++;
-  timer();
+function getLinks() {
+  var params = {
+    spreadsheetId: '1KrN4qEuSED2x3R_Y4dOSXoHYix6ccP3SBlMMsDxgLO0',
+    range: "Sheet1!B1:B500",
+    valueRenderOption: 'FORMATTED_VALUE',
+    dateTimeRenderOption: 'FORMATTED_STRING',
+  };
+  var links = gapi.client.sheets.spreadsheets.values.get(params);
+  links.then(function(response) {
+    var hasBeenScored = false;
+    for (var i=0;i<response.result.values.length;i++)
+    {
+      if (response.result.values[i] == yt_link)
+      {
+        hasBeenScored = true;
+        getOtherScores(i);
+      }
+    }
+    if (hasBeenScored == false)
+    {
+      alert("You are the only person who has scored this freestyle.");
+    }
+    createAxes(clickList,otherGraph);
+    makeApiCall(judgeEntry);
+  }, function(reason) {
+    console.error('error: ' + reason.result.error.message);
+  });
 }
 
-function timer()
+function getOtherScores(index)
 {
-  t = setTimeout(add, 100);
+  var params = {
+    spreadsheetId: '1KrN4qEuSED2x3R_Y4dOSXoHYix6ccP3SBlMMsDxgLO0',
+    range: "Sheet1!A" + (index+1) + ":FZ" + (index+1),
+    valueRenderOption: 'FORMATTED_VALUE',
+    dateTimeRenderOption: 'FORMATTED_STRING',
+  };
+  var otherScores = gapi.client.sheets.spreadsheets.values.get(params);
+  otherScores.then(function(response) {
+    otherJudge = response.result.values[0];
+    for (var i=2;i<otherJudge.length;i++)
+    {
+      var data = [];
+      data = otherJudge[i].split(',');
+      data[0] = parseFloat(data[0]);
+      data[1] = parseFloat(data[1]);
+      otherGraph.push([data[0], data[1]]);
+    }
+  }, function(reason) {
+    console.error('error: ' + reason.result.error.message);
+  });
 }
+
+function makeApiCall(list) {
+     var params = {
+       spreadsheetId:'1KrN4qEuSED2x3R_Y4dOSXoHYix6ccP3SBlMMsDxgLO0',
+       range: 'Sheet1!A1:FZ250',
+       valueInputOption: 'RAW',
+       insertDataOption: 'OVERWRITE',
+     };
+     var valueRangeBody = {
+           "range": 'Sheet1!A1:FZ250',
+      "majorDimension": 'ROWS',
+      "values": [list]
+     };
+     var request = gapi.client.sheets.spreadsheets.values.append(params, valueRangeBody);
+     request.then(function(response) {
+     }, function(reason) {
+       console.error('error: ' + reason.result.error.message);
+     });
+   }
 
 function createAxes(listA, listB)
 {
@@ -185,8 +185,6 @@ function createAxes(listA, listB)
   var yourY = [];
   var otherX = [];
   var otherY = [];
-  console.log(listA);
-  console.log(listB);
   for (var a=0;a<listA.length;a++)
   {
     yourX.push(listA[a][0]);
@@ -194,6 +192,7 @@ function createAxes(listA, listB)
   }
   for (var b=0;b<listB.length;b++)
   {
+    console.log("Loop running");
     otherX.push(listB[b][0]);
     otherY.push(listB[b][1]);
   }
@@ -205,7 +204,6 @@ function createAxes(listA, listB)
 }
 function showChart(x1, y1, x2, y2)
 {
-
   var trace1 =
   {
     x: x1,
