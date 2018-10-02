@@ -161,6 +161,7 @@ function loadOtherList(list)
   {
     var data = [];
     data = list[i].split(',');
+    console.log(data);
     data[0] = parseFloat(data[0]);
     data[1] = parseFloat(data[1]);
     otherGraph.push([data[0], data[1]]);
