@@ -89,6 +89,7 @@ function showChart()
   }
   for (var b=0;b<clickList.length;b++)
   {
+    console.log("this loop is happening");
     otherX.push(otherGraph[b][0]);
     otherY.push(otherGraph[b][1]);
   }
@@ -110,7 +111,7 @@ function showChart()
     mode: 'lines',
     name: otherJudge
   };
-  var data = [trace1,trace2];
+  var data = [trace1, trace2];
 
   var layout = {
     title: 'Your Scores',
