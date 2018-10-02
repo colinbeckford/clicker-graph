@@ -187,6 +187,8 @@ function createAxes(listA, listB)
   var otherY = [];
   console.log(listA);
   console.log(listB);
+  console.log(listA.length);
+  console.log(listB.length);
   for (var a=0;a<listA.length;a++)
   {
     yourX.push(listA[a][0]);
@@ -194,6 +196,7 @@ function createAxes(listA, listB)
   }
   for (var b=0;b<listB.length;b++)
   {
+    console.log("Loop running");
     otherX.push(listB[b][0]);
     otherY.push(listB[b][1]);
   }
