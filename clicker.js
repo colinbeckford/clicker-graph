@@ -61,7 +61,7 @@ function formatList()
     csv = clickList[i][0] + "," + clickList[i][1];
     judgeEntry.push(csv);
   }
-  makeApiCall(judgeEntry);
+  getLinks();
 }
 
 function add()
