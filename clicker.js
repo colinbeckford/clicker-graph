@@ -81,6 +81,7 @@ function showChart()
   var yourY = [];
   var otherX = [];
   var otherY = [];
+  console.log(graph2);
   for (var a=0;a<clickList.length;a++)
   {
     yourX.push(clickList[a][0]);

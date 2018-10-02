@@ -131,7 +131,6 @@
          };
          var request = gapi.client.sheets.spreadsheets.values.append(params, valueRangeBody);
          request.then(function(response) {
-           //showChart();
          }, function(reason) {
            console.error('error: ' + reason.result.error.message);
          });
