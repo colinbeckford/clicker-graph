@@ -8,7 +8,6 @@ var negative = 0;
 var judgeEntry = [];
 var t;
 var otherGraph = [];
-var graph2 = [];
 
 function saveData()
 {
@@ -88,7 +87,7 @@ function showChart()
     yourX.push(clickList[a][0]);
     yourY.push(clickList[a][1]);
   }
-  for (var b=0;b<otherGraph.length;b++)
+  for (var b=0;b<clickList.length;b++)
   {
     otherX.push(otherGraph[b][0]);
     otherY.push(otherGraph[b][1]);
@@ -111,7 +110,7 @@ function showChart()
     mode: 'lines',
     name: otherJudge
   };
-  var data = trace1;
+  var data = [trace1,trace2];
 
   var layout = {
     title: 'Your Scores',
