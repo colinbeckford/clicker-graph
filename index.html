@@ -62,6 +62,7 @@
         {
           alert("You are the only person who has scored this freestyle.");
         }
+        filterList(otherGraph);
         makeApiCall(judgeEntry);
       }, function(reason) {
         console.error('error: ' + reason.result.error.message);
@@ -113,6 +114,7 @@
           break;
         }
       }
+      showGraph();
     }
 
     function makeApiCall(list) {
