@@ -49,15 +49,21 @@
       };
       var links = gapi.client.sheets.spreadsheets.values.get(params);
       links.then(function(response) {
+        var hasBeenScored = false;
         for (var i=0;i<response.result.values.length;i++)
         {
           if (response.result.values[i] == yt_link)
           {
+            hasBeenScored = true;
             getOtherScores(i);
           }
         }
+        if (hasBeenScored == false)
+        {
+          alert("You are the only person who has scored this freestyle.");
+        }
+
       }, function(reason) {
-        alert("Nobody else has scored this freestyle.");
         console.error('error: ' + reason.result.error.message);
       });
     }
