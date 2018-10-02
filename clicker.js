@@ -149,19 +149,23 @@ function getOtherScores(index)
   var otherScores = gapi.client.sheets.spreadsheets.values.get(params);
   otherScores.then(function(response) {
     otherJudge = response.result.values[0];
-    for (var i=2;i<otherJudge.length;i++)
-    {
-      var data = [];
-      data = otherJudge[i].split(',');
-      data[0] = parseFloat(data[0]);
-      data[1] = parseFloat(data[1]);
-      otherGraph.push([data[0], data[1]]);
-    }
+    loadOtherList(otherJudge);
   }, function(reason) {
     console.error('error: ' + reason.result.error.message);
   });
 }
 
+function loadOtherList(list)
+{
+  for (var i=2;i<list.length;i++)
+  {
+    var data = [];
+    data = list[i].split(',');
+    data[0] = parseFloat(data[0]);
+    data[1] = parseFloat(data[1]);
+    otherGraph.push([data[0], data[1]]);
+  }
+}
 function makeApiCall(list)
 {
      var params = {
