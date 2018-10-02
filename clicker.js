@@ -87,7 +87,7 @@ function showChart()
     yourX.push(clickList[a][0]);
     yourY.push(clickList[a][1]);
   }
-  for (var b=0;b<clickList.length;b++)
+  for (var b=0;b<otherGraph.length;b++)
   {
     console.log("this loop is happening");
     otherX.push(otherGraph[b][0]);
