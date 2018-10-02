@@ -127,7 +127,7 @@ $("body").on("keydown", function(event)
     timer();
   }
   // press a key to click a negative
-  else if (event.which == 49)
+  else if (event.which == 189)
   {
     negative+=1;
     raw = positive-negative;
@@ -136,7 +136,7 @@ $("body").on("keydown", function(event)
     $("#click-display").text("+" + String(positive) + " " + "-" + String(negative));
   }
   // press a key to click a positive
-  else if (event.which == 189)
+  else if (event.which == 49)
   {
     positive+=1;
     raw = positive-negative;
