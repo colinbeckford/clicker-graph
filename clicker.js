@@ -119,8 +119,9 @@ function saveData()
   yt_link = $('#yt-link').val();
 }
 
-$("body").on("keydown", function(event)
+$("#submit").on("keydown", function(event)
 {
+
   // enter key to start the timer - press this once the song starts
   if (event.which == 13)
   {
