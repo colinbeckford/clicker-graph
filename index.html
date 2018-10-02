@@ -47,11 +47,11 @@
         valueRenderOption: 'FORMATTED_VALUE',
         dateTimeRenderOption: 'FORMATTED_STRING',
       };
-      var request = gapi.client.sheets.spreadsheets.values.get(params);
-      request.then(function(response) {
-        for (var i=0;i<response.result.values.length;i++)
+      var links = gapi.client.sheets.spreadsheets.values.get(params);
+      links.then(function(response) {
+        for (var i=0;i<links.result.values.length;i++)
         {
-          if (response.result.values[i] == yt_link)
+          if (links.result.values[i] == yt_link)
           {
               getOtherScores(i);
           }
@@ -69,11 +69,11 @@
         valueRenderOption: 'FORMATTED_VALUE',
         dateTimeRenderOption: 'FORMATTED_STRING',
       };
-      var request = gapi.client.sheets.spreadsheets.values.get(params);
-      otherJudge = response.result.values[0];
-      for (var i=2;i<response.result.values.length;i++)
+      var otherScores = gapi.client.sheets.spreadsheets.values.get(params);
+      otherJudge = otherScores.result.values[0];
+      for (var i=2;i<otherScores.result.values.length;i++)
       {
-        var data = response.result.values[i].split(',');
+        var data = otherScores.result.values[i].split(',');
         otherGraph.push(data);
       }
       console.log(otherGraph);

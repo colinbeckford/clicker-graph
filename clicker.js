@@ -1,13 +1,13 @@
 var deciseconds = 0;
 var clickList = [];
-var judge_name = "";
-var other_judge = "";
+var judgeName = "";
+var otherJudge = "";
 var yt_link = "";
 var positive = 0;
 var negative = 0;
 var judgeEntry = [];
 var t;
-var otherJudge = "";
+
 var otherGraph = [];
 
 var sameLinks = [];
@@ -16,7 +16,7 @@ var graph2 = [];
 
 function saveData()
 {
-  judge_name = $('#judge-name').val();
+  judgeName = $('#judge-name').val();
   yt_link = $('#yt-link').val();
 }
 
@@ -57,7 +57,7 @@ $("body").on("keydown", function(event)
 
 function formatList()
 {
-  judgeEntry.push(judge_name);
+  judgeEntry.push(judgeName);
   judgeEntry.push(yt_link);
   for (var i=0;i<clickList.length;i++)
   {
@@ -79,49 +79,49 @@ function timer()
   t = setTimeout(add, 100);
 }
 
-function showChart()
-{
-  var yourX = [];
-  var yourY = [];
-  var otherX = [];
-  var otherY = [];
-  for (var a=0;a<clickList.length;a++)
-  {
-    yourX.push(clickList[a][0]);
-    yourY.push(clickList[a][1]);
-  }
-  for (var b=0;b<graph2.length;b++)
-  {
-    otherX.push(graph2[b][0]);
-    otherY.push(graph2[b][1]);
-  }
-  var trace1 =
-  {
-    x: yourX,
-    y: yourY,
-    mode: 'lines',
-    name: judge_name
-  };
-  var trace2 =
-  {
-    x: otherX,
-    y: otherY,
-    mode: 'lines',
-    name: other_judge
-  };
-  var data = trace1;
-
-  var layout = {
-    title: 'Your Scores',
-    xaxis: {
-      title: 'Time',
-      showgrid: false,
-      zeroline: false
-    },
-    yaxis: {
-      title: 'Score',
-      showline: false
-    }
-  };
-  Plotly.newPlot('chart', data, layout);
-}
+// function showChart()
+// {
+//   var yourX = [];
+//   var yourY = [];
+//   var otherX = [];
+//   var otherY = [];
+//   for (var a=0;a<clickList.length;a++)
+//   {
+//     yourX.push(clickList[a][0]);
+//     yourY.push(clickList[a][1]);
+//   }
+//   for (var b=0;b<graph2.length;b++)
+//   {
+//     otherX.push(graph2[b][0]);
+//     otherY.push(graph2[b][1]);
+//   }
+//   var trace1 =
+//   {
+//     x: yourX,
+//     y: yourY,
+//     mode: 'lines',
+//     name: judgeName
+//   };
+//   var trace2 =
+//   {
+//     x: otherX,
+//     y: otherY,
+//     mode: 'lines',
+//     name: other_judge
+//   };
+//   var data = trace1;
+//
+//   var layout = {
+//     title: 'Your Scores',
+//     xaxis: {
+//       title: 'Time',
+//       showgrid: false,
+//       zeroline: false
+//     },
+//     yaxis: {
+//       title: 'Score',
+//       showline: false
+//     }
+//   };
+//   Plotly.newPlot('chart', data, layout);
+// }
