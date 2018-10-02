@@ -11,7 +11,7 @@ var negative = 0;
 
 $("body").on("keydown", function(event)
 {
-  getLinks();
+
   // enter key to start the timer - press this once the song starts
   if (event.which == 13)
   {
@@ -92,6 +92,7 @@ function saveData()
 {
   judgeName = $('#judge-name').val();
   yt_link = $('#yt-link').val();
+  getLinks();
 }
 
 
