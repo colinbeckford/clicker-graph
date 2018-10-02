@@ -26,7 +26,6 @@ function getLinks() {
     {
       if (response.result.values[i] == yt_link)
       {
-        hasBeenScored = true;
         getOtherScores(i);
       }
     }
@@ -190,12 +189,12 @@ function createAxes(listA, listB)
   var yourY = [];
   var otherX = [];
   var otherY = [];
-  for (var a=0;a<listA.length;a++)
+  for (var a=0;a<yourNumClicks;a++)
   {
     yourX.push(listA[a][0]);
     yourY.push(listA[a][1]);
   }
-  for (var b=0;b<listB.length;b++)
+  for (var b=0;b<otherNumClicks;b++)
   {
     console.log("Loop running");
     otherX.push(listB[b][0]);
