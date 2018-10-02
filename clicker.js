@@ -92,10 +92,6 @@ function showChart()
   {
     otherX.push(otherGraph[b][0]);
     otherY.push(otherGraph[b][1]);
-    if (otherGraph[b+1] == "Break")
-    {
-      break;
-    }
   }
   console.log(otherX);
   console.log(otherY);
