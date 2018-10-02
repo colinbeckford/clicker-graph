@@ -91,6 +91,10 @@ function showChart()
     otherX.push(graph2[b][0]);
     otherY.push(graph2[b][1]);
   }
+  console.log(otherX);
+  console.log(otherY);
+  console.log(yourX);
+  console.log(yourY);
   var trace1 =
   {
     x: yourX,
