@@ -54,6 +54,7 @@
         {
           if (response.result.values[i] == yt_link)
           {
+            console.log("This shouldn't be showing up");
             hasBeenScored = true;
             getOtherScores(i);
           }
@@ -61,6 +62,7 @@
         if (hasBeenScored == false)
         {
           alert("You are the only person who has scored this freestyle.");
+          console.log("You are the only person who has scored this freestyle.");
         }
 
       }, function(reason) {
