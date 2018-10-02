@@ -103,7 +103,7 @@ function showChart()
     x: otherX,
     y: otherY,
     mode: 'lines',
-    name: other_judge
+    name: otherJudge
   };
   var data = trace1;
 
