@@ -8,7 +8,7 @@ var negative = 0;
 var judgeEntry = [];
 var t;
 var otherGraph = [];
-
+var clickready = false;
 
 function getLinks() {
   var params = {
@@ -117,9 +117,12 @@ function saveData()
 {
   judgeName = $('#judge-name').val();
   yt_link = $('#yt-link').val();
+  clickready = true;
 }
 
-$("#submit").on("keydown", function(event)
+if (clickready == true)
+{
+$("body").on("keydown", function(event)
 {
 
   // enter key to start the timer - press this once the song starts
@@ -155,6 +158,7 @@ $("#submit").on("keydown", function(event)
 
   }
 });
+}
 
 function formatList()
 {
