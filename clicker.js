@@ -5,7 +5,6 @@ var graphB = [];
 var graphC = [];
 var graphD = [];
 var judgeName = "";
-var otherJudgeName = "";
 var otherJudgeData = "";
 var yt_link = "";
 var t;
@@ -147,7 +146,6 @@ function getOtherScores(index)
   var otherScores = gapi.client.sheets.spreadsheets.values.get(params);
   otherScores.then(function(response) {
     otherJudgeData = response.result.values[0];
-    otherJudgeName = otherJudgeData[0];
     loadOtherList(otherJudgeData);
   }, function(reason) {
     console.error('error: ' + reason.result.error.message);
@@ -164,6 +162,7 @@ function loadOtherList(list)
     data[1] = parseFloat(data[1]);
     graphB.push([data[0], data[1]]);
   }
+  graphB.push(list[0]);
   graphB.push(" ");
 }
 function makeApiCall(list)
@@ -189,13 +188,16 @@ function makeApiCall(list)
 function showChart(listA, listB)
 {
   var count = 0;
-  var breakpointA = 0;
+  var breakpoint = 0;
+  var judgeB = "";
+  var judgeC = "";
   for (var i=0;i<listB.length;i++)
   {
     if (listB[i] == " ")
     {
       count++;
-      breakpointA = i;
+      breakpoint = i;
+      judgeB = listB[i-1];
       break;
     }
   }
@@ -210,19 +212,20 @@ function showChart(listA, listB)
     aX.push(listA[a][0]);
     aY.push(listA[a][1]);
   }
-  for (var b=0;b<breakpointA;b++)
+  for (var b=0;b<breakpoint;b++)
   {
     bX.push(listB[b][0]);
     bY.push(listB[b][1]);
   }
-  breakpointA+=1;
-  console.log(breakpointA);
-  for (var c=breakpointA;c<listB.length;c++)
+  breakpoint+=1;
+  console.log(breakpoint);
+  for (var c=breakpoint;c<listB.length;c++)
   {
     cX.push(listB[c][0]);
     cY.push(listB[c][1]);
-    if (listB[c+1] == " ")
+    if (listB[c+2] == " ")
     {
+      judgeC = listB[c+1];
       break;
     }
   }
@@ -242,14 +245,14 @@ function showChart(listA, listB)
     x: bX,
     y: bY,
     mode: 'lines',
-    name: otherJudgeName
+    name: judgeB
   };
   var trace3 =
   {
     x: cX,
     y: cY,
     mode: 'lines',
-    name: 'test'
+    name: judgeC
   };
   var data = [trace1, trace2, trace3];
 
