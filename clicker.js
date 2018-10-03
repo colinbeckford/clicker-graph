@@ -97,8 +97,8 @@ function saveData()
 {
   judgeName = $('#judge-name').val();
   yt_link = $('#yt-link').val();
-  getLinks();
   loadVideo();
+  getLinks();
 }
 
 
