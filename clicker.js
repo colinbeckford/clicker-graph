@@ -129,11 +129,6 @@ function getLinks()
         hasBeenScored = true;
       }
     }
-    if (hasBeenScored == false)
-    {
-      alert("You are the only person who has scored this freestyle.");
-    }
-
   }, function(reason) {
     console.error('error: ' + reason.result.error.message);
   });
@@ -213,6 +208,7 @@ function createAxes(listA, listB)
 }
 function showChart(x1, y1, x2, y2)
 {
+  alert("You are the only person who has scored this freestyle.");
   var trace1 =
   {
     x: x1,
