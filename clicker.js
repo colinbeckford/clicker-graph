@@ -1,7 +1,9 @@
 var deciseconds = 0;
 var judgeEntry = [];
 var clickList = [];
-var otherGraph = [];
+var graphB = [];
+var graphC = [];
+var graphD = [];
 var judgeName = "";
 var otherJudgeName = "";
 var otherJudgeData = "";
@@ -42,7 +44,7 @@ $("body").on("keydown", function(event)
     clearTimeout(t);
     deciseconds = 0;
     formatList();
-    createAxes(clickList,otherGraph);
+    showChart(clickList,graphB);
     makeApiCall(judgeEntry);
   }
 });
@@ -161,7 +163,7 @@ function loadOtherList(list)
     console.log(data);
     data[0] = parseFloat(data[0]);
     data[1] = parseFloat(data[1]);
-    otherGraph.push([data[0], data[1]]);
+    graphB.push([data[0], data[1]]);
   }
 }
 function makeApiCall(list)
@@ -184,7 +186,7 @@ function makeApiCall(list)
      });
    }
 
-function createAxes(listA, listB)
+function showChart(listA, listB)
 {
   var yourX = [];
   var yourY = [];
@@ -200,14 +202,6 @@ function createAxes(listA, listB)
     otherX.push(listB[b][0]);
     otherY.push(listB[b][1]);
   }
-  console.log(otherX);
-  console.log(otherY);
-  console.log(yourX);
-  console.log(yourY);
-  showChart(yourX, yourY, otherX, otherY);
-}
-function showChart(x1, y1, x2, y2)
-{
   alert("You are the only person who has scored this freestyle.");
   var trace1 =
   {
