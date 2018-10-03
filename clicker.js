@@ -254,7 +254,6 @@ function showChart(listA, listB)
     name: judgeC
   };
   var data = [trace1, trace2, trace3];
-
   var layout = {
     title: 'Your Scores',
     xaxis: {
@@ -286,6 +285,13 @@ function convertList(list)
       min = 0;
       sec = Math.floor(list[i][0]);
     }
+    if (list[i][0] < 10)
+    {
+    list[i][0] = min + ":0" + sec;
+    }
+    else
+    {
     list[i][0] = min + ":" + sec;
+    }
   }
 }
