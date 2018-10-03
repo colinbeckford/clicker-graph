@@ -11,6 +11,7 @@ var t;
 var positive = 0;
 var negative = 0;
 var player;
+var maxSec = 0;
 
 $("body").on("keydown", function(event)
 {
@@ -200,11 +201,11 @@ function showChart(listA, listB)
   var bY = [];
   var cX = [];
   var cY = [];
-  if (listB.length == 0)
-  {
+  // if (listB.length == 0)
+  // {
   convertList(listA);
   convertList(listB);
-  }
+  // }
   for (var i=0;i<listB.length;i++)
   {
     if (listB[i] == " ")
@@ -265,7 +266,7 @@ function showChart(listA, listB)
       title: 'Time',
       showgrid: false,
       zeroline: false,
-      range: [0, Math.max(...aX)],
+      range: [0, maxSec],
       nticks: 10,
     },
     yaxis: {
@@ -278,6 +279,14 @@ function showChart(listA, listB)
 
 function convertList(list)
 {
+  for (var i = 0; i > list.length; i++)
+  {
+    if (list[i][0] > maxSec)
+    {
+      maxSec = list[i][0];
+    }
+  }
+  console.log(maxSec);
   for (var i=0;i<list.length;i++)
   {
     var sec = 0;
