@@ -254,8 +254,8 @@ function showChart(listA, listB)
     mode: 'lines',
     name: judgeC
   };
-  var maxSec = Math.max(...listB[0]);
-  console.log(maxSec);
+  var maxSec = Math.max(...aX);
+  console.log(aX);
   var data = [trace1, trace2, trace3];
   var layout = {
     title: 'Your Scores',
@@ -263,7 +263,8 @@ function showChart(listA, listB)
       title: 'Time',
       showgrid: false,
       zeroline: false,
-      range: [0, maxSec]
+      range: [0, aX],
+      nticks: 10,
     },
     yaxis: {
       title: 'Score',
