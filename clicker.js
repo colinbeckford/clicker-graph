@@ -255,7 +255,7 @@ function showChart(listA, listB)
     name: judgeC
   };
   var maxSec = Math.max(...aX);
-  console.log(aX);
+  console.log(maxSec);
   var data = [trace1, trace2, trace3];
   var layout = {
     title: 'Your Scores',
