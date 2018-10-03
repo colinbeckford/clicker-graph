@@ -214,7 +214,9 @@ function showChart(listA, listB)
     bX.push(listB[b][0]);
     bY.push(listB[b][1]);
   }
-  for (var c=(breakpointA+1);c<listB.length;c++)
+  breakpointA+=1;
+  console.log(breakpointA);
+  for (var c=breakpointA;c<listB.length;c++)
   {
     cX.push(listB[c][0]);
     cY.push(listB[c][1]);
@@ -225,7 +227,7 @@ function showChart(listA, listB)
   }
   console.log(aX);
   console.log(bX);
-  console.log(cX)
+  console.log(cX);
   alert("You are the only person who has scored this freestyle.");
   var trace1 =
   {
