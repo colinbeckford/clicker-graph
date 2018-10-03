@@ -10,6 +10,7 @@ var yt_link = "";
 var t;
 var positive = 0;
 var negative = 0;
+var player;
 
 $("body").on("keydown", function(event)
 {
@@ -40,6 +41,7 @@ $("body").on("keydown", function(event)
   // press 0 key to end the timer
   else if (event.which == 48)
   {
+    player.stopVideo();
     clearTimeout(t);
     deciseconds = 0;
     formatList();
@@ -96,6 +98,7 @@ function saveData()
   judgeName = $('#judge-name').val();
   yt_link = $('#yt-link').val();
   getLinks();
+  loadVideo();
 }
 
 
@@ -293,4 +296,49 @@ function convertList(list)
     list[i][0] = min + ":" + sec;
     }
   }
+}
+
+function loadVideo()
+{
+  document.getElementById("video").innerHTML = "<div id='player'></div>";
+  var tag = document.createElement('script');
+  tag.src = "https://www.youtube.com/iframe_api";
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+}
+
+function onYouTubeIframeAPIReady()
+{
+  for (var i=0;i<yt_link.length;i++)
+  {
+    if (yt_link.charAt(i) == "v" && yt_link.charAt(i+1) == "=")
+    {
+      yt_link = yt_link.slice(i+2);
+    }
+    else if (yt_link.charAt(i) == "e" && yt_link.charAt(i+1) == "/")
+    {
+      yt_link = yt_link.slice(i+2);
+    }
+  }
+  player = new YT.Player('player', {
+  height: '390',
+  width: '640',
+  videoId: yt_link,
+  events: {
+  'onReady': onPlayerReady,
+  'onStateChange': onPlayerStateChange
+}
+});
+}
+
+function onPlayerReady(event)
+{
+  event.target.playVideo();
+}
+
+var done = false;
+function onPlayerStateChange(event) {
+if (event.data == YT.PlayerState.PLAYING && !done) {
+done = true;
+}
 }
