@@ -200,8 +200,11 @@ function showChart(listA, listB)
   var bY = [];
   var cX = [];
   var cY = [];
+  if (listB.length == 0)
+  {
   convertList(listA);
   convertList(listB);
+  }
   for (var i=0;i<listB.length;i++)
   {
     if (listB[i] == " ")
@@ -254,8 +257,7 @@ function showChart(listA, listB)
     mode: 'lines',
     name: judgeC
   };
-  var maxSec = Math.max(...aX);
-  console.log(maxSec);
+
   var data = [trace1, trace2, trace3];
   var layout = {
     title: 'Your Scores',
