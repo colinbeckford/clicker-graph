@@ -265,7 +265,7 @@ function showChart(listA, listB)
       title: 'Time',
       showgrid: false,
       zeroline: false,
-      range: [0, aX],
+      range: [0, Math.max(...aX)],
       nticks: 10,
     },
     yaxis: {
