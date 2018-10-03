@@ -278,12 +278,12 @@ function convertList(list)
     if (list[i][0] > 60)
     {
       min = Math.floor((list[i][0])/60);
-      sec = (list[i][0])%60;
+      sec = Math.floor((list[i][0])%60);
     }
     else
     {
       min = 0;
-      sec = list[i][0];
+      sec = Math.floor(list[i][0]);
     }
     if (list[i][0] < 10)
     {
