@@ -257,7 +257,8 @@ function showChart(listA, listB)
     xaxis: {
       title: 'Time',
       showgrid: false,
-      zeroline: false
+      zeroline: false,
+      nticks: 10
     },
     yaxis: {
       title: 'Score',
