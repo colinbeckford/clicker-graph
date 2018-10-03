@@ -197,6 +197,8 @@ function showChart(listA, listB)
   var bY = [];
   var cX = [];
   var cY = [];
+  convertList(listA);
+  convertList(listB);
   for (var i=0;i<listB.length;i++)
   {
     if (listB[i] == " ")
