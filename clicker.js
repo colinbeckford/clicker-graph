@@ -188,7 +188,6 @@ function makeApiCall(list)
 
 function showChart(listA, listB)
 {
-  console.log(graphB);
   var count = 0;
   var breakpointA = 0;
   for (var i=0;i<listB.length;i++)
@@ -224,6 +223,9 @@ function showChart(listA, listB)
       break;
     }
   }
+  console.log(aX);
+  console.log(bX);
+  console.log(cX)
   alert("You are the only person who has scored this freestyle.");
   var trace1 =
   {
