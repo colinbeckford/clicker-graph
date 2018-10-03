@@ -160,7 +160,6 @@ function loadOtherList(list)
   {
     var data = [];
     data = list[i].split(',');
-    console.log(data);
     data[0] = parseFloat(data[0]);
     data[1] = parseFloat(data[1]);
     graphB.push([data[0], data[1]]);
@@ -190,32 +189,42 @@ function makeApiCall(list)
 function showChart(listA, listB)
 {
   console.log(graphB);
-  var yourX = [];
-  var yourY = [];
-  var otherX = [];
-  var otherY = [];
+  var count = 0;
+  var breakpointA = 0;
+  for (var i=0;i<listB.length;i++)
+  {
+    if (listB[i] == " ")
+    {
+      count++;
+      breakpointA = i;
+    }
+  }
+  var aX = [];
+  var aY = [];
+  var bX = [];
+  var bY = [];
   for (var a=0;a<listA.length;a++)
   {
-    yourX.push(listA[a][0]);
-    yourY.push(listA[a][1]);
+    aX.push(listA[a][0]);
+    aY.push(listA[a][1]);
   }
-  for (var b=0;b<listB.length;b++)
+  for (var b=0;b<breakpointA;b++)
   {
-    otherX.push(listB[b][0]);
-    otherY.push(listB[b][1]);
+    bX.push(listB[b][0]);
+    bY.push(listB[b][1]);
   }
   alert("You are the only person who has scored this freestyle.");
   var trace1 =
   {
-    x: yourX,
-    y: yourY,
+    x: aX,
+    y: aY,
     mode: 'lines',
     name: judgeName
   };
   var trace2 =
   {
-    x: otherX,
-    y: otherY,
+    x: bX,
+    y: bY,
     mode: 'lines',
     name: otherJudgeName
   };
