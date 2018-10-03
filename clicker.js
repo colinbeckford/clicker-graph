@@ -196,6 +196,7 @@ function showChart(listA, listB)
     {
       count++;
       breakpointA = i;
+      break;
     }
   }
   var aX = [];
