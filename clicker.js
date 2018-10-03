@@ -191,6 +191,16 @@ function showChart(listA, listB)
   var breakpoint = 0;
   var judgeB = "";
   var judgeC = "";
+  var aX = [];
+  var aY = [];
+  var bX = [];
+  var bY = [];
+  var cX = [];
+  var cY = [];
+  convertList(listA);
+  convertList(listB);
+  console.log(listA);
+  console.log(listB);
   for (var i=0;i<listB.length;i++)
   {
     if (listB[i] == " ")
@@ -201,12 +211,6 @@ function showChart(listA, listB)
       break;
     }
   }
-  var aX = [];
-  var aY = [];
-  var bX = [];
-  var bY = [];
-  var cX = [];
-  var cY = [];
   for (var a=0;a<listA.length;a++)
   {
     aX.push(listA[a][0]);
@@ -218,7 +222,6 @@ function showChart(listA, listB)
     bY.push(listB[b][1]);
   }
   breakpoint+=1;
-  console.log(breakpoint);
   for (var c=breakpoint;c<listB.length;c++)
   {
     cX.push(listB[c][0]);
@@ -229,10 +232,6 @@ function showChart(listA, listB)
       break;
     }
   }
-  console.log(aX);
-  console.log(bX);
-  console.log(cX);
-  alert("You are the only person who has scored this freestyle.");
   var trace1 =
   {
     x: aX,
@@ -269,4 +268,24 @@ function showChart(listA, listB)
     }
   };
   Plotly.newPlot('chart', data, layout);
+}
+
+function convertList(list)
+{
+  for (var i=0;i<list.length;i++)
+  {
+    var sec = 0;
+    var min = 0;
+    if (list[i][0] > 60)
+    {
+      min = Math.floor((list[i][0])/60);
+      sec = Math.floor((list[i][0])%60);
+    }
+    else
+    {
+      min = 0;
+      sec = Math.floor(list[i][0]);
+    }
+    list[i][0] = min + ":" + sec;
+  }
 }
