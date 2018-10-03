@@ -205,15 +205,15 @@ function showChart(listA, listB)
   alert("You are the only person who has scored this freestyle.");
   var trace1 =
   {
-    x: x1,
-    y: y1,
+    x: yourX,
+    y: yourY,
     mode: 'lines',
     name: judgeName
   };
   var trace2 =
   {
-    x: x2,
-    y: y2,
+    x: otherX,
+    y: otherY,
     mode: 'lines',
     name: otherJudgeName
   };
