@@ -203,6 +203,8 @@ function showChart(listA, listB)
   var aY = [];
   var bX = [];
   var bY = [];
+  var cX = [];
+  var cY = [];
   for (var a=0;a<listA.length;a++)
   {
     aX.push(listA[a][0]);
@@ -212,6 +214,15 @@ function showChart(listA, listB)
   {
     bX.push(listB[b][0]);
     bY.push(listB[b][1]);
+  }
+  for (var c=(breakpointA+1);c<listB.length;c++)
+  {
+    cX.push(listB[c][0]);
+    cY.push(listB[c][1]);
+    if (listB[c+1] == " ")
+    {
+      break;
+    }
   }
   alert("You are the only person who has scored this freestyle.");
   var trace1 =
@@ -228,7 +239,14 @@ function showChart(listA, listB)
     mode: 'lines',
     name: otherJudgeName
   };
-  var data = [trace1, trace2];
+  var trace3 =
+  {
+    x: cX,
+    y: cY,
+    mode: 'lines',
+    name: 'test'
+  };
+  var data = [trace1, trace2, trace3];
 
   var layout = {
     title: 'Your Scores',
