@@ -165,6 +165,7 @@ function loadOtherList(list)
     data[1] = parseFloat(data[1]);
     graphB.push([data[0], data[1]]);
   }
+  graphB.push(" ");
 }
 function makeApiCall(list)
 {
@@ -188,6 +189,7 @@ function makeApiCall(list)
 
 function showChart(listA, listB)
 {
+  console.log(graphB);
   var yourX = [];
   var yourY = [];
   var otherX = [];
