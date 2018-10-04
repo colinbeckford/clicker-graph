@@ -47,7 +47,6 @@ $("body").on("keydown", function(event)
     deciseconds = 0;
     formatList();
     showChart(clickList,graphB);
-    makeApiCall(judgeEntry);
   }
 });
 
@@ -125,13 +124,11 @@ function getLinks()
   };
   var links = gapi.client.sheets.spreadsheets.values.get(params);
   links.then(function(response) {
-    var hasBeenScored = false;
     for (var i=0;i<response.result.values.length;i++)
     {
       if (response.result.values[i] == yt_link)
       {
         getOtherScores(i);
-        hasBeenScored = true;
       }
     }
   }, function(reason) {
@@ -187,11 +184,11 @@ function makeApiCall(list)
      }, function(reason) {
        console.error('error: ' + reason.result.error.message);
      });
-   }
+}
 
 function showChart(listA, listB)
 {
-  var count = 0;
+  makeApiCall(judgeEntry);
   var breakpoint = 0;
   var judgeB = "";
   var judgeC = "";
@@ -266,7 +263,6 @@ function showChart(listA, listB)
       title: 'Time',
       showgrid: false,
       zeroline: false,
-      range: [0, maxSec],
       nticks: 10,
     },
     yaxis: {
