@@ -15,31 +15,48 @@ var maxSec = 0;
 
 $("body").on("keydown", function(event)
 {
-
-  // enter key to start the timer - press this once the song starts
-  if (event.which == 13)
+  var enterPressed = false;
+  if (event.which == 13 && enterPressed == false)
   {
     timer();
+    enterPressed = true;
   }
-  // press a key to click a negative
   else if (event.which == 189)
   {
+    setTimeout(function() {
+    document.getElementById("video").style.border = "thick solid #FF0000";
+  }, 400);
     negative+=1;
     raw = positive-negative;
     seconds = (deciseconds/10);
     clickList.push([seconds, raw]);
     $("#click-display").text("+" + String(positive) + " " + "-" + String(negative));
+    document.getElementById("video").style.border = "thick solid #FFFFFF";
   }
-  // press a key to click a positive
   else if (event.which == 49)
   {
+    setTimeout(function() {
+    document.getElementById("video").style.border = "thick solid #008000";
+  }, 400);
     positive+=1;
     raw = positive-negative;
     seconds = (deciseconds/10);
     clickList.push([seconds, raw]);
     $("#click-display").text("+" + String(positive) + " " + "-" + String(negative));
+    document.getElementById("video").style.border = "thick solid #FFFFFF";
   }
-  // press 0 key to end the timer
+  else if (event.which == 50)
+  {
+    setTimeout(function() {
+    document.getElementById("video").style.border = "thick solid #00FFFF";
+  }, 400);
+    positive+=2;
+    raw = positive-negative;
+    seconds = (deciseconds/10);
+    clickList.push([seconds, raw]);
+    $("#click-display").text("+" + String(positive) + " " + "-" + String(negative));
+    document.getElementById("video").style.border = "thick solid #FFFFFF";
+  }
   else if (event.which == 48)
   {
     player.stopVideo();
@@ -95,6 +112,7 @@ function timer()
 
 function saveData()
 {
+  alert("Remember to press ENTER key when the freestyle starts!");
   judgeName = $('#judge-name').val();
   yt_link = $('#yt-link').val();
   loadVideo();
@@ -198,11 +216,7 @@ function showChart(listA, listB)
   var bY = [];
   var cX = [];
   var cY = [];
-  if (listB.length == 0)
-  {
-  convertList(listA);
-  convertList(listB);
-  }
+  var count = 0;
   for (var i=0;i<listB.length;i++)
   {
     if (listB[i] == " ")
@@ -255,7 +269,6 @@ function showChart(listA, listB)
     mode: 'lines',
     name: judgeC
   };
-
   var data = [trace1, trace2, trace3];
   var layout = {
     title: 'Your Scores',
@@ -263,7 +276,8 @@ function showChart(listA, listB)
       title: 'Time',
       showgrid: false,
       zeroline: false,
-      nticks: 10,
+      nticks: 12,
+      tickformat: ',d',
     },
     yaxis: {
       title: 'Score',
@@ -273,32 +287,6 @@ function showChart(listA, listB)
   Plotly.newPlot('chart', data, layout);
 }
 
-function convertList(list)
-{
-  for (var i=0;i<list.length;i++)
-  {
-    var sec = 0;
-    var min = 0;
-    if (list[i][0] > 60)
-    {
-      min = ((list[i][0])/60);
-      sec = ((list[i][0])%60);
-    }
-    else
-    {
-      min = 0;
-      sec = (list[i][0]);
-    }
-    if (list[i][0] < 10)
-    {
-    list[i][0] = min + ":0" + sec;
-    }
-    else
-    {
-    list[i][0] = min + ":" + sec;
-    }
-  }
-}
 
 function loadVideo()
 {
