@@ -12,16 +12,16 @@ var positive = 0;
 var negative = 0;
 var player;
 var maxSec = 0;
+var enterReady = false;
 
 $("body").on("keydown", function(event)
 {
-  var enterPressed = false;
-  if (event.which == 13 && enterPressed == false)
+  if (event.which == 13 && enterReady == true)
   {
     timer();
-    enterPressed = true;
+    enterReady = false;
   }
-  else if (event.which == 189)
+  else if (event.which == 189 || event.which == 173)
   {
     setTimeout(function() {
     document.getElementById("video").style.border = "thick solid #FF0000";
@@ -112,7 +112,9 @@ function timer()
 
 function saveData()
 {
+
   alert("Remember to press ENTER key when the freestyle starts!");
+  enterReady = true;
   judgeName = $('#judge-name').val();
   yt_link = $('#yt-link').val();
   loadVideo();
