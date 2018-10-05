@@ -13,6 +13,7 @@ var negative = 0;
 var player;
 var maxSec = 0;
 var enterReady = false;
+var clickReady = false;
 
 $("body").on("keydown", function(event)
 {
@@ -20,12 +21,10 @@ $("body").on("keydown", function(event)
   {
     timer();
     enterReady = false;
+    clickReady = true;
   }
-  else if (event.which == 189 || event.which == 173)
+  else if ((event.which == 189 || event.which == 173) && clickReady == true)
   {
-    setTimeout(function() {
-    document.getElementById("video").style.border = "thick solid #FF0000";
-  }, 400);
     negative+=1;
     raw = positive-negative;
     seconds = (deciseconds/10);
@@ -33,11 +32,8 @@ $("body").on("keydown", function(event)
     $("#click-display").text("+" + String(positive) + " " + "-" + String(negative));
     document.getElementById("video").style.border = "thick solid #FFFFFF";
   }
-  else if (event.which == 49)
+  else if (event.which == 49 && clickReady == true)
   {
-    setTimeout(function() {
-    document.getElementById("video").style.border = "thick solid #008000";
-  }, 400);
     positive+=1;
     raw = positive-negative;
     seconds = (deciseconds/10);
@@ -45,11 +41,8 @@ $("body").on("keydown", function(event)
     $("#click-display").text("+" + String(positive) + " " + "-" + String(negative));
     document.getElementById("video").style.border = "thick solid #FFFFFF";
   }
-  else if (event.which == 50)
+  else if (event.which == 50 && clickReady == true)
   {
-    setTimeout(function() {
-    document.getElementById("video").style.border = "thick solid #00FFFF";
-  }, 400);
     positive+=2;
     raw = positive-negative;
     seconds = (deciseconds/10);
@@ -329,8 +322,58 @@ function onPlayerReady(event)
 }
 
 var done = false;
-function onPlayerStateChange(event) {
-if (event.data == YT.PlayerState.PLAYING && !done) {
-done = true;
+function onPlayerStateChange(event)
+{
+if (event.data == YT.PlayerState.PLAYING && !done)
+{
+  done = true;
 }
+}
+
+function getScores()
+{
+  yt_link = $('#yt-link').val();
+  for (var i=0;i<yt_link.length;i++)
+  {
+    if (yt_link.charAt(i) == "v" && yt_link.charAt(i+1) == "=")
+    {
+      yt_link = yt_link.slice(i+2);
+    }
+    else if (yt_link.charAt(i) == "e" && yt_link.charAt(i+1) == "/")
+    {
+      yt_link = yt_link.slice(i+2);
+    }
+  }
+  loadVideo();
+  $.get(
+    "https://www.googleapis.com/youtube/v3/videos",{
+    part: 'snippet',
+    id: yt_link,
+    key: "AIzaSyAbtoFwJZUHA6tEeIBRuT1tFTK9CDsF704"},
+      function(data){
+      console.log(data.items[0].snippet.title);
+      alert("Finding scores for " + data.items[0].snippet.title);
+      }
+  )
+  var otherEntries = [];
+  var identicalEntries = [];
+  var params = {
+    spreadsheetId: '1KrN4qEuSED2x3R_Y4dOSXoHYix6ccP3SBlMMsDxgLO0',
+    range: "Sheet1!B1:B500",
+    valueRenderOption: 'FORMATTED_VALUE',
+    dateTimeRenderOption: 'FORMATTED_STRING',
+  };
+  otherEntries = gapi.client.sheets.spreadsheets.values.get(params);
+  otherEntries.then(function(response) {
+    for (var i=0;i<response.result.values.length;i++)
+    {
+      if (response.result.values[i] == yt_link)
+      {
+        getOtherScores(i);
+      }
+    }
+    setTimeout(showChart(clickList,graphB),5000);
+  }, function(reason) {
+    console.error('error: ' + reason.result.error.message);
+  });
 }
