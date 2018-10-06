@@ -157,7 +157,6 @@ function getOtherScores(index)
   otherScores.then(function(response) {
     otherJudgeData = response.result.values[0];
     loadOtherList(otherJudgeData);
-    console.log("Load other list is called");
   }, function(reason) {
     console.error('error: ' + reason.result.error.message);
   });
@@ -343,7 +342,8 @@ function getScores()
   }
   getLinks(yt_link);
   loadVideo();
-  if (clickList.length == 0)
+
+  if (graphB.length == 0)
   {
     alert("Nobody has scored this routine.");
   }
