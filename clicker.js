@@ -369,7 +369,7 @@ function getScores()
       console.log(data.items[0].snippet.title);
       alert("Finding scores for " + data.items[0].snippet.title);
       }
-  }
+  });
   loadVideo();
     setTimeout(showChart(clickList,graphB),10000);
   }, function(reason) {
