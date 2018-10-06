@@ -342,7 +342,7 @@ function getScores()
   }
   getLinks(yt_link);
   loadVideo();
-
+  console.log(graphB.length);
   if (graphB.length == 0)
   {
     alert("Nobody has scored this routine.");
