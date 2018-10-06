@@ -137,7 +137,6 @@ function getLinks(link)
     {
       if (response.result.values[i] == link)
       {
-        console.log("Found equal link");
         getOtherScores(i);
       }
     }
@@ -158,6 +157,7 @@ function getOtherScores(index)
   otherScores.then(function(response) {
     otherJudgeData = response.result.values[0];
     loadOtherList(otherJudgeData);
+    console.log("Load other list is called");
   }, function(reason) {
     console.error('error: ' + reason.result.error.message);
   });
@@ -341,7 +341,6 @@ function getScores()
       yt_link = yt_link.slice(i+2);
     }
   }
-  console.log(yt_link);
   getLinks(yt_link);
   loadVideo();
   if (clickList.length == 0)
