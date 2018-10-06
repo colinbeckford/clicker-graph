@@ -333,7 +333,7 @@ if (event.data == YT.PlayerState.PLAYING && !done)
 function getScores()
 {
   yt_link = $('#yt-link').val();
-  for (var i=0;i<yt_link.length;i++)
+  or (var i=0;i<yt_link.length;i++)
   {
     if (yt_link.charAt(i) == "v" && yt_link.charAt(i+1) == "=")
     {
@@ -344,25 +344,13 @@ function getScores()
       yt_link = yt_link.slice(i+2);
     }
   }
-  loadVideo();
-  $.get(
-    "https://www.googleapis.com/youtube/v3/videos",{
-    part: 'snippet',
-    id: yt_link,
-    key: "AIzaSyAbtoFwJZUHA6tEeIBRuT1tFTK9CDsF704"},
-      function(data){
-      console.log(data.items[0].snippet.title);
-      alert("Finding scores for " + data.items[0].snippet.title);
-      }
-  )
-  var otherEntries = [];
-  var identicalEntries = [];
   var params = {
     spreadsheetId: '1KrN4qEuSED2x3R_Y4dOSXoHYix6ccP3SBlMMsDxgLO0',
     range: "Sheet1!B1:B500",
     valueRenderOption: 'FORMATTED_VALUE',
     dateTimeRenderOption: 'FORMATTED_STRING',
   };
+  var otherEntries = [];
   otherEntries = gapi.client.sheets.spreadsheets.values.get(params);
   otherEntries.then(function(response) {
     for (var i=0;i<response.result.values.length;i++)
@@ -372,7 +360,18 @@ function getScores()
         getOtherScores(i);
       }
     }
-    setTimeout(showChart(clickList,graphB),5000);
+  $.get(
+    "https://www.googleapis.com/youtube/v3/videos",{
+    part: 'snippet',
+    id: yt_link,
+    key: "AIzaSyAbtoFwJZUHA6tEeIBRuT1tFTK9CDsF704"},
+      function(data){
+      console.log(data.items[0].snippet.title);
+      alert("Finding scores for " + data.items[0].snippet.title);
+      }
+  }
+  loadVideo();
+    setTimeout(showChart(clickList,graphB),10000);
   }, function(reason) {
     console.error('error: ' + reason.result.error.message);
   });
