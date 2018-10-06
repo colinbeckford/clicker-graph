@@ -171,6 +171,7 @@ function loadOtherList(list)
     data[0] = parseFloat(data[0]);
     data[1] = parseFloat(data[1]);
     graphB.push([data[0], data[1]]);
+    console.log("Pushed to graph b");
   }
   graphB.push(list[0]);
   graphB.push(" ");
