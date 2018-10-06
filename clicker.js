@@ -30,7 +30,6 @@ $("body").on("keydown", function(event)
     seconds = (deciseconds/10);
     clickList.push([seconds, raw]);
     $("#click-display").text("+" + String(positive) + " " + "-" + String(negative));
-    document.getElementById("video").style.border = "thick solid #FFFFFF";
   }
   else if (event.which == 49 && clickReady == true)
   {
@@ -39,7 +38,6 @@ $("body").on("keydown", function(event)
     seconds = (deciseconds/10);
     clickList.push([seconds, raw]);
     $("#click-display").text("+" + String(positive) + " " + "-" + String(negative));
-    document.getElementById("video").style.border = "thick solid #FFFFFF";
   }
   else if (event.which == 50 && clickReady == true)
   {
@@ -48,7 +46,6 @@ $("body").on("keydown", function(event)
     seconds = (deciseconds/10);
     clickList.push([seconds, raw]);
     $("#click-display").text("+" + String(positive) + " " + "-" + String(negative));
-    document.getElementById("video").style.border = "thick solid #FFFFFF";
   }
   else if (event.which == 48)
   {
@@ -105,7 +102,6 @@ function timer()
 
 function saveData()
 {
-
   alert("Remember to press ENTER key when the freestyle starts!");
   enterReady = true;
   judgeName = $('#judge-name').val();
@@ -344,24 +340,7 @@ function getScores()
       yt_link = yt_link.slice(i+2);
     }
   }
-  var viewParams = {
-    spreadsheetId: '1KrN4qEuSED2x3R_Y4dOSXoHYix6ccP3SBlMMsDxgLO0',
-    range: "Sheet1!B1:B500",
-    valueRenderOption: 'FORMATTED_VALUE',
-    dateTimeRenderOption: 'FORMATTED_STRING',
-  };
-  var viewLinks = gapi.client.sheets.spreadsheets.values.get(viewParams);
-  viewLinks.then(function(response) {
-    for (var i=0;i<response.result.values.length;i++)
-    {
-      if (response.result.values[i] == yt_link)
-      {
-        getOtherScores(i);
-      }
-    }
-  }, function(reason) {
-    console.error('error: ' + reason.result.error.message);
-  });
+  getLinks();
   loadVideo();
   if (clickList.length == 0)
   {
