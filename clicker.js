@@ -371,5 +371,5 @@ function getScores()
     });
   });
   loadVideo();
-  var graphTimer = setTimeout(function(){ showChart(clickList, graphB); }, 3000);
+  var graphTimer = setTimeout(function(){ showChart(clickList, graphB); }, 2000);
 }
