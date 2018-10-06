@@ -350,7 +350,7 @@ function getScores()
     valueRenderOption: 'FORMATTED_VALUE',
     dateTimeRenderOption: 'FORMATTED_STRING',
   };
-  var viewlinks = gapi.client.sheets.spreadsheets.values.get(viewParams);
+  var viewLinks = gapi.client.sheets.spreadsheets.values.get(viewParams);
   viewLinks.then(function(response) {
     for (var i=0;i<response.result.values.length;i++)
     {
