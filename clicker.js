@@ -371,5 +371,12 @@ function getScores()
     });
   });
   loadVideo();
+  if (clickList.length == 0)
+  {
+    alert("Nobody has scored this routine.");
+  }
+  else
+  {
   var graphTimer = setTimeout(function(){ showChart(clickList, graphB); }, 2000);
+  }
 }
