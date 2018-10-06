@@ -344,15 +344,14 @@ function getScores()
       yt_link = yt_link.slice(i+2);
     }
   }
-  var params = {
+  var viewParams = {
     spreadsheetId: '1KrN4qEuSED2x3R_Y4dOSXoHYix6ccP3SBlMMsDxgLO0',
     range: "Sheet1!B1:B500",
     valueRenderOption: 'FORMATTED_VALUE',
     dateTimeRenderOption: 'FORMATTED_STRING',
   };
-  var otherEntries = [];
-  otherEntries = gapi.client.sheets.spreadsheets.values.get(params);
-  otherEntries.then(function(response) {
+  var viewlinks = gapi.client.sheets.spreadsheets.values.get(viewParams);
+  viewLinks.then(function(response) {
     for (var i=0;i<response.result.values.length;i++)
     {
       if (response.result.values[i] == yt_link)
@@ -360,15 +359,8 @@ function getScores()
         getOtherScores(i);
       }
     }
-  $.get(
-    "https://www.googleapis.com/youtube/v3/videos",{
-    part: 'snippet',
-    id: yt_link,
-    key: "AIzaSyAbtoFwJZUHA6tEeIBRuT1tFTK9CDsF704"},
-      function(data){
-      console.log(data.items[0].snippet.title);
-      alert("Finding scores for " + data.items[0].snippet.title);
-    });
+  }, function(reason) {
+    console.error('error: ' + reason.result.error.message);
   });
   loadVideo();
   if (clickList.length == 0)
@@ -377,6 +369,17 @@ function getScores()
   }
   else
   {
-  var graphTimer = setTimeout(function(){ showChart(clickList, graphB); }, 2000);
+    var graphTimer = setTimeout(function(){ showChart(clickList, graphB); }, 2000);
+  }
+}
+
+function getTitle(data)
+{
+  var feed = data.feed;
+  var entries = feed.entry || [];
+  for (var i = 0; i < entries.length; i++) {
+  var entry = entries[i];
+  var title = entry.title.$t;
+  alert("Searching for scores of " + title);
   }
 }
