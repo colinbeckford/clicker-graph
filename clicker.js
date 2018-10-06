@@ -14,6 +14,7 @@ var player;
 var maxSec = 0;
 var enterReady = false;
 var clickReady = false;
+var graphReady = false;
 
 $("body").on("keydown", function(event)
 {
@@ -164,6 +165,7 @@ function getOtherScores(index)
 
 function loadOtherList(list)
 {
+  graphReady = true;
   for (var i=2;i<list.length;i++)
   {
     var data = [];
@@ -171,7 +173,6 @@ function loadOtherList(list)
     data[0] = parseFloat(data[0]);
     data[1] = parseFloat(data[1]);
     graphB.push([data[0], data[1]]);
-    console.log("Pushed to graph b");
   }
   graphB.push(list[0]);
   graphB.push(" ");
@@ -344,7 +345,7 @@ function getScores()
   getLinks(yt_link);
   loadVideo();
   console.log(graphB.length);
-  if (graphB.length == 0)
+  if (graphReady == false)
   {
     alert("Nobody has scored this routine.");
   }
