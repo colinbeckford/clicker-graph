@@ -351,14 +351,3 @@ function getScores()
     var graphTimer = setTimeout(function(){ showChart(clickList, graphB); }, 2000);
   }
 }
-
-function getTitle(data)
-{
-  var feed = data.feed;
-  var entries = feed.entry || [];
-  for (var i = 0; i < entries.length; i++) {
-  var entry = entries[i];
-  var title = entry.title.$t;
-  alert("Searching for scores of " + title);
-  }
-}
