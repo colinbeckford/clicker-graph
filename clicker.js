@@ -333,7 +333,7 @@ if (event.data == YT.PlayerState.PLAYING && !done)
 function getScores()
 {
   yt_link = $('#yt-link').val();
-  or (var i=0;i<yt_link.length;i++)
+  for (var i=0;i<yt_link.length;i++)
   {
     if (yt_link.charAt(i) == "v" && yt_link.charAt(i+1) == "=")
     {
