@@ -107,7 +107,7 @@ function saveData()
   judgeName = $('#judge-name').val();
   yt_link = $('#yt-link').val();
   loadVideo();
-  getLinks();
+  getLinks(yt_link);
 }
 
 
@@ -123,7 +123,7 @@ function formatList()
   }
 }
 
-function getLinks()
+function getLinks(link)
 {
   var params = {
     spreadsheetId: '1KrN4qEuSED2x3R_Y4dOSXoHYix6ccP3SBlMMsDxgLO0',
@@ -135,7 +135,7 @@ function getLinks()
   links.then(function(response) {
     for (var i=0;i<response.result.values.length;i++)
     {
-      if (response.result.values[i] == yt_link)
+      if (response.result.values[i] == link)
       {
         getOtherScores(i);
       }
@@ -340,7 +340,7 @@ function getScores()
       yt_link = yt_link.slice(i+2);
     }
   }
-  getLinks();
+  getLinks(yt_link);
   loadVideo();
   if (clickList.length == 0)
   {
