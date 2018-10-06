@@ -343,14 +343,15 @@ function getScores()
     }
   }
   getLinks(yt_link);
-  loadVideo();
-  console.log(graphB.length);
-  if (graphReady == false)
+  setTimeout(function()
   {
-    alert("Nobody has scored this routine.");
-  }
-  else
-  {
-    var graphTimer = setTimeout(function(){ showChart(clickList, graphB);}, 2000);
-  }
+    loadVideo();
+    if (graphReady == false)
+    {
+      alert("Nobody has scored this routine.");
+    }
+    else
+    {
+      var graphTimer = setTimeout(function(){ showChart(clickList, graphB);}, 2000);
+    }}, 3000);
 }
