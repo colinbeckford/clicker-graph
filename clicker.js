@@ -137,6 +137,7 @@ function getLinks(link)
     {
       if (response.result.values[i] == link)
       {
+        console.log("Found equal link");
         getOtherScores(i);
       }
     }
@@ -340,6 +341,7 @@ function getScores()
       yt_link = yt_link.slice(i+2);
     }
   }
+  console.log(yt_link);
   getLinks(yt_link);
   loadVideo();
   if (clickList.length == 0)
@@ -348,6 +350,6 @@ function getScores()
   }
   else
   {
-    var graphTimer = setTimeout(function(){ showChart(clickList, graphB); }, 2000);
+    var graphTimer = setTimeout(function(){ showChart(clickList, graphB);}, 2000);
   }
 }
