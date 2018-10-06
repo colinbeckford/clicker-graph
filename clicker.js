@@ -372,7 +372,4 @@ function getScores()
   });
   loadVideo();
     setTimeout(showChart(clickList,graphB),10000);
-  }, function(reason) {
-    console.error('error: ' + reason.result.error.message);
-  });
 }
