@@ -353,5 +353,5 @@ function getScores()
     else
     {
       var graphTimer = setTimeout(function(){ showChart(clickList, graphB);}, 500);
-    }}, 500);
+    }}, 1500);
 }
