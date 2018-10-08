@@ -15,7 +15,11 @@ var maxSec = 0;
 var enterReady = false;
 var clickReady = false;
 var graphReady = false;
-$('#confirm').hide();
+
+$(document).ready(function() {
+    $('#confirm').hide();
+});
+
 
 $("body").on("keydown", function(event)
 {
