@@ -17,7 +17,13 @@ var clickReady = false;
 var graphReady = false;
 
 $(document).ready(function() {
-    $('#confirm').hide();
+    let myurl = new URL(window.location.href);
+    if (myurl.searchParams.has("link"))
+    {
+      $('#yt-link').val((myurl.searchParams.get("link")));
+    }
+    $('#query-link').hide();
+    $('#share').hide();
 });
 
 
@@ -58,6 +64,9 @@ $("body").on("keydown", function(event)
     player.stopVideo();
     clearTimeout(t);
     confirmTimeout = setTimeout(confirmEntry,500);
+    $('#query-link').val("http://scalescollective.com/clicker/" + "?link=" + yt_link);
+    $('#share').show();
+    $('#query-link').show();
   }
 });
 
