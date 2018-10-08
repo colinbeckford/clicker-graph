@@ -64,7 +64,7 @@ $("body").on("keydown", function(event)
     player.stopVideo();
     clearTimeout(t);
     confirmTimeout = setTimeout(confirmEntry,500);
-    $('#query-link').val("http://scalescollective.com/clicker/" + "?link=" + yt_link);
+    $('#query-link').html("http://scalescollective.com/clicker/" + "?link=" + yt_link);
     $('#share').show();
     $('#query-link').show();
   }
