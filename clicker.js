@@ -18,7 +18,6 @@ var graphReady = false;
 
 $(document).ready(function() {
     $('#start-fs').hide();
-
 });
 
 

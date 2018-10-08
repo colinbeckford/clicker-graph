@@ -1,7 +1,16 @@
 <html>
 <center>
   <head>
-
+    <script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous">
+    </script>
+    <script async defer src="https://apis.google.com/js/api.js"
+    onload="this.onload=function(){};handleClientLoad()"
+    onreadystatechange="if (this.readyState === "complete") this.onload()">
+    </script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script src="clicker.js"> </script>
     <h1> Scales Clicker </h1>
     <br>
@@ -11,11 +20,6 @@
     <br>
   </head>
   <body>
-    <script
-    src="https://code.jquery.com/jquery-3.3.1.min.js"
-    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-    crossorigin="anonymous">
-    </script>
     <text> Input Judge Name </text>
     <br>
     <br>
@@ -45,13 +49,6 @@
     <br>
     <text> "1" key for +1, "-" key for -1, "2" key for +2 (or press "1" twice), "0" key to end and show graph </text>
     <div id="chart"> </div>
-    <div>
-      <script async defer src="https://apis.google.com/js/api.js"
-      onload="this.onload=function(){};handleClientLoad()"
-      onreadystatechange="if (this.readyState === "complete") this.onload()">
-      </script>
-      <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-  </div>
   </body>
 </center>
 
