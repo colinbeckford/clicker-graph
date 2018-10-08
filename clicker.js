@@ -15,6 +15,7 @@ var maxSec = 0;
 var enterReady = false;
 var clickReady = false;
 var graphReady = false;
+$('#confirm').hide();
 
 $("body").on("keydown", function(event)
 {
@@ -52,10 +53,7 @@ $("body").on("keydown", function(event)
   {
     player.stopVideo();
     clearTimeout(t);
-    deciseconds = 0;
-    formatList();
-    showChart(clickList,graphB);
-  }
+    $('#confirm').show();
 });
 
 
@@ -354,4 +352,14 @@ function getScores()
     {
       var graphTimer = setTimeout(function(){ showChart(clickList, graphB);}, 500);
     }}, 1500);
+}
+
+function confirmEntry() {
+    var txt;
+    if (confirm("Would you like to submit your scores?")) {
+      formatList();
+      showChart(clickList,graphB);
+    } else {
+        location.reload();
+    }
 }
