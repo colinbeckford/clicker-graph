@@ -186,6 +186,7 @@ function loadOtherList(list)
   graphB.push(list[0]);
   graphB.push(" ");
 }
+
 function makeApiCall(list)
 {
      var params = {
@@ -367,10 +368,13 @@ function getScores()
 
 function confirmEntry() {
     var txt;
-    if (confirm("Would you like to submit your scores?")) {
+    if (confirm("Would you like to submit your scores?"))
+     {
       formatList();
       showChart(clickList,graphB);
-    } else {
+    }
+    else
+    {
         location.reload();
     }
 }
