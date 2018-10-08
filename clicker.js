@@ -29,8 +29,8 @@ $(document).ready(function() {
 
 $("body").on("keydown", function(event)
 {
-  var single = 0;
-  var double = 0;
+  var singleClick = 0;
+  var doubleClick = 0;
   if (event.which == 13 && enterReady == true)
   {
     timer();
@@ -47,7 +47,7 @@ $("body").on("keydown", function(event)
   }
   else if (event.which == 49 && clickReady == true)
   {
-    single+=1;
+    singleClick+=1;
     positive+=1;
     raw = positive-negative;
     seconds = (deciseconds/10);
@@ -56,7 +56,7 @@ $("body").on("keydown", function(event)
   }
   else if (event.which == 50 && clickReady == true)
   {
-    double+=1;
+    doubleClick+=1;
     positive+=2;
     raw = positive-negative;
     seconds = (deciseconds/10);
@@ -69,10 +69,8 @@ $("body").on("keydown", function(event)
     clearTimeout(t);
     confirmTimeout = setTimeout(confirmEntry,500);
     var cps = ((clickList[(clickList.length)-1][1])/(clickList[(clickList.length)-1][0])).toFixed(2);
-    var pdc = ((double*2)/(single+(double*2))).toFixed(2);
-    alert("The clicks per second for this routine you scored is " + cps + ", and the percentage of clicks that you awarded +2 is " + (pdc*100) + " percent.");
+    var pdc = ((doubleClick*2)/(singleClick+(doubleClick*2))).toFixed(2);
     $('#query-link').html("http://scalescollective.com/clicker/" + "?link=" + yt_link);
-    $('#share').show();
     $('#query-link').show();
 
 
@@ -380,6 +378,8 @@ function getScores()
 function confirmEntry() {
     var txt;
     if (confirm("Would you like to submit your scores?")) {
+      alert("The clicks per second for this routine you scored is " + cps + ", and the percentage of clicks that you awarded +2 is " + (pdc*100) + " percent.");
+      $('#share').show();
       formatList();
       showChart(clickList,graphB);
     } else {
