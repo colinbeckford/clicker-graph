@@ -27,8 +27,7 @@ $("body").on("keydown", function(event)
   {
     saveData();
   }
-  else
-  if (event.which == 13 && enterReady == true)
+  else if (event.which == 13 && enterReady == true)
   {
     timer();
     enterReady = false;
@@ -372,4 +371,10 @@ function confirmEntry() {
     } else {
         location.reload();
     }
+}
+
+function startTimer() {
+  timer();
+  enterReady = false;
+  clickReady = true;
 }
