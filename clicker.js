@@ -29,6 +29,8 @@ $(document).ready(function() {
 
 $("body").on("keydown", function(event)
 {
+  var single = 0;
+  var double = 0;
   if (event.which == 13 && enterReady == true)
   {
     timer();
@@ -45,6 +47,7 @@ $("body").on("keydown", function(event)
   }
   else if (event.which == 49 && clickReady == true)
   {
+    single+=1;
     positive+=1;
     raw = positive-negative;
     seconds = (deciseconds/10);
@@ -53,6 +56,7 @@ $("body").on("keydown", function(event)
   }
   else if (event.which == 50 && clickReady == true)
   {
+    double+=1;
     positive+=2;
     raw = positive-negative;
     seconds = (deciseconds/10);
@@ -64,9 +68,14 @@ $("body").on("keydown", function(event)
     player.stopVideo();
     clearTimeout(t);
     confirmTimeout = setTimeout(confirmEntry,500);
+    var cps = (clickList[(clickList.length)-1][1])/(clickList[(clickList.length)-1][0]).toFixed(2);
+    var pdc = (double*2)/(single+(double*2))
+    alert("The clicks per second for this routine you scored is " + cps + ", and the percentage of clicks that you awarded +2 is " + (pdc*100) + " percent.");
     $('#query-link').html("http://scalescollective.com/clicker/" + "?link=" + yt_link);
     $('#share').show();
     $('#query-link').show();
+    
+
   }
 });
 
@@ -316,8 +325,8 @@ function onYouTubeIframeAPIReady()
     }
   }
   player = new YT.Player('player', {
-  height: '720',
-  width: '1280',
+  height: '480',
+  width: '854',
   videoId: yt_link,
   events: {
   'onReady': onPlayerReady,
