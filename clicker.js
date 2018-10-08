@@ -68,8 +68,6 @@ $("body").on("keydown", function(event)
     player.stopVideo();
     clearTimeout(t);
     confirmTimeout = setTimeout(confirmEntry,500);
-    var cps = ((clickList[(clickList.length)-1][1])/(clickList[(clickList.length)-1][0])).toFixed(2);
-    var pdc = ((doubleClick*2)/(singleClick+(doubleClick*2))).toFixed(2);
     $('#query-link').html("http://scalescollective.com/clicker/" + "?link=" + yt_link);
     $('#query-link').show();
 
@@ -378,6 +376,8 @@ function getScores()
 function confirmEntry() {
     var txt;
     if (confirm("Would you like to submit your scores?")) {
+      var cps = ((clickList[(clickList.length)-1][1])/(clickList[(clickList.length)-1][0])).toFixed(2);
+      var pdc = ((doubleClick*2)/(singleClick+(doubleClick*2))).toFixed(2);
       alert("The clicks per second for this routine you scored is " + cps + ", and the percentage of clicks that you awarded +2 is " + (pdc*100) + " percent.");
       $('#share').show();
       formatList();
