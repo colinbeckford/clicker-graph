@@ -57,7 +57,7 @@ $("body").on("keydown", function(event)
   {
     player.stopVideo();
     clearTimeout(t);
-    confirmTimeout = setTimeout(confirmEntry(),500);
+    confirmTimeout = setTimeout(confirmEntry,500);
   }
 });
 
