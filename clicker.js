@@ -20,7 +20,7 @@ $(document).ready(function() {
     let myurl = new URL(window.location.href);
     if (myurl.searchParams.has("link"))
     {
-      $('#yt-link').val((myurl.searchParams.get("link")));
+      $('#yt-link').val("https://youtu.be/" + (myurl.searchParams.get("link")));
     }
     $('#query-link').hide();
     $('#share').hide();
