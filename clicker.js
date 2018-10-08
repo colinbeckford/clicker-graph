@@ -17,7 +17,8 @@ var clickReady = false;
 var graphReady = false;
 
 $(document).ready(function() {
-    $('#confirm').hide();
+    $('#start-fs').hide();
+
 });
 
 
@@ -26,6 +27,7 @@ $("body").on("keydown", function(event)
   if (event.which == 13 && enterReady == false)
   {
     saveData();
+    $('#start-fs').show();
   }
   else if (event.which == 13 && enterReady == true)
   {
@@ -311,8 +313,8 @@ function onYouTubeIframeAPIReady()
     }
   }
   player = new YT.Player('player', {
-  height: '720',
-  width: '1280',
+  height: '480',
+  width: '854',
   videoId: yt_link,
   events: {
   'onReady': onPlayerReady,
