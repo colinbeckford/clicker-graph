@@ -11,7 +11,8 @@ var t;
 var positive = 0;
 var negative = 0;
 var player;
-var maxSec = 0;
+var singleClick = 0;
+var doubleClick = 0;
 var enterReady = false;
 var clickReady = false;
 var graphReady = false;
@@ -29,8 +30,7 @@ $(document).ready(function() {
 
 $("body").on("keydown", function(event)
 {
-  var singleClick = 0;
-  var doubleClick = 0;
+
   if (event.which == 13 && enterReady == true)
   {
     timer();
