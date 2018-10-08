@@ -1,16 +1,12 @@
 <html>
 <center>
   <head>
-    <script async defer src="https://apis.google.com/js/api.js"
-    onload="this.onload=function(){};handleClientLoad()"
-    onreadystatechange="if (this.readyState === "complete") this.onload()">
-    </script>
     <script
-    src="https://code.jquery.com/jquery-3.3.1.min.js"
-    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-    crossorigin="anonymous">
+      src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous">
     </script>
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script src="clicker.js"> </script>
     <h1> Scales Clicker </h1>
     <br>
@@ -20,6 +16,7 @@
     <br>
   </head>
   <body>
+
     <text> Input Judge Name </text>
     <br>
     <br>
@@ -41,14 +38,17 @@
     <h1 id="click-display"> +0 -0 </h1>
     <br>
     <br>
-    <button id="start-fs" onclick="startTimer()"> Start Timer </button>
-    <br>
-    <br>
     <div id="video" align="middle"> </div>
     <br>
     <br>
     <text> "1" key for +1, "-" key for -1, "2" key for +2 (or press "1" twice), "0" key to end and show graph </text>
     <div id="chart"> </div>
+
+
+    <script async defer src="https://apis.google.com/js/api.js"
+onload="this.onload=function(){};handleClientLoad()"
+onreadystatechange="if (this.readyState === "complete") this.onload()">
+</script>
   </body>
 </center>
 

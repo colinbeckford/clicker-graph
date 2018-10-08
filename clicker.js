@@ -17,18 +17,13 @@ var clickReady = false;
 var graphReady = false;
 
 $(document).ready(function() {
-    $('#start-fs').hide();
+    $('#confirm').hide();
 });
 
 
 $("body").on("keydown", function(event)
 {
-  if (event.which == 13 && enterReady == false)
-  {
-    saveData();
-    $('#start-fs').show();
-  }
-  else if (event.which == 13 && enterReady == true)
+  if (event.which == 13 && enterReady == true)
   {
     timer();
     enterReady = false;
@@ -185,7 +180,6 @@ function loadOtherList(list)
   graphB.push(list[0]);
   graphB.push(" ");
 }
-
 function makeApiCall(list)
 {
      var params = {
@@ -313,8 +307,8 @@ function onYouTubeIframeAPIReady()
     }
   }
   player = new YT.Player('player', {
-  height: '480',
-  width: '854',
+  height: '720',
+  width: '1280',
   videoId: yt_link,
   events: {
   'onReady': onPlayerReady,
@@ -367,19 +361,10 @@ function getScores()
 
 function confirmEntry() {
     var txt;
-    if (confirm("Would you like to submit your scores?"))
-     {
+    if (confirm("Would you like to submit your scores?")) {
       formatList();
       showChart(clickList,graphB);
-    }
-    else
-    {
+    } else {
         location.reload();
     }
-}
-
-function startTimer() {
-  timer();
-  enterReady = false;
-  clickReady = true;
 }
