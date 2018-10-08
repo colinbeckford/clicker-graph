@@ -23,6 +23,11 @@ $(document).ready(function() {
 
 $("body").on("keydown", function(event)
 {
+  if (event.which == 13 && enterReady == false)
+  {
+    saveData();
+  }
+  else
   if (event.which == 13 && enterReady == true)
   {
     timer();
