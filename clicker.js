@@ -387,6 +387,6 @@ function confirmEntry() {
       formatList();
       showChart(clickList,graphB);
     } else {
-        location.assign("http://scalescollective.com/clicker/" + "?link=" + yt_link + "?=" + judgeName);
+        location.assign("http://scalescollective.com/clicker/" + "?link=" + yt_link + "?name=" + judgeName);
     }
 }
