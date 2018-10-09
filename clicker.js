@@ -388,11 +388,10 @@ function confirmEntry() {
       showChart(clickList,graphB);
     } else {
         location.assign("http://scalescollective.com/clicker/" + "?link=" + yt_link + "&name=" + judgeName);
-        alert("Remember to press ENTER key when the freestyle starts!");
-        enterReady = true;
         judgeName = $('#judge-name').val();
         yt_link = $('#yt-link').val();
-        loadVideo();
+        alert("Remember to press ENTER key when the freestyle starts!");
+        var loadTimeout = (loadVideo,1000);
         getLinks(yt_link);
     }
 }
