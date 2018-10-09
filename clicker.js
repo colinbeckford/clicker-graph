@@ -23,6 +23,10 @@ $(document).ready(function() {
     {
       $('#yt-link').val("https://youtu.be/" + (myurl.searchParams.get("link")));
     }
+    if (myurl.searchParams.has("name"))
+    {
+      $('#judge-name').val(myurl.searchParams.get("name"));
+    }
     $('#query-link').hide();
     $('#share').hide();
 });
@@ -383,6 +387,6 @@ function confirmEntry() {
       formatList();
       showChart(clickList,graphB);
     } else {
-        location.reload();
+        location.assign("http://scalescollective.com/clicker/" + "?link=" + yt_link + "?=" + judgeName);
     }
 }
