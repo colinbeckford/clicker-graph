@@ -388,5 +388,6 @@ function confirmEntry() {
       showChart(clickList,graphB);
     } else {
         location.assign("http://scalescollective.com/clicker/" + "?link=" + yt_link + "&name=" + judgeName);
+        confirmTimeout = setTimeout(saveData,500);
     }
 }
