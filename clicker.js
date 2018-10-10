@@ -23,7 +23,7 @@ $(document).ready(function() {
     {
       $('#yt-link').val("https://youtu.be/" + (myurl.searchParams.get("link")));
     }
-    if (myurl.searchParams.has("name"))
+    else if (myurl.searchParams.has("name"))
     {
       $('#judge-name').val(myurl.searchParams.get("name"));
     }
@@ -71,7 +71,7 @@ $("body").on("keydown", function(event)
   {
     player.stopVideo();
     clearTimeout(t);
-    confirmTimeout = setTimeout(confirmEntry,500);
+    var confirmTimeout = setTimeout(confirmEntry,500);
     $('#query-link').html("http://scalescollective.com/clicker/" + "?link=" + yt_link);
     $('#query-link').show();
 
@@ -388,6 +388,6 @@ function confirmEntry() {
       showChart(clickList,graphB);
     } else {
         location.assign("http://scalescollective.com/clicker/" + "?link=" + yt_link + "&name=" + judgeName);
-        confirmTimeout = setTimeout(saveData,500);
+        var refreshTimeout = setTimeout(saveData,500);
     }
 }
