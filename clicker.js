@@ -105,6 +105,7 @@ $("body").on("keydown", function(event)
 
 function showOtherClicks(count)
 {
+  console.log(graphB);
   console.log(graphB[count][0]);
   if ((deciseconds/10) == graphB[count][0])
   {
