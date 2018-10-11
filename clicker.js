@@ -176,17 +176,17 @@ function viewAdd()
   viewDeciseconds++;
   if ((viewDeciseconds/10) == graphB[viewIncrement][0])
   {
-    if (graphB[viewIncrement][1] == (graphB[viewIncrement-1][1])+1)
+    if (graphB[viewIncrement][1] == ((graphB[(viewIncrement-1)][1])+1))
     {
       changeColors("pos");
       viewIncrement+=1;
     }
-    else if (graphB[viewIncrement][1] == (graphB[viewIncrement-1][1])-1)
+    else if (graphB[viewIncrement][1] == ((graphB[(viewIncrement-1)][1])-1))
     {
       changeColors("neg");
       viewIncrement+=1;
     }
-    else if (graphB[viewIncrement][1] == (graphB[viewIncrement-1][1])+2)
+    else if (graphB[viewIncrement][1] == ((graphB[(viewIncrement-1)][1])+2))
     {
       changeColors("dub");
       viewIncrement+=1;
