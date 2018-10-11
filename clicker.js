@@ -99,21 +99,26 @@ $("body").on("keydown", function(event)
 function getBestSegment()
 {
   var compareList = [];
-  for (var i=0;i<(clickList.length)-10;i++)
+  for (var i=0;i<(clickList.length);i++)
   {
-    var clickDifference = clickList[i+10][1]-clickList[i][1];
-    var timeDifference =  clickList[i+10][0]-clickList[i][0];
-    compareList.push({clickDifference, timeDifference, i})
+    var j = i;
+    beginClick = clickList[j][1];
+    while (clickList[j][0] <= ((clickList[j][0])+10))
+    {
+      j++;
+    }
+    endClick = clickList[j][1];
+    var difference = endClick-beginClick;
+    compareList.push({difference, i, j})
   }
   console.log(compareList);
   compareList.sort(compareClick);
-  compareList.sort(compareTime);
   console.log(compareList);
 }
 
 function compareClick(a, b) {
-  const clickA = a.clickDifference;
-  const clickB = b.clickDifference;
+  const clickA = a.difference;
+  const clickB = b.difference;
 
   let comparison = 0;
   if (clickA > clickB)
@@ -125,22 +130,6 @@ function compareClick(a, b) {
     comparison = -1;
   }
   return comparison * -1;
-}
-
-function compareTime(a, b) {
-  const timeA = a.timeDifference;
-  const timeB = b.timeDifference;
-
-  let comparison = 0;
-  if (timeA > timeB)
-  {
-    comparison = 1;
-  }
-  else if (timeA < timeB)
-  {
-    comparison = -1;
-  }
-  return comparison;
 }
 
 function changeColors(type) {
