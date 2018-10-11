@@ -20,8 +20,7 @@ var clickReady = false;
 var graphReady = false;
 var isFlash = false;
 var isViewerMode = false;
-var otherClickCount = 0;
-var viewIncrement = 1;
+var viewIncrement = 0;
 
 $(document).ready(function() {
     let myurl = new URL(window.location.href);
@@ -174,10 +173,27 @@ function clickAdd()
 function viewAdd()
 {
   viewDeciseconds++;
-
   if ((viewDeciseconds/10) == graphB[viewIncrement][0])
   {
-    if (graphB[viewIncrement][1] == graphB[(viewIncrement-1)][1])
+    if (viewIncrement == 0)
+    {
+      if (graphB[viewIncrement][1] == 1)
+      {
+        changeColors("pos");
+        viewIncrement+=1;
+      }
+      else if (graphB[viewIncrement][1] == 2)
+      {
+        changeColors("dub");
+        viewIncrement+=1;
+      }
+      else if (graphB[viewIncrement][1] == -1)
+      {
+        changeColors("neg");
+        viewIncrement+=1;
+      }
+    }
+    else if (graphB[viewIncrement][1] == graphB[(viewIncrement-1)][1])
     {
       changeColors("pos");
       viewIncrement+=1;
@@ -277,7 +293,7 @@ function loadOtherList(list)
     var data = [];
     data = list[i].split(',');
     data[0] = parseFloat(data[0]);
-    data[1] = parseFloat(data[1]);
+    data[1] = parseInt(data[1]);
     graphB.push([data[0], data[1]]);
   }
   graphB.push(list[0]);
