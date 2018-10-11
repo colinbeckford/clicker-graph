@@ -103,7 +103,7 @@ function getBestSegment()
   {
     var clickDifference = clickList[i+10][1]-clickList[i][1];
     var timeDifference =  clickList[i+10][0]-clickList[i][0];
-    compareList.push({click=clickDifference, time=timeDifference, index=i})
+    compareList.push({clickDifference, timeDifference, i})
   }
   console.log(compareList);
   compareList.sort(compareClick);
@@ -112,8 +112,8 @@ function getBestSegment()
 }
 
 function compareClick(a, b) {
-  const clickA = a.click;
-  const clickB = b.click;
+  const clickA = a.clickDifference;
+  const clickB = b.clickDifference;
 
   let comparison = 0;
   if (clickA > clickB)
@@ -128,8 +128,8 @@ function compareClick(a, b) {
 }
 
 function compareTime(a, b) {
-  const timeA = a.time;
-  const timeB = b.time;
+  const timeA = a.timeDifference;
+  const timeB = b.timeDifference;
 
   let comparison = 0;
   if (timeA > timeB)
