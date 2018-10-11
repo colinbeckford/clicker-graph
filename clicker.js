@@ -30,6 +30,9 @@ $(document).ready(function() {
     }
     $('#query-link').hide();
     $('#share').hide();
+    $('#video').height('720px');
+    $('#video').width('1280px');
+
 });
 
 
