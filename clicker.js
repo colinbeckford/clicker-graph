@@ -106,7 +106,7 @@ $("body").on("keydown", function(event)
 function changeColors(type) {
   if (type == "pos")
   {
-    $("#video").css({"filter": "drop-shadow(30px 10px 4px #008000);"});
+    $("#video").css({"box-shadow": "10px 10px 5px green;"});
 
      // $("#video").css({"border-color": "#008000",
      //        "border-width":"15px",
@@ -114,7 +114,7 @@ function changeColors(type) {
   }
   else if (type == "neg")
   {
-    $("#video").css({"filter": "drop-shadow(30px 10px 4px #FF0000)"});
+    $("#video").css({"box-shadow": "10px 10px 5px red;"});
 
     // $("#video").css({"border-color": "#FF0000",
     //        "border-width":"15px",
@@ -122,7 +122,7 @@ function changeColors(type) {
   }
   else if (type == "dub")
   {
-    $("#video").css({"filter": "drop-shadow(30px 10px 4px #00FFFF)"});
+    $("#video").css({"box-shadow": "10px 10px 5px cyan;"});
 
     // $("#video").css({"border-color": "#00FFFF",
     //        "border-width":"15px",
@@ -132,7 +132,7 @@ function changeColors(type) {
 }
 
 function change() {
-  $("#video").css({"filter": "drop-shadow(30px 10px 4px #FFFFFF)"});
+  $("#video").css({"box-shadow": "10px 10px 5px white;"});
 
    // $("#video").css({"border-color": "#FFFFFF",
    //        "border-width":"15px",
