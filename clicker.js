@@ -173,7 +173,6 @@ function clickAdd()
 function viewAdd()
 {
   viewDeciseconds++;
-  console.log(graphB[viewIncrement][1]);
   if ((viewDeciseconds/10) == graphB[viewIncrement][0])
   {
     if (viewIncrement == 0)
@@ -426,8 +425,8 @@ function onYouTubeIframeAPIReady()
     }
   }
   player = new YT.Player('player', {
-  height: '720',
-  width: '1280',
+  height: '600',
+  width: '720',
   videoId: yt_link,
   events: {
   'onReady': onPlayerReady,
