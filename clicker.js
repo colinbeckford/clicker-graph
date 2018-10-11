@@ -1,4 +1,4 @@
-var deciseconds = 0;
+var clickDeciseconds = 0;
 var judgeEntry = [];
 var clickList = [];
 var graphB = [];
@@ -7,7 +7,8 @@ var graphD = [];
 var judgeName = "";
 var otherJudgeData = "";
 var yt_link = "";
-var t;
+var ct;
+var vt;
 var positive = 0;
 var negative = 0;
 var player;
@@ -42,21 +43,20 @@ $("body").on("keydown", function(event)
 {
   if (event.which == 13 && isViewerMode == true)
   {
-    timer();
-    showOtherClicks(otherClickCount);
+    viewTimer();
   }
   if (event.which == 13 && enterReady == true && isViewerMode == false)
   {
-    timer();
+    clickTimer();
     enterReady = false;
     clickReady = true;
   }
   else if ((event.which == 189 || event.which == 173) && clickReady == true)
   {
-    console.log(deciseconds/10);
+    console.log(clickDeciseconds/10);
     negative+=1;
     raw = positive-negative;
-    seconds = (deciseconds/10);
+    seconds = (clickDeciseconds/10);
     clickList.push([seconds, raw]);
     $("#click-display").text("+" + String(positive) + " " + "-" + String(negative));
     if (isFlash == true)
@@ -70,7 +70,7 @@ $("body").on("keydown", function(event)
     singleClick+=1;
     positive+=1;
     raw = positive-negative;
-    seconds = (deciseconds/10);
+    seconds = (clickDeciseconds/10);
     clickList.push([seconds, raw]);
     $("#click-display").text("+" + String(positive) + " " + "-" + String(negative));
     if (isFlash == true)
@@ -83,7 +83,7 @@ $("body").on("keydown", function(event)
     doubleClick+=1;
     positive+=2;
     raw = positive-negative;
-    seconds = (deciseconds/10);
+    seconds = (clickDeciseconds/10);
     clickList.push([seconds, raw]);
     $("#click-display").text("+" + String(positive) + " " + "-" + String(negative));
     if (isFlash == true)
@@ -99,22 +99,20 @@ $("body").on("keydown", function(event)
     var confirmTimeout = setTimeout(confirmEntry,500);
     $('#query-link').html("http://scalescollective.com/clicker/" + "?link=" + yt_link);
     $('#query-link').show();
-
-
   }
 });
 
 function showOtherClicks(count)
 {
-  while (isViewerMode == true)
+  while (viewDeciseconds < 1850)
   {
-  if ((deciseconds/10) == graphB[count][0])
+  if ((viewDeciseconds/10) == graphB[count][0])
   {
     changeColors("pos");
     count+=1;
     showOtherClicks(count);
   }
-  }
+}
 }
 
 function changeColors(type) {
@@ -178,15 +176,26 @@ function handleSignOutClick(event) {
 gapi.auth2.getAuthInstance().signOut();
 }
 
-function add()
+function clickAdd()
 {
-  deciseconds++;
-  timer();
+  clickDeciseconds++;
+  clickTimer();
 }
 
-function timer()
+function viewAdd()
 {
-  t = setTimeout(add, 100);
+  viewDeciseconds++;
+  viewTimer();
+}
+
+function clickTimer()
+{
+  ct = setTimeout(clickAdd, 100);
+}
+
+function viewTimer()
+{
+  vt = setTimeout(viewAdd, 100);
 }
 
 function saveData()
