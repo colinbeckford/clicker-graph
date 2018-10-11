@@ -376,7 +376,7 @@ function showChart(listA, listB)
     {
       breakpointB = listB[c+2];
       judgeC = listB[c+1];
-
+      break;
     }
   }
   breakpointB+=1;
@@ -387,7 +387,7 @@ function showChart(listA, listB)
     if (listB[d+2] == " ")
     {
       judgeD = listB[d+1];
-
+      break;
     }
   }
   var trace1 =
