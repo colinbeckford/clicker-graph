@@ -114,7 +114,7 @@ function changeColors(type) {
   }
   else if (type == "neg")
   {
-    $("#video").css({"filter": "drop-shadow(30px 10px 4px #FF0000);"});
+    $("#video").css({"filter": "drop-shadow(30px 10px 4px #FF0000)"});
 
     // $("#video").css({"border-color": "#FF0000",
     //        "border-width":"15px",
@@ -122,7 +122,7 @@ function changeColors(type) {
   }
   else if (type == "dub")
   {
-    $("#video").css({"filter": "drop-shadow(30px 10px 4px #00FFFF);"});
+    $("#video").css({"filter": "drop-shadow(30px 10px 4px #00FFFF)"});
 
     // $("#video").css({"border-color": "#00FFFF",
     //        "border-width":"15px",
@@ -132,7 +132,7 @@ function changeColors(type) {
 }
 
 function change() {
-  $("#video").css({"filter": "drop-shadow(30px 10px 4px #FFFFFF);"});
+  $("#video").css({"filter": "drop-shadow(30px 10px 4px #FFFFFF)"});
 
    // $("#video").css({"border-color": "#FFFFFF",
    //        "border-width":"15px",
@@ -440,8 +440,8 @@ function onYouTubeIframeAPIReady()
     }
   }
   player = new YT.Player('player', {
-  height: '600',
-  width: '720',
+  height: '480',
+  width: '854',
   videoId: yt_link,
   events: {
   'onReady': onPlayerReady,
