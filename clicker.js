@@ -1,4 +1,5 @@
 var clickDeciseconds = 0;
+var viewDeciseconds = 0;
 var judgeEntry = [];
 var clickList = [];
 var graphB = [];
