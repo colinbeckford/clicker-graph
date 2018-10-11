@@ -104,9 +104,7 @@ $("body").on("keydown", function(event)
 
 function showOtherClicks(count)
 {
-  console.log(graphB[count]);
-  var tempSplit = graphB[count].split(',');;
-  if ((deciseconds/10) == tempSplit[0])
+  if ((deciseconds/10) == graphB[count][0])
   {
     console.log("Found equal time");
     changeColors("pos");
