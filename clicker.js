@@ -16,6 +16,7 @@ var doubleClick = 0;
 var enterReady = false;
 var clickReady = false;
 var graphReady = false;
+var isFlash = false;
 
 $(document).ready(function() {
     let myurl = new URL(window.location.href);
@@ -34,8 +35,6 @@ $(document).ready(function() {
 
 $("body").on("keydown", function(event)
 {
-  var isFlash = $("#flash").is(":checked");
-
   if (event.which == 13 && enterReady == true)
   {
     timer();
@@ -44,43 +43,42 @@ $("body").on("keydown", function(event)
   }
   else if ((event.which == 189 || event.which == 173) && clickReady == true)
   {
-    if (isFlash == true)
-    {
-      changeColors("neg");
-    }
     negative+=1;
-    changeColors("neg");
     raw = positive-negative;
     seconds = (deciseconds/10);
     clickList.push([seconds, raw]);
     $("#click-display").text("+" + String(positive) + " " + "-" + String(negative));
+    if (isFlash == true)
+    {
+      changeColors("neg");
+    }
 
   }
   else if (event.which == 49 && clickReady == true)
   {
-    if (isFlash == true)
-    {
-      changeColors("pos");
-    }
     singleClick+=1;
     positive+=1;
     raw = positive-negative;
     seconds = (deciseconds/10);
     clickList.push([seconds, raw]);
     $("#click-display").text("+" + String(positive) + " " + "-" + String(negative));
+    if (isFlash == true)
+    {
+      changeColors("pos");
+    }
   }
   else if (event.which == 50 && clickReady == true)
   {
-    if (isFlash == true)
-    {
-      changeColors("dub");
-    }
     doubleClick+=1;
     positive+=2;
     raw = positive-negative;
     seconds = (deciseconds/10);
     clickList.push([seconds, raw]);
     $("#click-display").text("+" + String(positive) + " " + "-" + String(negative));
+    if (isFlash == true)
+    {
+      changeColors("dub");
+    }
   }
   else if (event.which == 48)
   {
@@ -97,21 +95,21 @@ $("body").on("keydown", function(event)
 function changeColors(type) {
   if (type == "pos")
   {
-    document.body.style.background = "green";
-  }
-  else if (type == "dub")
-  {
-    document.body.style.background = "cyan";
+     $("#video").css("color", "green");
   }
   else if (type == "neg")
   {
-    document.body.style.background = "red";
+    $("#video").css("color", "red");
+  }
+  else if (type == "dub")
+  {
+    $("#video").css("color", "cyan");
   }
   var colorFlash = setTimeout('change()',200);
 }
 
 function change() {
-   document.body.style.background = "white";
+   $("#video").css("color", "white");
    }
 
 
@@ -160,6 +158,7 @@ function timer()
 
 function saveData()
 {
+  isFlash = $("#flash").is(":checked");
   alert("Remember to press ENTER key when the freestyle starts!");
   enterReady = true;
   judgeName = $('#judge-name').val();
