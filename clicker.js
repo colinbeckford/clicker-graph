@@ -191,14 +191,17 @@ function viewAdd()
     {
       if (graphB[viewIncrement][1] == 1)
       {
+        $("#click-display").text(graphB[viewIncrement][1]);
         changeColors("pos");
       }
       else if (graphB[viewIncrement][1] == 2)
       {
+        $("#click-display").text(graphB[viewIncrement][1]);
         changeColors("dub");
       }
       else if (graphB[viewIncrement][1] == -1)
       {
+        $("#click-display").text(graphB[viewIncrement][1]);
         changeColors("neg");
       }
       viewIncrement+=1;
@@ -207,17 +210,17 @@ function viewAdd()
     {
       if (graphB[viewIncrement][1] == (graphB[viewIncrement-1][1])+1)
       {
-        $("#click-display").text(graphB[viewIncrement]);
+        $("#click-display").text(graphB[viewIncrement][1]);
         changeColors("pos");
       }
       else if (graphB[viewIncrement][1] == (graphB[viewIncrement-1][1])-1)
       {
-        $("#click-display").text(graphB[viewIncrement]);
+        $("#click-display").text(graphB[viewIncrement][1]);
         changeColors("neg");
       }
       else if (graphB[viewIncrement][1] == (graphB[viewIncrement-1][1])+2)
       {
-        $("#click-display").text(graphB[viewIncrement]);
+        $("#click-display").text(graphB[viewIncrement][1]);
         changeColors("dub");
       }
       viewIncrement+=1;
