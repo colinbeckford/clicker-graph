@@ -103,9 +103,44 @@ function getBestSegment()
   {
     var clickDifference = clickList[i+10][1]-clickList[i][1];
     var timeDifference =  clickList[i+10][0]-clickList[i][0];
-    compareList.push([clickDifference, timeDifference, i]);
+    compareList.push({click=clickDifference, time=timeDifference, index=i})
   }
   console.log(compareList);
+  compareList.sort(compareClick);
+  compareList.sort(compareTime);
+  console.log(compareList);
+}
+
+function compareClick(a, b) {
+  const clickA = a.click;
+  const clickB = b.click;
+
+  let comparison = 0;
+  if (clickA > clickB)
+  {
+    comparison = 1;
+  }
+  else if (clickA < clickB)
+  {
+    comparison = -1;
+  }
+  return comparison * -1;
+}
+
+function compareTime(a, b) {
+  const timeA = a.time;
+  const timeB = b.time;
+
+  let comparison = 0;
+  if (timeA > timeB)
+  {
+    comparison = 1;
+  }
+  else if (timeA < timeB)
+  {
+    comparison = -1;
+  }
+  return comparison;
 }
 
 function changeColors(type) {
