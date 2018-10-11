@@ -174,20 +174,38 @@ function clickAdd()
 function viewAdd()
 {
   viewDeciseconds++;
-  pastClick = graphB[(viewIncrement-1)][1];
+
   if ((viewDeciseconds/10) == graphB[viewIncrement][0])
   {
-    if (graphB[viewIncrement][1] == (pastClick+1))
+    if (viewIncrement == 0)
+    {
+      if (graphB[viewIncrement][1] == 1)
+      {
+        changeColors("pos");
+        viewIncrement+=1;
+      }
+      else if (graphB[viewIncrement][1] == 2)
+      {
+        changeColors("dub");
+        viewIncrement+=1;
+      }
+      else if (graphB[viewIncrement][1] == -1)
+      {
+        changeColors("neg");
+        viewIncrement+=1;
+      }
+    }
+    else if (graphB[viewIncrement][1] == graphB[(viewIncrement-1)][1])
     {
       changeColors("pos");
       viewIncrement+=1;
     }
-    else if (graphB[viewIncrement][1] == (pastClick-1))
+    else if (graphB[viewIncrement][1] == graphB[(viewIncrement-1)][1])
     {
       changeColors("neg");
       viewIncrement+=1;
     }
-    else if (graphB[viewIncrement][1] == (pastClick+2))
+    else if (graphB[viewIncrement][1] == graphB[(viewIncrement-1)][1])
     {
       changeColors("dub");
       viewIncrement+=1;
