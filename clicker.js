@@ -46,7 +46,6 @@ $("body").on("keydown", function(event)
   if (event.which == 13 && isViewerMode == true)
   {
     viewTimer();
-    showOtherClicks(viewIncrement);
   }
   if (event.which == 13 && enterReady == true && isViewerMode == false)
   {
@@ -56,7 +55,6 @@ $("body").on("keydown", function(event)
   }
   else if ((event.which == 189 || event.which == 173) && clickReady == true)
   {
-    console.log(clickDeciseconds/10);
     negative+=1;
     raw = positive-negative;
     seconds = (clickDeciseconds/10);
@@ -105,25 +103,6 @@ $("body").on("keydown", function(event)
   }
 });
 
-function showOtherClicks(count)
-{
-  console.log("Function called");
-  while (viewDeciseconds < 1850)
-  {
-  console.log("While loop running");
-  if ((viewDeciseconds/10) == graphB[count][0])
-  {
-    console.log("Found equal");
-    changeColors("pos");
-    count+=1;
-    showOtherClicks(count);
-  }
-  else if (viewDeciseconds > 1000)
-  {
-    break;
-  }
-  }
-}
 
 function changeColors(type) {
   if (type == "pos")
@@ -195,6 +174,11 @@ function clickAdd()
 function viewAdd()
 {
   viewDeciseconds++;
+  if ((viewDeciseconds/10) == graphB[viewIncrement][0])
+  {
+    changeColors("pos");
+    viewIncrement+=1;
+  }
   viewTimer();
 }
 
