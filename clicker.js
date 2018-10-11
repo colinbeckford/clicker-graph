@@ -380,7 +380,7 @@ function showChart(listA, listB)
     }
   }
   breakpointB+=1;
-  for (var d=breakpointB;D<listB.length;d++)
+  for (var d=breakpointB;d<listB.length;d++)
   {
     dX.push(listB[d][0]);
     dY.push(listB[d][1]);
