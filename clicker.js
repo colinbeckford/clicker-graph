@@ -34,15 +34,14 @@ $(document).ready(function() {
     }
     $('#query-link').hide();
     $('#share').hide();
-    $('#video').height('720px');
-    $('#video').width('1280px');
-
+    $('#video').height('480px');
+    $('#video').width('854px');
 });
 
 
 $("body").on("keydown", function(event)
 {
-  if (event.which == 13 && isViewerMode == true)
+  if (event.which == 13 && isViewerMode == true && isFlash == true)
   {
     viewTimer();
   }
@@ -451,6 +450,8 @@ if (event.data == YT.PlayerState.PLAYING && !done)
 
 function getScores()
 {
+  isFlash = $("#flash").is(":checked");
+  alert("Remember to press ENTER key when the freestyle starts!");
   isViewerMode = true;
   yt_link = $('#yt-link').val();
   for (var i=0;i<yt_link.length;i++)
