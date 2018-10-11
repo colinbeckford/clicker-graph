@@ -104,7 +104,7 @@ function getBestSegment()
   {
     j = i;
     beginClick = clickList[j][1];
-    console.log(beginClick);
+    beginTime = parseInt(clickList[j][0]);
     tenLater = (clickList[j][0])+10;
     while (clickList[j][0] <= tenLater && j<clickList.length)
     {
@@ -113,14 +113,13 @@ function getBestSegment()
         j++;
       }
     }
+    endTime = parseInt(clickList[j][0]);
     endClick = clickList[j][1];
-    console.log(endClick);
     var difference = endClick-beginClick;
-    compareList.push({difference, i, j})
+    compareList.push({startTime,endTime,difference});
   }
-  console.log(compareList);
   compareList.sort(compareClick);
-  console.log(compareList);
+  alert('The highest scoring 10 second interval in this routine is ' + compareList[0].startTime + ' seconds to ' + compareList[0].endTime + ' seconds.');
 }
 
 function compareClick(a, b) {
