@@ -103,7 +103,7 @@ function getBestSegment()
   {
     var clickDifference = clickList[i+10][1]-clickList[i][1];
     var timeDifference =  clickList[i+10][0]-clickList[i][0];
-    compareList.push([clickDifference, i]);
+    compareList.push([clickDifference, timeDifference, i]);
   }
   console.log(compareList);
 }
