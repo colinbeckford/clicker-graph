@@ -358,17 +358,21 @@ function showChart(listA, listB)
       break;
     }
   }
+
   for (var a=0;a<listA.length;a++)
   {
     aX.push(listA[a][0]);
     aY.push(listA[a][1]);
   }
+
   for (var b=0;b<breakpointA;b++)
   {
     bX.push(listB[b][0]);
     bY.push(listB[b][1]);
   }
+
   breakpointA+=1;
+
   for (var c=breakpointA;c<listB.length;c++)
   {
     cX.push(listB[c][0]);
@@ -380,7 +384,9 @@ function showChart(listA, listB)
       break;
     }
   }
+
   breakpointB+=1;
+
   for (var d=breakpointB;d<listB.length;d++)
   {
     dX.push(listB[d][0]);
@@ -391,6 +397,8 @@ function showChart(listA, listB)
       break;
     }
   }
+  console.log(dX);
+  console.log(dY);
   var trace1 =
   {
     x: aX,
