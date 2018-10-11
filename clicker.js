@@ -119,7 +119,8 @@ function getBestSegment()
     compareList.push({beginTime,endTime,difference});
   }
   compareList.sort(compareClick);
-  alert('The highest scoring 10 second interval in this routine is ' + compareList[0].startTime + ' seconds to ' + compareList[0].endTime + ' seconds.');
+  console.log(compareClick);
+
 }
 
 function compareClick(a, b) {
