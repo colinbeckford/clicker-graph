@@ -53,6 +53,7 @@ $("body").on("keydown", function(event)
   }
   else if ((event.which == 189 || event.which == 173) && clickReady == true)
   {
+    console.log(deciseconds/10);
     negative+=1;
     raw = positive-negative;
     seconds = (deciseconds/10);
@@ -104,6 +105,7 @@ $("body").on("keydown", function(event)
 
 function showOtherClicks(count)
 {
+  console.log(graphB[count][0]);
   if ((deciseconds/10) == graphB[count][0])
   {
     console.log("Found equal time");
