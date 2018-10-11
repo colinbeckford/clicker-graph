@@ -106,37 +106,29 @@ $("body").on("keydown", function(event)
 function changeColors(type) {
   if (type == "pos")
   {
-    $("#video").css({"box-shadow": "10px 10px 5px green;"});
-
-     // $("#video").css({"border-color": "#008000",
-     //        "border-width":"15px",
-     //        "border-style":"solid"});
+   $("#video").css({"border-color": "#008000",
+            "border-width":"15px",
+            "border-style":"solid"});
   }
   else if (type == "neg")
   {
-    $("#video").css({"box-shadow": "10px 10px 5px red;"});
-
-    // $("#video").css({"border-color": "#FF0000",
-    //        "border-width":"15px",
-    //        "border-style":"solid"});
+    $("#video").css({"border-color": "#FF0000",
+           "border-width":"15px",
+           "border-style":"solid"});
   }
   else if (type == "dub")
   {
-    $("#video").css({"box-shadow": "10px 10px 5px cyan;"});
-
-    // $("#video").css({"border-color": "#00FFFF",
-    //        "border-width":"15px",
-    //        "border-style":"solid"});
+    $("#video").css({"border-color": "#00FFFF",
+           "border-width":"15px",
+           "border-style":"solid"});
   }
   var colorFlash = setTimeout('change()',200);
 }
 
 function change() {
-  $("#video").css({"box-shadow": "10px 10px 5px white;"});
-
-   // $("#video").css({"border-color": "#FFFFFF",
-   //        "border-width":"15px",
-   //        "border-style":"solid"});
+   $("#video").css({"border-color": "#FFFFFF",
+          "border-width":"15px",
+          "border-style":"solid"});
    }
 
 
@@ -338,23 +330,29 @@ function makeApiCall(list)
 
 function showChart(listA, listB)
 {
+  console.log(listB);
   makeApiCall(judgeEntry);
-  var breakpoint = 0;
+  var breakpointA = 0;
+  var breakpointB = 0;
   var judgeB = "";
   var judgeC = "";
+  var judgeD = "";
+  var judgeE = "";
   var aX = [];
   var aY = [];
   var bX = [];
   var bY = [];
   var cX = [];
   var cY = [];
+  var dX = [];
+  var dY = [];
   var count = 0;
   for (var i=0;i<listB.length;i++)
   {
     if (listB[i] == " ")
     {
       count++;
-      breakpoint = i;
+      breakpointA = i;
       judgeB = listB[i-1];
       break;
     }
@@ -364,20 +362,32 @@ function showChart(listA, listB)
     aX.push(listA[a][0]);
     aY.push(listA[a][1]);
   }
-  for (var b=0;b<breakpoint;b++)
+  for (var b=0;b<breakpointA;b++)
   {
     bX.push(listB[b][0]);
     bY.push(listB[b][1]);
   }
-  breakpoint+=1;
-  for (var c=breakpoint;c<listB.length;c++)
+  breakpointA+=1;
+  for (var c=breakpointA;c<listB.length;c++)
   {
     cX.push(listB[c][0]);
     cY.push(listB[c][1]);
     if (listB[c+2] == " ")
     {
+      breakpointB = listB[c+2];
       judgeC = listB[c+1];
-      break;
+
+    }
+  }
+  breakpointB+=1;
+  for (var d=breakpointB;D<listB.length;d++)
+  {
+    dX.push(listB[d][0]);
+    dY.push(listB[d][1]);
+    if (listB[d+2] == " ")
+    {
+      judgeD = listB[d+1];
+
     }
   }
   var trace1 =
@@ -401,7 +411,14 @@ function showChart(listA, listB)
     mode: 'lines',
     name: judgeC
   };
-  var data = [trace1, trace2, trace3];
+  var trace4 =
+  {
+    x: dX,
+    y: dY,
+    mode: 'lines',
+    name: judgeD
+  };
+  var data = [trace1, trace2, trace3, trace4];
   var layout = {
     title: 'Your Scores',
     xaxis: {
