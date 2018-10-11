@@ -116,7 +116,7 @@ function getBestSegment()
     var endTime = parseInt(clickList[j][0]);
     var endClick = clickList[j][1];
     var difference = endClick-beginClick;
-    compareList.push({startTime,endTime,difference});
+    compareList.push({beginTime,endTime,difference});
   }
   compareList.sort(compareClick);
   alert('The highest scoring 10 second interval in this routine is ' + compareList[0].startTime + ' seconds to ' + compareList[0].endTime + ' seconds.');
