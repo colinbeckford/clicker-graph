@@ -108,7 +108,7 @@ function getBestSegment()
     tenLater = (clickList[j][0])+10;
     while (clickList[j][0] <= tenLater && j<clickList.length)
     {
-      if (j <= (clickList.length)-1)
+      if (j < (clickList.length)-1)
       {
         j++;
       }
