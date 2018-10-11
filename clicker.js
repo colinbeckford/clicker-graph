@@ -93,6 +93,7 @@ $("body").on("keydown", function(event)
   }
   else if (event.which == 48)
   {
+    isViewerMode = false;
     player.stopVideo();
     clearTimeout(t);
     var confirmTimeout = setTimeout(confirmEntry,500);
@@ -105,14 +106,14 @@ $("body").on("keydown", function(event)
 
 function showOtherClicks(count)
 {
-  console.log(graphB);
-  console.log(graphB[count][0]);
+  while (isViewerMode == true)
+  {
   if ((deciseconds/10) == graphB[count][0])
   {
-    console.log("Found equal time");
     changeColors("pos");
     count+=1;
     showOtherClicks(count);
+  }
   }
 }
 
