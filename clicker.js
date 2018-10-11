@@ -177,7 +177,7 @@ function viewAdd()
 
   if ((viewDeciseconds/10) == graphB[viewIncrement][0])
   {
-    else if (graphB[viewIncrement][1] == graphB[(viewIncrement-1)][1])
+    if (graphB[viewIncrement][1] == graphB[(viewIncrement-1)][1])
     {
       changeColors("pos");
       viewIncrement+=1;
