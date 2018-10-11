@@ -17,6 +17,7 @@ var enterReady = false;
 var clickReady = false;
 var graphReady = false;
 var isFlash = false;
+var isViewerMode = false;
 
 $(document).ready(function() {
     let myurl = new URL(window.location.href);
@@ -38,6 +39,19 @@ $(document).ready(function() {
 
 $("body").on("keydown", function(event)
 {
+  if (event.which == 13 && isViewerMode == true)
+  {
+    timer();
+    var count = 0;
+    if ((deciseconds/10) == graphB[count][0])
+    {
+      console.log("Found equal time");
+      changeColors("pos");
+      count++;
+    }
+    enterReady = false;
+    clickReady = true;
+  }
   if (event.which == 13 && enterReady == true)
   {
     timer();
@@ -86,7 +100,6 @@ $("body").on("keydown", function(event)
   else if (event.which == 48)
   {
     player.stopVideo();
-    getBestSegment();
     clearTimeout(t);
     var confirmTimeout = setTimeout(confirmEntry,500);
     $('#query-link').html("http://scalescollective.com/clicker/" + "?link=" + yt_link);
@@ -96,48 +109,6 @@ $("body").on("keydown", function(event)
   }
 });
 
-function getBestSegment()
-{
-  var compareList = [];
-  var j = 0;
-  for (var i=0;i<(clickList.length);i++)
-  {
-    j = i;
-    var beginClick = clickList[j][1];
-    var beginTime = parseInt(clickList[j][0]);
-    var tenLater = (clickList[j][0])+10;
-    while (clickList[j][0] <= tenLater && j<clickList.length)
-    {
-      if (j < (clickList.length)-1)
-      {
-        j++;
-      }
-    }
-    var endTime = parseInt(clickList[j][0]);
-    var endClick = clickList[j][1];
-    var difference = endClick-beginClick;
-    compareList.push({beginTime,endTime,difference});
-  }
-  compareList.sort(compareClick);
-  console.log(compareClick);
-
-}
-
-function compareClick(a, b) {
-  const clickA = a.difference;
-  const clickB = b.difference;
-
-  let comparison = 0;
-  if (clickA > clickB)
-  {
-    comparison = 1;
-  }
-  else if (clickA < clickB)
-  {
-    comparison = -1;
-  }
-  return comparison * -1;
-}
 
 function changeColors(type) {
   if (type == "pos")
@@ -441,6 +412,7 @@ if (event.data == YT.PlayerState.PLAYING && !done)
 
 function getScores()
 {
+  isViewerMode == true;
   yt_link = $('#yt-link').val();
   for (var i=0;i<yt_link.length;i++)
   {
