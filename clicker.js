@@ -21,7 +21,7 @@ var graphReady = false;
 var isFlash = false;
 var isViewerMode = false;
 var otherClickCount = 0;
-var viewIncrement = 0;
+var viewIncrement = 1;
 
 $(document).ready(function() {
     let myurl = new URL(window.location.href);
@@ -177,24 +177,6 @@ function viewAdd()
 
   if ((viewDeciseconds/10) == graphB[viewIncrement][0])
   {
-    if (viewIncrement == 0)
-    {
-      if (graphB[viewIncrement][1] == 1)
-      {
-        changeColors("pos");
-        viewIncrement+=1;
-      }
-      else if (graphB[viewIncrement][1] == 2)
-      {
-        changeColors("dub");
-        viewIncrement+=1;
-      }
-      else if (graphB[viewIncrement][1] == -1)
-      {
-        changeColors("neg");
-        viewIncrement+=1;
-      }
-    }
     else if (graphB[viewIncrement][1] == graphB[(viewIncrement-1)][1])
     {
       changeColors("pos");
