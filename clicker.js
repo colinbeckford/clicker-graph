@@ -368,8 +368,8 @@ function onYouTubeIframeAPIReady()
     }
   }
   player = new YT.Player('player', {
-  height: '480',
-  width: '854',
+  height: '720',
+  width: '1280',
   videoId: yt_link,
   events: {
   'onReady': onPlayerReady,
