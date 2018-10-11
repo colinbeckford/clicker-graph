@@ -173,25 +173,23 @@ function clickAdd()
 function viewAdd()
 {
   viewDeciseconds++;
+  console.log(graphB[viewIncrement][1]);
   if ((viewDeciseconds/10) == graphB[viewIncrement][0])
   {
-    if (viewIncrement == 0)
+    if (viewIncrement == 0 && graphB[viewIncrement][1] == 1)
     {
-      if (graphB[viewIncrement][1] == 1)
-      {
-        changeColors("pos");
-        viewIncrement+=1;
-      }
-      else if (graphB[viewIncrement][1] == 2)
-      {
-        changeColors("dub");
-        viewIncrement+=1;
-      }
-      else if (graphB[viewIncrement][1] == -1)
-      {
-        changeColors("neg");
-        viewIncrement+=1;
-      }
+      changeColors("pos");
+      viewIncrement+=1;
+    }
+    else if (viewIncrement == 0 && graphB[viewIncrement][1] == 2)
+    {
+      changeColors("dub");
+      viewIncrement+=1;
+    }
+    else if (viewIncrement == 0 && graphB[viewIncrement][1] == -1)
+    {
+      changeColors("neg");
+      viewIncrement+=1;
     }
     else if (graphB[viewIncrement][1] == graphB[(viewIncrement-1)][1])
     {
