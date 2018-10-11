@@ -99,16 +99,19 @@ $("body").on("keydown", function(event)
 function getBestSegment()
 {
   var compareList = [];
+  var j = 0;
   for (var i=0;i<(clickList.length);i++)
   {
-    var j = 0;
     j = i;
     beginClick = clickList[j][1];
     console.log(beginClick);
     tenLater = (clickList[j][0])+10;
     while (clickList[j][0] <= tenLater && j<clickList.length)
     {
+      if (j <= (clickList.length)-1)
+      {
         j++;
+      }
     }
     endClick = clickList[j][1];
     console.log(endClick);
