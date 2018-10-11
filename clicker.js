@@ -96,19 +96,19 @@ function changeColors(type) {
   if (type == "pos")
   {
      $("#video").css({"border-color": "#008000",
-            "border-width":"1px",
+            "border-width":"15px",
             "border-style":"solid"});
   }
   else if (type == "neg")
   {
     $("#video").css({"border-color": "#FF0000",
-           "border-width":"1px",
+           "border-width":"15px",
            "border-style":"solid"});
   }
   else if (type == "dub")
   {
     $("#video").css({"border-color": "#00FFFF",
-           "border-width":"1px",
+           "border-width":"15px",
            "border-style":"solid"});
   }
   var colorFlash = setTimeout('change()',200);
@@ -116,7 +116,7 @@ function changeColors(type) {
 
 function change() {
    $("#video").css({"border-color": "#FFFFFF",
-          "border-width":"1px",
+          "border-width":"15px",
           "border-style":"solid"});
    }
 
