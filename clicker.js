@@ -86,6 +86,7 @@ $("body").on("keydown", function(event)
   else if (event.which == 48)
   {
     player.stopVideo();
+    getBestSegment();
     clearTimeout(t);
     var confirmTimeout = setTimeout(confirmEntry,500);
     $('#query-link').html("http://scalescollective.com/clicker/" + "?link=" + yt_link);
@@ -94,6 +95,18 @@ $("body").on("keydown", function(event)
 
   }
 });
+
+function getBestSegment()
+{
+  var compareList = [];
+  for (var i=0;i<(clickList.length)-10;i++)
+  {
+    var clickDifference = clickList[i+10][1]-clickList[i][1];
+    var timeDifference =  clickList[i+10][0]-clickList[i][0];
+    compareList.push([clickDifference, i]);
+  }
+  console.log(compareList);
+}
 
 function changeColors(type) {
   if (type == "pos")
