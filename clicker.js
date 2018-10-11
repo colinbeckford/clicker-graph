@@ -45,6 +45,7 @@ $("body").on("keydown", function(event)
   if (event.which == 13 && isViewerMode == true)
   {
     viewTimer();
+    showOtherClicks(count);
   }
   if (event.which == 13 && enterReady == true && isViewerMode == false)
   {
@@ -105,10 +106,13 @@ $("body").on("keydown", function(event)
 
 function showOtherClicks(count)
 {
+  console.log("Function called");
   while (viewDeciseconds < 1850)
   {
+  console.log("While loop running");
   if ((viewDeciseconds/10) == graphB[count][0])
   {
+    console.log("Found equal");
     changeColors("pos");
     count+=1;
     showOtherClicks(count);
