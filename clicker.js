@@ -118,7 +118,11 @@ function showOtherClicks(count)
     count+=1;
     showOtherClicks(count);
   }
-}
+  else if (viewDeciseconds > 1000)
+  {
+    break;
+  }
+  }
 }
 
 function changeColors(type) {
