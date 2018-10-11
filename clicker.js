@@ -103,9 +103,9 @@ function getBestSegment()
   for (var i=0;i<(clickList.length);i++)
   {
     j = i;
-    beginClick = clickList[j][1];
-    beginTime = parseInt(clickList[j][0]);
-    tenLater = (clickList[j][0])+10;
+    var beginClick = clickList[j][1];
+    var beginTime = parseInt(clickList[j][0]);
+    var tenLater = (clickList[j][0])+10;
     while (clickList[j][0] <= tenLater && j<clickList.length)
     {
       if (j < (clickList.length)-1)
@@ -113,8 +113,8 @@ function getBestSegment()
         j++;
       }
     }
-    endTime = parseInt(clickList[j][0]);
-    endClick = clickList[j][1];
+    var endTime = parseInt(clickList[j][0]);
+    var endClick = clickList[j][1];
     var difference = endClick-beginClick;
     compareList.push({startTime,endTime,difference});
   }
