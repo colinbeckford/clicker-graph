@@ -95,21 +95,29 @@ $("body").on("keydown", function(event)
 function changeColors(type) {
   if (type == "pos")
   {
-     $("#video").css("color", "green");
+     $("#video").css({"border-color": "#008000",
+            "border-width":"1px",
+            "border-style":"solid"});
   }
   else if (type == "neg")
   {
-    $("#video").css("color", "red");
+    $("#video").css({"border-color": "#FF0000",
+           "border-width":"1px",
+           "border-style":"solid"});
   }
   else if (type == "dub")
   {
-    $("#video").css("color", "cyan");
+    $("#video").css({"border-color": "#00FFFF",
+           "border-width":"1px",
+           "border-style":"solid"});
   }
   var colorFlash = setTimeout('change()',200);
 }
 
 function change() {
-   $("#video").css("color", "white");
+   $("#video").css({"border-color": "#FFFFFF",
+          "border-width":"1px",
+          "border-style":"solid"});
    }
 
 
