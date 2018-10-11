@@ -36,6 +36,7 @@ $(document).ready(function() {
     $('#share').hide();
     $('#video').height('480px');
     $('#video').width('854px');
+    $('#chart').width('854px');
 });
 
 
@@ -94,7 +95,7 @@ $("body").on("keydown", function(event)
   {
     isViewerMode = false;
     player.stopVideo();
-    clearTimeout(t);
+    clearTimeout(ct);
     var confirmTimeout = setTimeout(confirmEntry,500);
     $('#query-link').html("http://scalescollective.com/clicker/" + "?link=" + yt_link);
     $('#query-link').show();
@@ -172,7 +173,11 @@ function clickAdd()
 function viewAdd()
 {
   viewDeciseconds++;
-  if ((viewDeciseconds/10) == graphB[viewIncrement][0])
+  if (graphB[viewIncrement] == " ")
+  {
+    clearTimeout(vt);
+  }
+  else if ((viewDeciseconds/10) == graphB[viewIncrement][0])
   {
     if (viewIncrement == 0)
     {
@@ -194,14 +199,17 @@ function viewAdd()
     {
       if (graphB[viewIncrement][1] == (graphB[viewIncrement-1][1])+1)
       {
+        $("#click-display").text(graphB[viewIncrement]);
         changeColors("pos");
       }
       else if (graphB[viewIncrement][1] == (graphB[viewIncrement-1][1])-1)
       {
+        $("#click-display").text(graphB[viewIncrement]);
         changeColors("neg");
       }
       else if (graphB[viewIncrement][1] == (graphB[viewIncrement-1][1])+2)
       {
+        $("#click-display").text(graphB[viewIncrement]);
         changeColors("dub");
       }
       viewIncrement+=1;
