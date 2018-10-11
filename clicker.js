@@ -44,6 +44,7 @@ $("body").on("keydown", function(event)
   else if ((event.which == 189 || event.which == 173) && clickReady == true)
   {
     negative+=1;
+    changeColors("neg");
     raw = positive-negative;
     seconds = (deciseconds/10);
     clickList.push([seconds, raw]);
@@ -51,6 +52,7 @@ $("body").on("keydown", function(event)
   }
   else if (event.which == 49 && clickReady == true)
   {
+    changeColors("pos");
     singleClick+=1;
     positive+=1;
     raw = positive-negative;
@@ -60,6 +62,7 @@ $("body").on("keydown", function(event)
   }
   else if (event.which == 50 && clickReady == true)
   {
+    changeColors("dub");
     doubleClick+=1;
     positive+=2;
     raw = positive-negative;
@@ -78,6 +81,27 @@ $("body").on("keydown", function(event)
 
   }
 });
+
+function changeColors(type) {
+  if (type == "pos")
+  {
+    document.body.style.background = "green";
+  }
+  else if (type == "dub")
+  {
+    document.body.style.background = "cyan";
+  }
+  else if (type == "neg")
+  {
+    document.body.style.background = "red";
+  }
+  var colorFlash = setTimeout('change()',500);
+}
+
+function change() {
+   document.body.style.background = "white";
+   }
+
 
 
 function initClient() {
