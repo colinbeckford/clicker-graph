@@ -270,6 +270,7 @@ function getLinks(link)
       if (response.result.values[i] == link)
       {
         getOtherScores(i);
+        console.log("got score");
       }
     }
   }, function(reason) {
