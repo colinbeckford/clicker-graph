@@ -41,6 +41,7 @@ $("body").on("keydown", function(event)
 {
   if (event.which == 13 && isViewerMode == true)
   {
+    console.log("caught correct enter command");
     timer();
     var count = 0;
     if ((deciseconds/10) == graphB[count][0])
@@ -52,7 +53,7 @@ $("body").on("keydown", function(event)
     enterReady = false;
     clickReady = true;
   }
-  if (event.which == 13 && enterReady == true)
+  if (event.which == 13 && enterReady == true && isViewerMode == false)
   {
     timer();
     enterReady = false;
