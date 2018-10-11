@@ -106,29 +106,37 @@ $("body").on("keydown", function(event)
 function changeColors(type) {
   if (type == "pos")
   {
-     $("#video").css({"border-color": "#008000",
-            "border-width":"15px",
-            "border-style":"solid"});
+    $("#video").css({"filter": "drop-shadow(30px 10px 4px #008000);"});
+
+     // $("#video").css({"border-color": "#008000",
+     //        "border-width":"15px",
+     //        "border-style":"solid"});
   }
   else if (type == "neg")
   {
-    $("#video").css({"border-color": "#FF0000",
-           "border-width":"15px",
-           "border-style":"solid"});
+    $("#video").css({"filter": "drop-shadow(30px 10px 4px #FF0000);"});
+
+    // $("#video").css({"border-color": "#FF0000",
+    //        "border-width":"15px",
+    //        "border-style":"solid"});
   }
   else if (type == "dub")
   {
-    $("#video").css({"border-color": "#00FFFF",
-           "border-width":"15px",
-           "border-style":"solid"});
+    $("#video").css({"filter": "drop-shadow(30px 10px 4px #00FFFF);"});
+
+    // $("#video").css({"border-color": "#00FFFF",
+    //        "border-width":"15px",
+    //        "border-style":"solid"});
   }
   var colorFlash = setTimeout('change()',200);
 }
 
 function change() {
-   $("#video").css({"border-color": "#FFFFFF",
-          "border-width":"15px",
-          "border-style":"solid"});
+  $("#video").css({"filter": "drop-shadow(30px 10px 4px #FFFFFF);"});
+
+   // $("#video").css({"border-color": "#FFFFFF",
+   //        "border-width":"15px",
+   //        "border-style":"solid"});
    }
 
 
