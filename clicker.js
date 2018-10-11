@@ -21,6 +21,7 @@ var graphReady = false;
 var isFlash = false;
 var isViewerMode = false;
 var otherClickCount = 0;
+var viewIncrement = 0;
 
 $(document).ready(function() {
     let myurl = new URL(window.location.href);
@@ -45,7 +46,7 @@ $("body").on("keydown", function(event)
   if (event.which == 13 && isViewerMode == true)
   {
     viewTimer();
-    showOtherClicks(count);
+    showOtherClicks(viewIncrement);
   }
   if (event.which == 13 && enterReady == true && isViewerMode == false)
   {
