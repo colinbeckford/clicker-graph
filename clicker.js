@@ -34,6 +34,7 @@ $(document).ready(function() {
 
 $("body").on("keydown", function(event)
 {
+  var isFlash = $("#flash").is(":checked");
 
   if (event.which == 13 && enterReady == true)
   {
@@ -43,16 +44,24 @@ $("body").on("keydown", function(event)
   }
   else if ((event.which == 189 || event.which == 173) && clickReady == true)
   {
+    if (isFlash == true)
+    {
+      changeColors("neg");
+    }
     negative+=1;
     changeColors("neg");
     raw = positive-negative;
     seconds = (deciseconds/10);
     clickList.push([seconds, raw]);
     $("#click-display").text("+" + String(positive) + " " + "-" + String(negative));
+
   }
   else if (event.which == 49 && clickReady == true)
   {
-    changeColors("pos");
+    if (isFlash == true)
+    {
+      changeColors("pos");
+    }
     singleClick+=1;
     positive+=1;
     raw = positive-negative;
@@ -62,7 +71,10 @@ $("body").on("keydown", function(event)
   }
   else if (event.which == 50 && clickReady == true)
   {
-    changeColors("dub");
+    if (isFlash == true)
+    {
+      changeColors("dub");
+    }
     doubleClick+=1;
     positive+=2;
     raw = positive-negative;
@@ -95,7 +107,7 @@ function changeColors(type) {
   {
     document.body.style.background = "red";
   }
-  var colorFlash = setTimeout('change()',500);
+  var colorFlash = setTimeout('change()',200);
 }
 
 function change() {
