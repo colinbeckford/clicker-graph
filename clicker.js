@@ -18,6 +18,7 @@ var clickReady = false;
 var graphReady = false;
 var isFlash = false;
 var isViewerMode = false;
+var otherClickCount = 0;
 
 $(document).ready(function() {
     let myurl = new URL(window.location.href);
@@ -41,18 +42,8 @@ $("body").on("keydown", function(event)
 {
   if (event.which == 13 && isViewerMode == true)
   {
-    console.log(graphB);
-    console.log("caught correct enter command");
     timer();
-    var count = 0;
-    if ((deciseconds/10) == graphB[count][0])
-    {
-      console.log("Found equal time");
-      changeColors("pos");
-      count++;
-    }
-    enterReady = false;
-    clickReady = true;
+    showOtherClicks(otherClickCount);
   }
   if (event.which == 13 && enterReady == true && isViewerMode == false)
   {
@@ -111,6 +102,17 @@ $("body").on("keydown", function(event)
   }
 });
 
+function showOtherClicks(count)
+{
+  var tempSplit = graphB[count].split(',');
+  if ((deciseconds/10) == tempSplit[count])
+  {
+    console.log("Found equal time");
+    changeColors("pos");
+    count+=1;
+    showOtherClicks(count);
+  }
+}
 
 function changeColors(type) {
   if (type == "pos")
