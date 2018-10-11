@@ -413,7 +413,7 @@ if (event.data == YT.PlayerState.PLAYING && !done)
 
 function getScores()
 {
-  isViewerMode == true;
+  isViewerMode = true;
   yt_link = $('#yt-link').val();
   for (var i=0;i<yt_link.length;i++)
   {
