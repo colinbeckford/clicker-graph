@@ -214,9 +214,11 @@ function viewAdd(list)
 {
   console.log(judgePick.options[judgePick.selectedIndex].value);
   viewDeciseconds++;
-  while (viewIncrement <= list.length)
+  if (viewIncrement == list.length)
   {
-  if ((viewDeciseconds/10) == list[viewIncrement][0])
+    clearTimeout();
+  }
+  else if ((viewDeciseconds/10) == list[viewIncrement][0])
   {
     if (viewIncrement == 0)
     {
@@ -256,7 +258,6 @@ function viewAdd(list)
       }
       viewIncrement+=1;
     }
-  }
   viewTimer(list);
   }
 }
