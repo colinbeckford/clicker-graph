@@ -59,11 +59,11 @@ $("body").on("keydown", function(event)
   if (event.which == 13 && isViewerMode == true && isFlash == true)
   {
     selectedJudgeIndex = judgePick.selectedIndex;
-    if (selectedJudgeIndex == 0 || selectedJudgeIndex == -1)
+    if (selectedJudgeIndex == 0)
     {
-      for (var i=0;i<aX.length;i++)
+      for (var i=0;i<bX.length;i++)
       {
-        selectedClicks.push([aX[i], aY[i]]);
+        selectedClicks.push([bX[i], bY[i]]);
       }
       viewTimer(selectedClicks);
     }
@@ -460,7 +460,7 @@ function showChart(listA, listB)
   {
     judgePick = document.getElementById("judge-pick");
     var loopIndex = 0;
-    var judgeList = [judgeName, judgeB, judgeC, judgeD, judgeE];
+    var judgeList = [judgeB, judgeC, judgeD, judgeE];
     while (loopIndex < judgeList.length)
     {
       if (judgeList[loopIndex] == "")
