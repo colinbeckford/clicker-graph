@@ -21,6 +21,18 @@ var graphReady = false;
 var isFlash = false;
 var isViewerMode = false;
 var viewIncrement = 0;
+var selectedJudgeIndex = 0;
+var selectedClicks = [];
+var aX = [];
+var aY = [];
+var bX = [];
+var bY = [];
+var cX = [];
+var cY = [];
+var dX = [];
+var dY = [];
+var eX = [];
+var eY = [];
 
 $(document).ready(function() {
     let myurl = new URL(window.location.href);
@@ -45,7 +57,33 @@ $("body").on("keydown", function(event)
 {
   if (event.which == 13 && isViewerMode == true && isFlash == true)
   {
-    viewTimer();
+    selectedJudgeIndex = judgePick.options[judgePick.selectedIndex];
+    console.log(selectedJudgeIndex);
+    if (selectedJudgeIndex == 0)
+    {
+      selectedClicks = [aX, aY];
+      viewTimer(selectedClicks);
+    }
+    else if (selectedJudgeIndex == 1)
+    {
+      selectedClicks = [bX, bY];
+      viewTimer(selectedClicks);
+    }
+    else if (selectedJudgeIndex == 2)
+    {
+      selectedClicks = [cX, cY];
+      viewTimer(selectedClicks);
+    }
+    else if (selectedJudgeIndex == 3)
+    {
+      selectedClicks = [dX, dY];
+      viewTimer(selectedClicks);
+    }
+    else if (selectedJudgeIndex == 4)
+    {
+      selectedClicks = [eX, eY];
+      viewTimer(selectedClicks);
+    }
   }
   if (event.which == 13 && enterReady == true && isViewerMode == false)
   {
@@ -171,55 +209,55 @@ function clickAdd()
   clickTimer();
 }
 
-function viewAdd()
+function viewAdd(list)
 {
+  console.log(judgePick.options[judgePick.selectedIndex].value);
   viewDeciseconds++;
-  if (graphB[viewIncrement] == " ")
+  while (viewIncrement <= list.length)
   {
-    clearTimeout(vt);
-  }
-  else if ((viewDeciseconds/10) == graphB[viewIncrement][0])
+  if ((viewDeciseconds/10) == list[viewIncrement][0])
   {
     if (viewIncrement == 0)
     {
-      if (graphB[viewIncrement][1] == 1)
+      if (list[viewIncrement][1] == 1)
       {
-        $("#click-display").text(graphB[viewIncrement][1]);
+        $("#click-display").text(list[viewIncrement][1]);
         changeColors("pos");
       }
-      else if (graphB[viewIncrement][1] == 2)
+      else if (list[viewIncrement][1] == 2)
       {
-        $("#click-display").text(graphB[viewIncrement][1]);
+        $("#click-display").text(list[viewIncrement][1]);
         changeColors("dub");
       }
-      else if (graphB[viewIncrement][1] == -1)
+      else if (list[viewIncrement][1] == -1)
       {
-        $("#click-display").text(graphB[viewIncrement][1]);
+        $("#click-display").text(list[viewIncrement][1]);
         changeColors("neg");
       }
       viewIncrement+=1;
     }
     else
     {
-      if (graphB[viewIncrement][1] == (graphB[viewIncrement-1][1])+1)
+      if (list[viewIncrement][1] == (list[viewIncrement-1][1])+1)
       {
-        $("#click-display").text(graphB[viewIncrement][1]);
+        $("#click-display").text(list[viewIncrement][1]);
         changeColors("pos");
       }
-      else if (graphB[viewIncrement][1] == (graphB[viewIncrement-1][1])-1)
+      else if (list[viewIncrement][1] == (list[viewIncrement-1][1])-1)
       {
-        $("#click-display").text(graphB[viewIncrement][1]);
+        $("#click-display").text(list[viewIncrement][1]);
         changeColors("neg");
       }
-      else if (graphB[viewIncrement][1] == (graphB[viewIncrement-1][1])+2)
+      else if (list[viewIncrement][1] == (list[viewIncrement-1][1])+2)
       {
-        $("#click-display").text(graphB[viewIncrement][1]);
+        $("#click-display").text(list[viewIncrement][1]);
         changeColors("dub");
       }
       viewIncrement+=1;
     }
   }
-  viewTimer();
+  viewTimer(list);
+  }
 }
 
 function clickTimer()
@@ -227,9 +265,9 @@ function clickTimer()
   ct = setTimeout(clickAdd, 100);
 }
 
-function viewTimer()
+function viewTimer(list)
 {
-  vt = setTimeout(viewAdd, 100);
+  vt = setTimeout(viewAdd, 100, list);
 }
 
 function saveData()
@@ -339,16 +377,6 @@ function showChart(listA, listB)
   var judgeC = "";
   var judgeD = "";
   var judgeE = "";
-  var aX = [];
-  var aY = [];
-  var bX = [];
-  var bY = [];
-  var cX = [];
-  var cY = [];
-  var dX = [];
-  var dY = [];
-  var eX = [];
-  var eY = [];
   for (var i=0;i<listB.length;i++)
   {
     if (listB[i] == " ")
@@ -413,25 +441,28 @@ function showChart(listA, listB)
     eY.push(listB[e][1]);
     }
   }
-  var judgePick = document.getElementById("judge-pick");
-  var loopIndex = 0;
-  var judgeList = [judgeName, judgeB, judgeC, judgeD, judgeE];
-  while (loopIndex < judgeList.length)
+  if (isViewerMode == true)
   {
-    if (judgeList[loopIndex] == "")
+    var judgePick = document.getElementById("judge-pick");
+    var loopIndex = 0;
+    var judgeList = [judgeName, judgeB, judgeC, judgeD, judgeE];
+    while (loopIndex < judgeList.length)
     {
-      loopIndex+=1;
-      continue;
+      if (judgeList[loopIndex] == "")
+      {
+        loopIndex+=1;
+        continue;
+      }
+      else
+      {
+        var option = document.createElement("option");
+        option.text = judgeList[loopIndex];
+        judgePick.add(option);
+        loopIndex+=1;
+      }
     }
-    else
-    {
-      var option = document.createElement("option");
-      option.text = judgeList[loopIndex];
-      judgePick.add(option);
-      loopIndex+=1;
-    }
+    $('#judge-pick').show();
   }
-  $('#judge-pick').show();
   var trace1 =
   {
     x: aX,
