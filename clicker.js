@@ -59,7 +59,6 @@ $("body").on("keydown", function(event)
   if (event.which == 13 && isViewerMode == true && isFlash == true)
   {
     selectedJudgeIndex = judgePick.selectedIndex;
-    console.log(selectedJudgeIndex);
     if (selectedJudgeIndex == 0)
     {
       for (var i=0;i<aX.length;i++)
@@ -227,8 +226,6 @@ function clickAdd()
 
 function viewAdd(list)
 {
-  console.log(graphB);
-  console.log(list);
   viewDeciseconds++;
   if (viewIncrement == list.length)
   {
@@ -259,6 +256,7 @@ function viewAdd(list)
     {
       if (list[viewIncrement][1] == (list[viewIncrement-1][1])+1)
       {
+        console.log("Caught positive");
         $("#click-display").text(list[viewIncrement][1]);
         changeColors("pos");
       }
