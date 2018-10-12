@@ -333,8 +333,7 @@ function showChart(listA, listB)
 {
   console.log(listB);
   makeApiCall(judgeEntry);
-  var breakpointA = 0;
-  var breakpointB = 0;
+  var breakpoint = 0;
   var judgeB = "";
   var judgeC = "";
   var judgeD = "";
@@ -347,11 +346,13 @@ function showChart(listA, listB)
   var cY = [];
   var dX = [];
   var dY = [];
+  var eX = [];
+  var eY = [];
   for (var i=0;i<listB.length;i++)
   {
     if (listB[i] == " ")
     {
-      breakpointA = i;
+      breakpoint = i;
       judgeB = listB[i-1];
       break;
     }
@@ -361,17 +362,17 @@ function showChart(listA, listB)
     aX.push(listA[a][0]);
     aY.push(listA[a][1]);
   }
-  for (var b=0;b<breakpointA;b++)
+  for (var b=0;b<breakpoint;b++)
   {
     bX.push(listB[b][0]);
     bY.push(listB[b][1]);
   }
-  breakpointA+=1;
-  for (var c=breakpointA;c<listB.length;c++)
+  breakpoint+=1;
+  for (var c=breakpoint;c<listB.length;c++)
   {
     if (listB[c+2] == " ")
     {
-      breakpointB = c+2;
+      breakpoint = c+2;
       judgeC = listB[c+1];
       break;
     }
@@ -381,11 +382,12 @@ function showChart(listA, listB)
       cY.push(listB[c][1]);
     }
   }
-  breakpointB+=1;
-  for (var d=breakpointB;d<listB.length;d++)
+  breakpoint+=1;
+  for (var d=breakpoint;d<listB.length;d++)
   {
     if (listB[d+2] == " ")
     {
+      breakpoint = d+2;
       judgeD = listB[d+1];
       break;
     }
@@ -393,6 +395,21 @@ function showChart(listA, listB)
     {
     dX.push(listB[d][0]);
     dY.push(listB[d][1]);
+    }
+  }
+  breakpoint+=1;
+  for (var e=breakpoint;e<listB.length;e++)
+  {
+    if (listB[e+2] == " ")
+    {
+      breakpoint = e+2;
+      judgeE = listB[e+1];
+      break;
+    }
+    else
+    {
+    eX.push(listB[e][0]);
+    eY.push(listB[e][1]);
     }
   }
   var trace1 =
@@ -423,7 +440,14 @@ function showChart(listA, listB)
     mode: 'lines',
     name: judgeD
   };
-  var data = [trace1, trace2, trace3, trace4];
+  var trace5 =
+  {
+    x: eX,
+    y: eY,
+    mode: 'lines',
+    name: judgeE
+  };
+  var data = [trace1, trace2, trace3, trace4, trace5];
   var layout = {
     title: 'Your Scores',
     xaxis: {
