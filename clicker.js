@@ -212,7 +212,8 @@ function clickAdd()
 
 function viewAdd(list)
 {
-  console.log(judgePick.options[judgePick.selectedIndex].value);
+  console.log(graphB);
+  console.log(list);
   viewDeciseconds++;
   if (viewIncrement == list.length)
   {
