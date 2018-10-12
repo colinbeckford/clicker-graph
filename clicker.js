@@ -37,7 +37,7 @@ $(document).ready(function() {
     $('#video').height('480px');
     $('#video').width('854px');
     $('#chart').width('854px');
-    $('judge-pick').hide();
+    $('#judge-pick').hide();
 });
 
 
@@ -415,7 +415,7 @@ function showChart(listA, listB)
   }
   var judgePick = document.getElementById("judge-pick");
   var loopIndex = 0;
-  var judgeList = [judgeA, judgeB, judgeC, judgeD, judgeE];
+  var judgeList = [judgeName, judgeB, judgeC, judgeD, judgeE];
   while (loopIndex > judgeList.length)
   {
     if (judgeList[loopIndex] == "")
