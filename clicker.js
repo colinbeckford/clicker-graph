@@ -37,6 +37,7 @@ $(document).ready(function() {
     $('#video').height('480px');
     $('#video').width('854px');
     $('#chart').width('854px');
+    $('judge-pick').hide();
 });
 
 
@@ -412,6 +413,23 @@ function showChart(listA, listB)
     eY.push(listB[e][1]);
     }
   }
+  var judgePick = document.getElementById("judge-pick");
+  var loopIndex = 0;
+  var judgeList = [judgeA, judgeB, judgeC, judgeD, judgeE];
+  while (loopIndex > judgeList.length)
+  {
+    if (judgeList[loopIndex] == "")
+    {
+      break;
+    }
+    else
+    {
+      var option = document.createElement("option");
+      option.text = judgeList[loopIndex];
+      judgePick.add(option);
+    }
+  }
+  $('#judge-pick').show();
   var trace1 =
   {
     x: aX,
@@ -548,7 +566,7 @@ function confirmEntry() {
     var txt;
     if (confirm("Would you like to submit your scores?")) {
       var cps = ((clickList[(clickList.length)-1][1])/(clickList[(clickList.length)-1][0])).toFixed(2);
-      var pdc = ((doubleClick*2)/(singleClick+(doubleClick*2))).toFixed(2);
+      var pdc = ((doubleClick*2)/(singleClick+(doubleClick*2))).toFixed(1);
       alert("The clicks per second for this routine you scored is " + cps + ", and the percentage of clicks that you awarded +2 is " + (pdc*100) + " percent.");
       $('#share').show();
       formatList();
