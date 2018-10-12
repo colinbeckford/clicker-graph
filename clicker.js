@@ -62,27 +62,42 @@ $("body").on("keydown", function(event)
     console.log(selectedJudgeIndex);
     if (selectedJudgeIndex == 0)
     {
-      selectedClicks = [aX, aY];
+      for (var i=0;i<aX.length;i++)
+      {
+        selectedClicks.push([aX[i], aY[i]]);
+      }
       viewTimer(selectedClicks);
     }
     else if (selectedJudgeIndex == 1)
     {
-      selectedClicks = [bX, bY];
+      for (var i=0;i<bX.length;i++)
+      {
+        selectedClicks.push([bX[i], bY[i]]);
+      }
       viewTimer(selectedClicks);
     }
     else if (selectedJudgeIndex == 2)
     {
-      selectedClicks = [cX, cY];
+      for (var i=0;i<cX.length;i++)
+      {
+        selectedClicks.push([cX[i], cY[i]]);
+      }
       viewTimer(selectedClicks);
     }
     else if (selectedJudgeIndex == 3)
     {
-      selectedClicks = [dX, dY];
+      for (var i=0;i<dX.length;i++)
+      {
+        selectedClicks.push([dX[i], dY[i]]);
+      }
       viewTimer(selectedClicks);
     }
     else if (selectedJudgeIndex == 4)
     {
-      selectedClicks = [eX, eY];
+      for (var i=0;i<eX.length;i++)
+      {
+        selectedClicks.push([eX[i], eY[i]]);
+      }
       viewTimer(selectedClicks);
     }
   }
