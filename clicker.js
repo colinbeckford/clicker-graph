@@ -420,7 +420,7 @@ function showChart(listA, listB)
   {
     if (judgeList[loopIndex] == "")
     {
-      break;
+      continue;
     }
     else
     {
