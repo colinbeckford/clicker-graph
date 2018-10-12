@@ -58,7 +58,7 @@ $("body").on("keydown", function(event)
 {
   if (event.which == 13 && isViewerMode == true && isFlash == true)
   {
-    selectedJudgeIndex = judgePick.options[judgePick.selectedIndex];
+    selectedJudgeIndex = judgePick.selectedIndex;
     console.log(selectedJudgeIndex);
     if (selectedJudgeIndex == 0)
     {
