@@ -347,58 +347,54 @@ function showChart(listA, listB)
   var cY = [];
   var dX = [];
   var dY = [];
-  var count = 0;
   for (var i=0;i<listB.length;i++)
   {
     if (listB[i] == " ")
     {
-      count++;
       breakpointA = i;
       judgeB = listB[i-1];
       break;
     }
   }
-
   for (var a=0;a<listA.length;a++)
   {
     aX.push(listA[a][0]);
     aY.push(listA[a][1]);
   }
-
   for (var b=0;b<breakpointA;b++)
   {
     bX.push(listB[b][0]);
     bY.push(listB[b][1]);
   }
-
   breakpointA+=1;
-
   for (var c=breakpointA;c<listB.length;c++)
   {
-    cX.push(listB[c][0]);
-    cY.push(listB[c][1]);
     if (listB[c+2] == " ")
     {
-      breakpointB = listB[c+2];
+      breakpointB = c+2;
       judgeC = listB[c+1];
       break;
     }
+    else
+    {
+      cX.push(listB[c][0]);
+      cY.push(listB[c][1]);
+    }
   }
-
   breakpointB+=1;
-
   for (var d=breakpointB;d<listB.length;d++)
   {
-    dX.push(listB[d][0]);
-    dY.push(listB[d][1]);
     if (listB[d+2] == " ")
     {
       judgeD = listB[d+1];
       break;
     }
+    else
+    {
+    dX.push(listB[d][0]);
+    dY.push(listB[d][1]);
+    }
   }
-  console.log(dX);
-  console.log(dY);
   var trace1 =
   {
     x: aX,
