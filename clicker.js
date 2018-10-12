@@ -33,6 +33,7 @@ var dX = [];
 var dY = [];
 var eX = [];
 var eY = [];
+var judgePick;
 
 $(document).ready(function() {
     let myurl = new URL(window.location.href);
@@ -443,7 +444,7 @@ function showChart(listA, listB)
   }
   if (isViewerMode == true)
   {
-    var judgePick = document.getElementById("judge-pick");
+    judgePick = document.getElementById("judge-pick");
     var loopIndex = 0;
     var judgeList = [judgeName, judgeB, judgeC, judgeD, judgeE];
     while (loopIndex < judgeList.length)
