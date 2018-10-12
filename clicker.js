@@ -59,7 +59,7 @@ $("body").on("keydown", function(event)
   if (event.which == 13 && isViewerMode == true && isFlash == true)
   {
     selectedJudgeIndex = judgePick.selectedIndex;
-    if (selectedJudgeIndex == 0)
+    if (selectedJudgeIndex == 0 || selectedJudgeIndex == -1)
     {
       for (var i=0;i<aX.length;i++)
       {
