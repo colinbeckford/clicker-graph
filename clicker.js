@@ -226,6 +226,8 @@ function clickAdd()
 
 function viewAdd(list)
 {
+  console.log(list);
+  console.log(viewIncrement);
   viewDeciseconds++;
   if (viewIncrement == list.length)
   {
@@ -325,7 +327,6 @@ function getLinks(link)
       if (response.result.values[i] == link)
       {
         getOtherScores(i);
-        console.log("got score");
       }
     }
   }, function(reason) {
@@ -386,7 +387,6 @@ function makeApiCall(list)
 
 function showChart(listA, listB)
 {
-  console.log(listB);
   makeApiCall(judgeEntry);
   var breakpoint = 0;
   var judgeB = "";
