@@ -229,11 +229,7 @@ function viewAdd(list)
   console.log(list);
   console.log(viewIncrement);
   viewDeciseconds++;
-  if (viewIncrement == list.length)
-  {
-    clearTimeout();
-  }
-  else if ((viewDeciseconds/10) == list[viewIncrement][0])
+  if ((viewDeciseconds/10) == list[viewIncrement][0])
   {
     if (viewIncrement == 0)
     {
