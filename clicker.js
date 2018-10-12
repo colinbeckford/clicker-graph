@@ -226,8 +226,6 @@ function clickAdd()
 
 function viewAdd(list)
 {
-  console.log(list);
-  console.log(viewIncrement);
   viewDeciseconds++;
   list[viewIncrement][0];
   if ((viewDeciseconds/10) == list[viewIncrement][0])
@@ -238,16 +236,19 @@ function viewAdd(list)
       {
         $("#click-display").text(list[viewIncrement][1]);
         changeColors("pos");
+        viewIncrement+=1;
       }
       else if (list[viewIncrement][1] == 2)
       {
         $("#click-display").text(list[viewIncrement][1]);
         changeColors("dub");
+        viewIncrement+=1;
       }
       else if (list[viewIncrement][1] == -1)
       {
         $("#click-display").text(list[viewIncrement][1]);
         changeColors("neg");
+        viewIncrement+=1;
       }
     }
     else
@@ -257,21 +258,23 @@ function viewAdd(list)
         console.log("Caught positive");
         $("#click-display").text(list[viewIncrement][1]);
         changeColors("pos");
+        viewIncrement+=1;
       }
       else if (list[viewIncrement][1] == (list[viewIncrement-1][1])-1)
       {
         $("#click-display").text(list[viewIncrement][1]);
         changeColors("neg");
+        viewIncrement+=1;
       }
       else if (list[viewIncrement][1] == (list[viewIncrement-1][1])+2)
       {
         $("#click-display").text(list[viewIncrement][1]);
         changeColors("dub");
+        viewIncrement+=1;
       }
     }
 
   }
-  viewIncrement+=1;
   viewTimer(list);
 }
 
