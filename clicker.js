@@ -227,7 +227,6 @@ function clickAdd()
 function viewAdd(list)
 {
   viewDeciseconds++;
-  list[viewIncrement][0];
   if ((viewDeciseconds/10) == list[viewIncrement][0])
   {
     if (viewIncrement == 0)
@@ -477,7 +476,10 @@ function showChart(listA, listB)
         loopIndex+=1;
       }
     }
-    $('#judge-pick').show();
+    if (isFlash == true)
+    {
+      $('#judge-pick').show();
+    }
   }
   var trace1 =
   {
@@ -568,7 +570,7 @@ function onYouTubeIframeAPIReady()
 
 function onPlayerReady(event)
 {
-  event.target.playVideo();
+  event.target.pauseVideo();
 }
 
 var done = false;
