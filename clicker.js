@@ -229,6 +229,7 @@ function viewAdd(list)
   console.log(list);
   console.log(viewIncrement);
   viewDeciseconds++;
+  list[viewIncrement][0];
   if ((viewDeciseconds/10) == list[viewIncrement][0])
   {
     if (viewIncrement == 0)
@@ -248,7 +249,6 @@ function viewAdd(list)
         $("#click-display").text(list[viewIncrement][1]);
         changeColors("neg");
       }
-      viewIncrement+=1;
     }
     else
     {
@@ -268,10 +268,11 @@ function viewAdd(list)
         $("#click-display").text(list[viewIncrement][1]);
         changeColors("dub");
       }
-      viewIncrement+=1;
     }
-  viewTimer(list);
+
   }
+  viewIncrement+=1;
+  viewTimer(list);
 }
 
 function clickTimer()
