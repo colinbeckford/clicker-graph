@@ -53,10 +53,9 @@ $(document).ready(function() {
     $('#judge-pick').hide();
 });
 
-
-$("body").on("keydown", function(event)
+function startTimer()
 {
-  if (event.which == 13 && isViewerMode == true && isFlash == true)
+  if (isViewerMode == true && isFlash == true)
   {
     selectedJudgeIndex = judgePick.selectedIndex;
     if (selectedJudgeIndex == 0)
@@ -100,13 +99,17 @@ $("body").on("keydown", function(event)
       viewTimer(selectedClicks);
     }
   }
-  if (event.which == 13 && enterReady == true && isViewerMode == false)
+  if (enterReady == true && isViewerMode == false)
   {
     clickTimer();
     enterReady = false;
     clickReady = true;
   }
-  else if ((event.which == 189 || event.which == 173) && clickReady == true)
+}
+
+$("body").on("keydown", function(event)
+{
+  if ((event.which == 189 || event.which == 173) && clickReady == true)
   {
     negative+=1;
     raw = positive-negative;
@@ -290,7 +293,7 @@ function viewTimer(list)
 function saveData()
 {
   isFlash = $("#flash").is(":checked");
-  alert("Remember to press ENTER key when the freestyle starts!");
+  alert("Remember to press the Start Timer button when the freestyle starts!");
   enterReady = true;
   judgeName = $('#judge-name').val();
   yt_link = $('#yt-link').val();
@@ -585,7 +588,7 @@ if (event.data == YT.PlayerState.PLAYING && !done)
 function getScores()
 {
   isFlash = $("#flash").is(":checked");
-  alert("Remember to press ENTER key when the freestyle starts!");
+  alert("Remember to press Start Timer button when the freestyle starts!");
   isViewerMode = true;
   yt_link = $('#yt-link').val();
   for (var i=0;i<yt_link.length;i++)
