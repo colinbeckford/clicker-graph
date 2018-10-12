@@ -416,10 +416,11 @@ function showChart(listA, listB)
   var judgePick = document.getElementById("judge-pick");
   var loopIndex = 0;
   var judgeList = [judgeName, judgeB, judgeC, judgeD, judgeE];
-  while (loopIndex > judgeList.length)
+  while (loopIndex < judgeList.length)
   {
     if (judgeList[loopIndex] == "")
     {
+      loopIndex+=1;
       continue;
     }
     else
@@ -427,6 +428,7 @@ function showChart(listA, listB)
       var option = document.createElement("option");
       option.text = judgeList[loopIndex];
       judgePick.add(option);
+      loopIndex+=1;
     }
   }
   $('#judge-pick').show();
